@@ -1,0 +1,28 @@
+- provide(:title, t('.title'))
+
+= devise_error_messages!
+%section.login-block
+  .container
+    .row
+      .col-sm-4.login-sec
+        %h2.text-center 
+        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          .form-group
+            %label.text-uppercase{:for => "exampleInputEmail1"} 邮箱 
+            = f.email_field :email, autofocus: true, class: "form-control"
+          .form-group
+            %label.text-uppercase{:for => "exampleInputPassword1"} 密码
+            -#
+              - if @minimum_password_length
+                %em
+                  (#{@minimum_password_length} characters minimum)
+            = f.password_field :password, autocomplete: "off", class: "form-control"
+          .form-group
+            %label.text-uppercase{:for => "exampleInputPassword1"} 确认密码
+            = f.password_field :password_confirmation, autocomplete: "off", class: "form-control"
+          .form-group.row.justify-content-between
+            .col-sm-4
+              = f.submit "注 册", class: "btn btn-login"
+            .col-sm-4
+              = render "users/shared/links"
+      .col-sm-8.banner-sec

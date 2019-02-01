@@ -1,0 +1,33 @@
+- provide(:title, t('.title'))
+
+- content_for :main_body do
+  .container-fluid
+    .row
+      .col-md-12
+        %table#table.table.table-hover.text-center
+          %thead
+            %tr
+              %th
+                序号
+              %th{"data-field" => "email", "data-filter-control" => "input"}
+                邮箱
+              %th{"data-field" => "name", "data-filter-control" => "input"}
+                权限
+              %th
+          %tbody
+            - @users.each_with_index do |user, index|
+              %tr
+                %td
+                  = index+1
+                %td
+                  = user.email
+                %td
+                  - user.roles.each do |role|
+                    -#
+                      %label.checkbox-inline
+                    = role.name + "  "
+                %td
+                  = link_to "编辑", edit_user_path(user), :class => "btn btn-success"
+                  = link_to '删除', user, :method => :delete, :data => { :confirm => '确定删除该用户吗?' }, :class => "btn btn-danger"
+
+= render "layouts/control_panel"

@@ -1,0 +1,28 @@
+- provide(:title, t('.title'))
+
+= devise_error_messages!
+%section.login-block
+  .container
+    .row
+      .col-sm-4.login-sec
+        %h2.text-center 开票系统 
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .form-group
+            %label.text-uppercase{:for => "exampleInputEmail1"} 邮箱 
+            = f.email_field :email, autofocus: true, class: "form-control"
+          .form-group
+            %label.text-uppercase{:for => "exampleInputPassword1"} 密码
+            = f.password_field :password, autocomplete: "off", class: "form-control"
+          -#
+            - if devise_mapping.rememberable?
+              .form-check
+                %label.form-check-label
+                  = f.check_box :remember_me, class: "form-check-input"
+                  %small
+                    记住我 
+          .form-group.row.justify-content-between
+            .col-sm-4
+              = f.submit "登 录", class: "btn btn-login "
+            .col-sm-4
+              = render "users/shared/links"
+      .col-sm-8.banner-sec

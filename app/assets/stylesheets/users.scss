@@ -1,0 +1,25 @@
+.user-breadcrumb{
+  margin-bottom: 0;
+  border-radius: 0;
+  background: #FFF;
+  padding: 10px 15px;
+  color: #999;
+  font-size: 13px;
+  a{
+    color: #999;
+  }
+}
+.control-wrapper {
+  height: 100%;
+  .mail-box {
+    height: 100%;
+  }
+}
+.sessions, .registrations{
+  padding-top: 0px;
+  height: 100%;
+  background: #DE6262;
+  background: -webkit-linear-gradient(to bottom, #FFB88C, #DE6262);
+  background: linear-gradient(to bottom, #FFB88C, #DE6262);
+  padding : 50px 0;
+}
