@@ -18,6 +18,18 @@ development:
   users: *2
   roles: *3
   permissions: *4
+  wares:
+    title: 宝贝标题
+    price: 价格
+    citrine_count: 赠送茶晶数
+    freight: 运费
+    description: 宝贝详情
+    category: 分类
+    brand: 品牌
+    up: 1
+    up_title: 上架
+    down: 0
+    down_title: 下架
 test:
   admins: *1
   users: *2

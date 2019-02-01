@@ -64,7 +64,7 @@ gem 'annotate'
 
 gem 'settingslogic'
 
-#gem 'rails_kindeditor', :git=>'git@bitbucket.org:jilinbeauty/thesis_kindeditor.git'
+gem 'rails_kindeditor'
 
 #gem 'sidekiq'
 #gem 'sinatra', :require => nil
@@ -109,3 +109,6 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
 #gem 'yaml_db'
 
 gem 'mini_racer'
+
+gem 'evil_icons'
+

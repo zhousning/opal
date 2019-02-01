@@ -1,0 +1,9 @@
+#carouselExampleIndicators.carousel.slide{"data-ride" => "carousel"}
+  - unless @ware.enclosures.nil?
+    %ol.carousel-indicators
+      - @ware.enclosures.each_with_index do |e, index|
+        %li{"data-slide-to" => "#{index}", "data-target" => "#carousel#{index}", :class => "#{index == 0 ? 'active' : ''}"}
+    .carousel-inner
+      - @ware.enclosures.each_with_index do |e, index|
+        .carousel-item{:class => "#{index == 0 ? 'active' : ''}"}
+          = image_tag e.file_url(:big), :class => "d-block w-100 "

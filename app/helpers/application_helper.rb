@@ -19,4 +19,12 @@ module ApplicationHelper
 
     html.html_safe
   end
+
+  def format_to_html(str)
+    result = ""
+    str.split(/\n/).each do |s|
+      result += "<p>" + s +"</br></p>"
+    end
+    result.html_safe
+  end
 end

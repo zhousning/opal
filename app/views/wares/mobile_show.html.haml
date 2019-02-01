@@ -1,0 +1,30 @@
+= render "carousel"
+.container-fluid.mt-5.mb-5
+  .row
+    .col-12
+      %h3
+        = @ware.title
+      %h3.card-text.d-flex.justify-content-between
+        %span.text-left.text-danger
+          ￥
+          = @ware.price
+        %span.badge.badge-pill.badge-success
+          = Setting.wares.citrine_count
+          = @ware.citrine_count
+      %h3.card-text.d-flex.justify-content-between
+        = Setting.wares.freight
+        = @ware.freight
+      %hr
+
+.container-fluid
+  %h3
+    = Setting.wares.category
+    = @ware.category
+  %h3
+    = Setting.wares.brand
+    = @ware.brand
+  .row
+    .col-12.px-0#ware-description-ctn
+      = @ware.description.html_safe
+    
+= render "footer_bar"

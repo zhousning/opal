@@ -12,16 +12,20 @@
             = link_to control_users_path, :class => "nav-link" do
               %span{"data-feather" => "file"}
               个人中心
-          - if can? :index, Buyer
-            %li.nav-item
-              = link_to buyers_path, :class => "nav-link" do
-                %span{"data-feather" => "file"}
-                客户管理
           - if can? :index, Role 
             %li.nav-item
               = link_to roles_path, :class => "nav-link" do
                 %span{"data-feather" => "file"}
                 角色管理
+            %li.nav-item
+              = link_to mobile_index_wares_path, :class => "nav-link" do
+                %span{"data-feather" => "file"}
+                  mobile ware index
+          - if can? :index, Ware 
+            %li.nav-item
+              = link_to wares_path, :class => "nav-link" do
+                %span{"data-feather" => "file"}
+                商品管理
           - if can? :index, User
             %li.nav-item
               = link_to users_path, :class => "nav-link" do

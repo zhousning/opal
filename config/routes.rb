@@ -12,7 +12,13 @@ Rails.application.routes.draw do
 
   resources :buyers
 
-  
+  resources :wares do
+    get :mobile_index, :on => :collection
+    get :mobile_show, :on => :member
+    get :up, :on => :member
+    get :down, :on => :member
+  end
+
   resources :roles
 
   root :to => 'home#index'

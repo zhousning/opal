@@ -109,6 +109,7 @@ GEM
       dotenv (= 2.5.0)
       railties (>= 3.2, < 6.0)
     erubis (2.7.0)
+    evil_icons (1.10.1)
     execjs (2.7.0)
     ffi (1.9.25)
     formtastic (3.1.5)
@@ -221,6 +222,10 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
+    rails_kindeditor (0.5.1)
+      carrierwave
+      jquery-rails
+      mini_magick
     railties (4.2.3)
       actionpack (= 4.2.3)
       activesupport (= 4.2.3)
@@ -316,6 +321,7 @@ DEPENDENCIES
   creek
   devise
   dotenv-rails
+  evil_icons
   gon
   haml-rails
   iconv
@@ -324,6 +330,7 @@ DEPENDENCIES
   mini_magick
   mini_racer
   rails (= 4.2.3)
+  rails_kindeditor
   rolify
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

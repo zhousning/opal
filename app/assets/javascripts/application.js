@@ -19,4 +19,7 @@
 //= require headroom
 //= require jquery-pin 
 //= require cocoon
+//= require jquery
+//= require jquery_ujs
+//= require kindeditor
 //= require_tree .

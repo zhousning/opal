@@ -1,0 +1,60 @@
+.container-fluid
+  .row.justify-content-sm-center
+    .col-sm-6
+      = form_for @ware do |f|
+        - if @ware.errors.any?
+          #error_explanation
+            %h2= "#{pluralize(@ware.errors.count, "error")} prohibited this buyer from being saved:"
+            %ul
+              - @ware.errors.full_messages.each do |msg|
+                %li= msg
+      
+        .form-group.row
+          = f.label Setting.wares.title, :class => "col-sm-3 col-form-label"
+          .col-sm-9
+            = f.text_field :title, :class => "form-control"
+          
+        .form-group.row
+          = f.label Setting.wares.price, :class => "col-sm-3 col-form-label"
+          .col-sm-9
+            = f.number_field :price, :class => "form-control"
+          
+        .form-group.row
+          = f.label Setting.wares.citrine_count, :class => "col-sm-3 col-form-label"
+          .col-sm-9
+            = f.number_field :citrine_count, :class => "form-control"
+          
+        .form-group.row
+          = f.label Setting.wares.freight, :class => "col-sm-3 col-form-label"
+          .col-sm-9
+            = f.number_field :freight, :class => "form-control"
+          
+        .form-group.row
+          = f.label Setting.wares.description, :class => "col-sm-3 col-form-label"
+          .col-sm-9
+            = f.kindeditor :description ,:window_onload => true 
+          
+        .form-group.row
+          = f.label Setting.wares.category, :class => "col-sm-3 col-form-label"
+          .col-sm-9
+            = f.text_field :category, :class => "form-control"
+          
+        .form-group.row
+          = f.label Setting.wares.brand, :class => "col-sm-3 col-form-label"
+          .col-sm-9
+            = f.text_field :brand, :class => "form-control"
+          
+      
+        .form-group.row
+          = f.label "主图", :class => "col-sm-3 control-label"
+          .col-sm-9
+            = f.fields_for :enclosures do |enclosure|
+              = render 'enclosure_fields', f: enclosure
+            .links
+              = link_to_add_association "添加文件", f, :enclosures, :class => "btn btn-success"
+      
+        .form-group.row
+          .col-sm-3.offset-sm-2
+            = f.submit '保存', :class => "btn btn-success"
+          .col-sm-3.offset-sm-1
+            = link_to '返回', wares_path, :class => "btn btn-danger"

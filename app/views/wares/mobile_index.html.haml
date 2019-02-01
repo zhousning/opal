@@ -1,0 +1,19 @@
+- provide(:title, t('.title'))
+
+.container-fluid
+  .row
+    - @wares.each_with_index do |ware, index|
+      .col-6.mb-4
+        = link_to mobile_show_ware_path(ware) do 
+          .card
+            = image_tag ware.enclosures[0].file_url(:big), :class => "card-img-top"
+            .card-body
+              %h5.card-title
+                = truncate(ware.title, :length => 17)
+              %h3.card-text.d-flex.justify-content-between
+                %span.text-left.text-danger
+                  ￥
+                  = ware.price
+                %span.badge.badge-pill.badge-success
+                  = Setting.wares.citrine_count
+                  = ware.citrine_count

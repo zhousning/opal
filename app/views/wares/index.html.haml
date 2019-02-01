@@ -1,0 +1,61 @@
+- provide(:title, t('.title'))
+
+- content_for :main_body do
+  .container-fluid
+    .row
+      .col-md-3
+        = render "layouts/system_search"
+      .col-md-2
+        = link_to "添加", new_ware_path, :class => "btn btn-info"
+    .row.buyer-table-ctn
+      .col-md-12
+        %table.table.text-center.table-bordered.table-list-search
+          %thead
+            %tr
+              %th #
+            
+              %th 
+                = Setting.wares.title
+              %th 
+                = Setting.wares.price
+              %th 
+                = Setting.wares.citrine_count
+              %th 
+                = Setting.wares.freight
+              %th 
+                = Setting.wares.description
+              %th 
+                = Setting.wares.category
+              %th 
+                = Setting.wares.brand
+              %th
+          %tbody
+            - @wares.each_with_index do |ware, index|
+              %tr
+                %td
+                  = index+1
+              
+                %td
+                  = truncate(ware.title)
+                %td
+                  = ware.price
+                %td
+                  = ware.citrine_count
+                %td
+                  = ware.freight
+                %td
+                  = ware.description
+                %td
+                  = ware.category
+                %td
+                  = ware.brand
+                %td
+                  -if ware.status == Setting.wares.down 
+                    = link_to Setting.wares.up_title, up_ware_path(ware), :class => "btn btn-warning btn-sm"
+                  -else
+                    = link_to Setting.wares.down_title, down_ware_path(ware), :class => "btn btn-warning btn-sm"
+                  = link_to "查看", ware_path(ware), :class => "btn btn-primary btn-sm"
+                  = link_to "编辑", edit_ware_path(ware), :class => "btn btn-success btn-sm"
+                  = link_to "删除", ware, :method => :delete, :data => {:confirm => "确定删除当前角色吗?"}, :class => "btn btn-danger btn-sm"
+
+= render "layouts/control_panel"
