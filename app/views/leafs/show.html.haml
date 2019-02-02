@@ -1,0 +1,36 @@
+- provide(:title, t('.title'))
+
+- content_for :main_body do
+  .container-fluid
+    .row
+      .col-md-12
+        %table.table.text-center.table-bordered
+          %thead
+            %tr
+            
+              %th 
+                = Setting.leafs.pick
+              %th 
+                = Setting.leafs.unpick
+              %th 
+                = Setting.leafs.count
+              %th 
+                = Setting.leafs.pick_time
+              %th
+          %tbody
+            %tr
+            
+              %td
+                = @leaf.pick
+              %td
+                = @leaf.unpick
+              %td
+                = @leaf.count
+              %td
+                = @leaf.pick_time
+              %td
+                = link_to '编辑', edit_leaf_path(@leaf), :class => "btn btn-success"
+                = link_to '返回', leafs_path, :class => "btn btn-danger"
+    
+
+= render "layouts/control_panel"

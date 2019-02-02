@@ -24,6 +24,9 @@
             %li.nav-item
               = link_to mobile_authc_new_user_path(current_user), :class => "nav-link" do
                 mobile_authc_new
+            %li.nav-item
+              = link_to mobile_index_trees_path, :class => "nav-link" do
+                mobile index trees_
           - if can? :index, Ware 
             %li.nav-item
               = link_to wares_path, :class => "nav-link" do

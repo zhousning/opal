@@ -1,0 +1,37 @@
+- provide(:title, t('.title'))
+
+.container-fluid
+  .row.flex-column.mt-5.pl-5
+    - unless user_signed_in?
+      .col-4
+        %h2
+          %span.badge.badge-pill.badge-light
+            茶树
+      .col-4
+        %h2
+          %span.badge.badge-pill.badge-light
+            茶叶
+      .col-4
+        %h2
+          %span.badge.badge-pill.badge-light
+            茶晶
+    - else
+      .col-4
+        %h2
+          %span.badge.badge-pill.badge-light
+            茶树
+            = current_user.tree.count
+      .col-4
+        %h2
+          %span.badge.badge-pill.badge-light
+            茶叶
+            = current_user.leaf.pick
+      .col-4
+        %h2
+          %span.badge.badge-pill.badge-light
+            茶晶
+
+- if user_signed_in?
+  .align-self-center
+    = link_to "采摘", pick_leaf_path(current_user.leaf), :class => "btn btn-success" 
+    

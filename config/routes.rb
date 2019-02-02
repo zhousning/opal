@@ -15,6 +15,14 @@ Rails.application.routes.draw do
     get :reject, :on => :member
   end
 
+  resources :trees do
+    get :mobile_index, :on => :collection
+  end
+
+  resources :leafs do
+    get :pick, :on => :member
+  end
+
   resources :buyers
 
   resources :wares do

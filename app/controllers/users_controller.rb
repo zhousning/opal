@@ -61,9 +61,6 @@ class UsersController < ApplicationController
     unless @user.tree
       Tree.create(:user => @user) 
     end
-    unless @user.leaf
-      Leaf.create(:user => @user) 
-    end
     redirect_to :action => :index
   end
 
