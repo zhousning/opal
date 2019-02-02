@@ -21,6 +21,9 @@
               = link_to mobile_index_wares_path, :class => "nav-link" do
                 %span{"data-feather" => "file"}
                   mobile ware index
+            %li.nav-item
+              = link_to mobile_authc_new_user_path(current_user), :class => "nav-link" do
+                mobile_authc_new
           - if can? :index, Ware 
             %li.nav-item
               = link_to wares_path, :class => "nav-link" do

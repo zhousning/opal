@@ -8,6 +8,11 @@ Rails.application.routes.draw do
 
   resources :users do
     get :control, :on => :collection
+    get :mobile_authc_new, :on => :member
+    post :mobile_authc_create, :on => :member
+    get :mobile_authc_status, :on => :member
+    get :pass, :on => :member
+    get :reject, :on => :member
   end
 
   resources :buyers

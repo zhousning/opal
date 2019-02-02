@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require popper
-//= require feather 
 //= require jquery-readyselector 
 //= require headroom
 //= require jquery-pin 
@@ -22,4 +21,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require kindeditor
+//= require evil-icons
 //= require_tree .

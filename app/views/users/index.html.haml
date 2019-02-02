@@ -14,6 +14,8 @@
               %th{"data-field" => "name", "data-filter-control" => "input"}
                 权限
               %th
+                状态
+              %th
           %tbody
             - @users.each_with_index do |user, index|
               %tr
@@ -27,6 +29,10 @@
                       %label.checkbox-inline
                     = role.name + "  "
                 %td
+                  = user.status
+                %td
+                  = link_to Setting.users.rejected_title, reject_user_path(user), :class => "btn btn-primary"
+                  = link_to Setting.users.passed_title, pass_user_path(user), :class => "btn btn-info"
                   = link_to "编辑", edit_user_path(user), :class => "btn btn-success"
                   = link_to '删除', user, :method => :delete, :data => { :confirm => '确定删除该用户吗?' }, :class => "btn btn-danger"
 

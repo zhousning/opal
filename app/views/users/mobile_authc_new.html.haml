@@ -1,0 +1,9 @@
+.container-fluid
+  = form_for @user, :url => mobile_authc_create_user_path, :method => :post do |f|
+    .form-group
+      = f.text_field :name, :class => "form-control", :placeholder => "真实姓名"
+    .form-group
+      = f.number_field :identity, :class => "form-control", :placeholder => "身份证"
+    .form-group
+      = f.text_field :alipay, :class => "form-control", :placeholder => "支付宝帐号"
+    = f.submit '保存', :class => "btn btn-success"

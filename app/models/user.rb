@@ -20,11 +20,35 @@
 
 class User < ActiveRecord::Base
   rolify
+  has_one :tree
+  has_one :leaf
   
   belongs_to :role
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  STATUS = %w(opening, pending, rejected, passed)
+  STATUS_CODE = %w(0, 1, 2, 3)
+  #validates_inclusion_of :status, :in => STATUS_CODE
+
+  STATUS.each do |status|
+    define_method "#{status}?" do
+      self.status == Setting.users.status
+    end
+  end
+
+  def pend
+    update_attribute :status, Setting.users.pending
+  end
+
+  def pass
+    update_attribute :status, Setting.users.passed
+  end
+
+  def reject
+    update_attribute :status, Setting.users.rejected
+  end
 
   #不要将assign_default_role放在rolify之前,不然会被执行两次
   after_create :assign_default_role

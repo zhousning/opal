@@ -1,0 +1,6 @@
+- if @user.status == Setting.users.pending
+  待审核
+- elsif @user.status == Setting.users.rejected
+  不通过
+- elsif @user.status == Setting.users.passed
+  通过

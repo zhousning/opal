@@ -5,6 +5,14 @@ defaults:
     email: admin@qq.com
   users: &2
     class_name: User
+    opening: 0
+    pending: 1
+    rejected: 2 
+    passed: 3
+    opening_title: 新用户
+    pending_title: 待审核
+    rejected_title: 不通过
+    passed_title: 通过
   roles: &3
     class_name: Role
     super_admin: 超级管理员
@@ -30,6 +38,14 @@ development:
     up_title: 上架
     down: 0
     down_title: 下架
+  trees:
+    name: 名字
+    count: 茶树数量
+  leafs:
+    pick: 已采摘
+    unpick: 未采摘
+    count: 茶叶数量
+    pick_time: 采摘时间
 test:
   admins: *1
   users: *2
