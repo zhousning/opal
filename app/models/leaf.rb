@@ -3,9 +3,10 @@
 # Table name: leafs
 #
 #  id         :integer          not null, primary key
-#  pick       :integer
-#  unpick     :integer
-#  count      :float
+#  pick       :integer          default(0), not null
+#  unpick     :integer          default(0), not null
+#  count      :float            default(0.0), not null
+#  status     :integer          default(0), not null
 #  pick_time  :datetime
 #  user_id    :integer
 #  created_at :datetime         not null
@@ -29,5 +30,13 @@ class Leaf < ActiveRecord::Base
 
   def add_pick_time
     update_attribute :pick_time, Time.now 
+  end
+
+  def enable
+    update_attribute :status, Setting.leafs.enable 
+  end
+
+  def disable
+    update_attribute :status, Setting.leafs.disable 
   end
 end

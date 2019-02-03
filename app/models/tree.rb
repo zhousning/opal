@@ -3,8 +3,8 @@
 # Table name: trees
 #
 #  id         :integer          not null, primary key
-#  name       :string
-#  count      :integer
+#  name       :string           default(""), not null
+#  count      :integer          default(0), not null
 #  user_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

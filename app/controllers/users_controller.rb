@@ -58,15 +58,15 @@ class UsersController < ApplicationController
   def pass
     @user = User.find(params[:id])
     @user.pass
-    unless @user.tree
-      Tree.create(:user => @user) 
-    end
+    @user.tree.add_count(1) if @user.tree.count == 0 
+    @user.leaf.enable
     redirect_to :action => :index
   end
 
   def reject 
     @user = User.find(params[:id])
     @user.reject
+    @user.leaf.disable
     redirect_to :action => :index
   end
 

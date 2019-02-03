@@ -4,6 +4,11 @@
 #
 #  id                     :integer          not null, primary key
 #  email                  :string           default(""), not null
+#  phone                  :string           default(""), not null
+#  name                   :string           default(""), not null
+#  identity               :string           default(""), not null
+#  alipay                 :string           default(""), not null
+#  status                 :integer          default(0), not null
 #  encrypted_password     :string           default(""), not null
 #  reset_password_token   :string
 #  reset_password_sent_at :datetime

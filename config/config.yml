@@ -42,10 +42,13 @@ development:
     name: 名字
     count: 茶树数量
   leafs:
+    produce_max: 12
     pick: 已采摘
     unpick: 未采摘
     count: 茶叶数量
     pick_time: 采摘时间
+    disable: 0 
+    enable: 1 
 test:
   admins: *1
   users: *2

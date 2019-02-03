@@ -6,6 +6,10 @@ Rails.application.routes.draw do
     # get 'login_validate', to: 'users/sessions#login_validate'
   end
 
+  require 'sidekiq/web'
+  require 'sidekiq/cron/web'
+  mount Sidekiq::Web => '/sidekiq'
+
   resources :users do
     get :control, :on => :collection
     get :mobile_authc_new, :on => :member

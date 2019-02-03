@@ -66,8 +66,9 @@ gem 'settingslogic'
 
 gem 'rails_kindeditor'
 
-#gem 'sidekiq'
-#gem 'sinatra', :require => nil
+gem 'sidekiq'
+gem 'sinatra', :require => nil
+gem "sidekiq-cron", "~> 1.1"
 
 #gem 'rest-client'
 
