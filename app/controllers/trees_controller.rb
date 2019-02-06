@@ -1,5 +1,5 @@
 class TreesController < ApplicationController
-  #layout "application_control"
+  layout "application_mobile"
   #before_action :authenticate_user!
   #load_and_authorize_resource
 
@@ -8,6 +8,7 @@ class TreesController < ApplicationController
   end
 
   def mobile_index
+    @notice = Notice.order('updated_at DESC').first
   end
 
   def show

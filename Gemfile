@@ -111,5 +111,3 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
 
 gem 'mini_racer'
 
-gem 'evil_icons'
-

@@ -1,0 +1,15 @@
+- provide(:title, t('.title'))
+
+.container-fluid.pt-5.pb-5
+  .row
+    .col-12
+      %h3.text-center
+        公告信息
+      .list-group
+        - @notices.each_with_index do |notice, index|
+          = link_to mobile_show_notice_path(notice), :class => "list-group-item list-group-item-action" do
+            %blockquote.blockquote
+              %p.mb-0
+                = notice.title
+              %footer.blockquote-footer.text-right
+                = notice.updated_at.strftime('%Y-%m-%d')

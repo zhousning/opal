@@ -7,7 +7,7 @@ defaults:
     class_name: User
     opening: 0
     pending: 1
-    rejected: 2 
+    rejected: 2
     passed: 3
     opening_title: 新用户
     pending_title: 待审核
@@ -47,8 +47,11 @@ development:
     unpick: 未采摘
     count: 茶叶数量
     pick_time: 采摘时间
-    disable: 0 
-    enable: 1 
+    disable: 0
+    enable: 1
+  notices:
+    title: 标题
+    content: 内容
 test:
   admins: *1
   users: *2

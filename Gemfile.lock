@@ -112,7 +112,6 @@ GEM
     erubis (2.7.0)
     et-orbi (1.1.7)
       tzinfo
-    evil_icons (1.10.1)
     execjs (2.7.0)
     ffi (1.9.25)
     formtastic (3.1.5)
@@ -343,7 +342,6 @@ DEPENDENCIES
   creek
   devise
   dotenv-rails
-  evil_icons
   gon
   haml-rails
   iconv

@@ -1,0 +1,11 @@
+%nav.nav.nav-pills.nav-fill.bg-light.fixed-bottom
+  = link_to mobile_index_trees_path, :class => "nav-item nav-link flex-column" do
+    = image_tag iconic('home'), :class => "w-25"
+    %p.text-secondary
+      首页
+  = link_to mobile_index_wares_path, :class => "nav-item nav-link" do
+    商城
+  = link_to mobile_authc_new_user_path(current_user), :class => "nav-item nav-link" do
+    实名认证
+  = link_to mobile_authc_new_user_path(current_user), :class => "nav-item nav-link" do
+    实名认证

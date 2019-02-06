@@ -36,6 +36,11 @@ Rails.application.routes.draw do
     get :down, :on => :member
   end
 
+  resources :notices do
+    get :mobile_index, :on => :collection
+    get :mobile_show, :on => :member
+  end
+
   resources :roles
 
   root :to => 'home#index'

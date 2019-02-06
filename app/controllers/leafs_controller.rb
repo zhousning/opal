@@ -1,5 +1,5 @@
 class LeafsController < ApplicationController
-  #layout "application_control"
+  layout "application_mobile"
   #before_action :authenticate_user!
   #load_and_authorize_resource
 

@@ -1,37 +1,44 @@
 - provide(:title, t('.title'))
 
-.container-fluid
-  .row.flex-column.mt-5.pl-5
-    - unless user_signed_in?
-      .col-4
+.container-fluid.h-100.trees-index-ctn
+  .row
+    .col-12.text-center
+      %marquee.pt-5.pb-5
         %h2
-          %span.badge.badge-pill.badge-light
-            茶树
-      .col-4
-        %h2
-          %span.badge.badge-pill.badge-light
-            茶叶
-      .col-4
-        %h2
-          %span.badge.badge-pill.badge-light
-            茶晶
-    - else
-      .col-4
-        %h2
-          %span.badge.badge-pill.badge-light
-            茶树
-            = current_user.tree.count
-      .col-4
-        %h2
-          %span.badge.badge-pill.badge-light
-            茶叶
-            = current_user.leaf.pick
-      .col-4
-        %h2
-          %span.badge.badge-pill.badge-light
-            茶晶
-
-- if user_signed_in?
-  .align-self-center
-    = link_to "采摘", pick_leaf_path(current_user.leaf), :class => "btn btn-success" 
+          = link_to @notice.title, mobile_index_notices_path, :class => "text-white" 
+  .row
+    .col-8.flex-column.pl-5
+      - unless user_signed_in?
+        .col-4
+          %h2
+            %span.badge.badge-pill.badge-light
+              茶树
+        .col-4
+          %h2
+            %span.badge.badge-pill.badge-light
+              茶叶
+        .col-4
+          %h2
+            %span.badge.badge-pill.badge-light
+              茶晶
+      - else
+        .col-4
+          %h2
+            %span.badge.badge-pill.badge-light
+              茶树
+              = current_user.tree.count
+        .col-4
+          %h2
+            %span.badge.badge-pill.badge-light
+              茶叶
+              = current_user.leaf.pick
+        .col-4
+          %h2
+            %span.badge.badge-pill.badge-light
+              茶晶
+  .row.h-50
+    .col-12.h-100
+      - if user_signed_in?
+        .d-flex.align-items-center.justify-content-center.h-100
+          = link_to "采摘", pick_leaf_path(current_user.leaf), :class => "btn btn-success" 
     

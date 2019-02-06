@@ -1,0 +1,28 @@
+- provide(:title, t('.title'))
+
+- content_for :main_body do
+  .container-fluid
+    .row
+      .col-md-12
+        %table.table.text-center.table-bordered
+          %thead
+            %tr
+            
+              %th 
+                = Setting.notices.title
+              %th 
+                = Setting.notices.content
+              %th
+          %tbody
+            %tr
+            
+              %td
+                = @notice.title
+              %td
+                = @notice.content
+              %td
+                = link_to '编辑', edit_notice_path(@notice), :class => "btn btn-success"
+                = link_to '返回', notices_path, :class => "btn btn-danger"
+    
+
+= render "layouts/control_panel"

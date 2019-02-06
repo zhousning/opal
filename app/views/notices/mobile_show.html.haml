@@ -1,0 +1,9 @@
+- provide(:title, t('.title'))
+
+.container-fluid.pt-5.pb-5
+  .row
+    .col-12
+      %h3.text-center
+        = @notice.title
+      %hr.mb-5
+      = @notice.content.html_safe

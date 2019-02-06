@@ -8,11 +8,12 @@
     = stylesheet_link_tag    'application', media: 'all'
     = csrf_meta_tags
     = include_gon
-    = evil_icons_sprite 
 
   %body{:class=>"#{controller_name} #{action_name}"}
     -#
       = render "layouts/home_header"
 
     = yield
+
+    = render "layouts/mobile_navbar"
 

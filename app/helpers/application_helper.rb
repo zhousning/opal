@@ -3,6 +3,10 @@ module ApplicationHelper
     super(source, options) if source.present?
   end
 
+  def iconic(source)
+    return "iconic/" + source + ".svg"
+  end
+
   def form_error_messages!(resource)
     return '' if resource.errors.empty?
 

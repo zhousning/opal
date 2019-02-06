@@ -21,5 +21,4 @@
 //= require jquery
 //= require jquery_ujs
 //= require kindeditor
-//= require evil-icons
 //= require_tree .
