@@ -1,0 +1,27 @@
+.container
+  .row
+    .col-12
+      %h2
+        卖出
+      = form_tag betray_create_trade_url(@demand) do 
+        .form-group.row
+          = label_tag nil, '我的茶叶', :class => "col-3 col-form-label"
+          .col-9
+            = @leafs
+        .form-group.row
+          = label_tag nil, Setting.demands.price, :class => "col-3 col-form-label"
+          .col-9
+            = @demand.price
+        .form-group.row
+          = label_tag nil, '卖出数量', :class => "col-3 col-form-label"
+          .col-9
+            = @demand.count
+        .form-group.row
+          = label_tag nil, '手续费', :class => "col-3 col-form-label"
+          .col-9
+            = @poundage
+        .form-group.row
+          .col-3
+            = link_to "取消", trades_path, :class => "btn btn-secondary"
+          .col-3.offset-2
+            = submit_tag "确认", :class => "btn btn-success"

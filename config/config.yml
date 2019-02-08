@@ -52,6 +52,42 @@ development:
   notices:
     title: 标题
     content: 内容
+  accounts:
+    coin: 金额
+    password: 安全密码
+    award_sign_up: 10
+    award_check_in: 5
+    award_share: 30
+    award_invite_sign_up: 10
+    award_invite_recharge: 40
+    enable: enable
+    disable: disable
+  consumes:
+    number: 消费编号
+    category: 项目
+    coin_cost: 消费
+    coin_now: 余额
+    status: 状态
+    category_none: none
+    category_purchase_leaf: 求购茶叶 
+    category_generate_document: generate_document
+    category_download_document: download_document
+    category_buy_document: buy_document
+    status_none: none
+    status_create: create
+    status_success: success
+    status_failed: failed
+    status_exception: exception
+  demands:
+    price: 单价
+    count: 数量
+    enable: enable
+    disable: disable
+  sells:
+    price: 单价
+    count: 数量
+  systems:
+    poundage: 0.1
 test:
   admins: *1
   users: *2

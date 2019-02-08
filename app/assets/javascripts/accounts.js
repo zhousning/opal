@@ -1,0 +1,3 @@
+$(".accounts").ready(function() {
+
+});

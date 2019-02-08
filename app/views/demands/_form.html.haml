@@ -1,0 +1,30 @@
+.container-fluid
+  .row
+    .col-12
+      = form_for @demand do |f|
+        - if @demand.errors.any?
+          #error_explanation
+            %h2= "#{pluralize(@demand.errors.count, "error")} prohibited this buyer from being saved:"
+            %ul
+              - @demand.errors.full_messages.each do |msg|
+                %li= msg
+      
+        .form-group.row
+          = f.label Setting.demands.price, :class => "col-3 col-form-label"
+          .col-9
+            = f.number_field :price, :id => "js-demand-price", :class => "form-control"
+          
+        .form-group.row
+          = f.label Setting.demands.count, :class => "col-3 col-form-label"
+          .col-9
+            = f.number_field :count, :id => "js-demand-count", :class => "form-control"
+        .form-group.row
+          = f.label '需支付', :class => "col-3 col-form-label"
+          #js-demand-pay.col-9
+          
+      
+        .form-group.row
+          .col-3
+            = link_to "取消", trades_path, :class => "btn btn-secondary"
+          .col-3.offset-2
+            = f.submit '创建', :class => "btn btn-success"

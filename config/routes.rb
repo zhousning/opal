@@ -27,6 +27,18 @@ Rails.application.routes.draw do
     get :pick, :on => :member
   end
 
+  resources :trades, :only => [:index] do
+    get :betray_new, :on => :member
+    post :betray_create, :on => :member
+  end
+
+  resources :demands
+  resources :sells
+
+  resources :accounts do
+    get :recharge, :on => :collection 
+  end
+
   resources :buyers
 
   resources :wares do

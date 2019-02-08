@@ -1,0 +1,3 @@
+$(".sells").ready(function() {
+
+});

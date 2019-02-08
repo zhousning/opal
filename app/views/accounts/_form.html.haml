@@ -1,0 +1,22 @@
+.container-fluid
+  .row.justify-content-sm-center
+    .col-sm-6
+      = form_for @account do |f|
+        - if @account.errors.any?
+          #error_explanation
+            %h2= "#{pluralize(@account.errors.count, "error")} prohibited this buyer from being saved:"
+            %ul
+              - @account.errors.full_messages.each do |msg|
+                %li= msg
+      
+        .form-group.row
+          = f.label Setting.accounts.password, :class => "col-sm-3 col-form-label"
+          .col-sm-9
+            = f.number_field :password, :class => "form-control"
+          
+      
+        .form-group.row
+          .col-sm-3.offset-sm-2
+            = f.submit '保存', :class => "btn btn-success"
+          .col-sm-3.offset-sm-1
+            = link_to '返回', accounts_path, :class => "btn btn-danger"

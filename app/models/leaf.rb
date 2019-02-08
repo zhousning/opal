@@ -28,6 +28,10 @@ class Leaf < ActiveRecord::Base
     update_attribute :count, (self.count + value) 
   end
 
+  def sub_count(value)
+    update_attribute :count, (self.count - value) 
+  end
+
   def add_pick_time
     update_attribute :pick_time, Time.now 
   end
