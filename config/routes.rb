@@ -30,6 +30,8 @@ Rails.application.routes.draw do
   resources :trades, :only => [:index] do
     get :betray_new, :on => :member
     post :betray_create, :on => :member
+    get :buy_new, :on => :member
+    post :buy_create, :on => :member
   end
 
   resources :demands

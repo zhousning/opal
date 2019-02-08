@@ -1,6 +1,6 @@
 .container-fluid
-  .row.justify-content-sm-center
-    .col-sm-6
+  .row
+    .col-12
       = form_for @sell do |f|
         - if @sell.errors.any?
           #error_explanation
@@ -12,16 +12,19 @@
         .form-group.row
           = f.label Setting.sells.price, :class => "col-sm-3 col-form-label"
           .col-sm-9
-            = f.number_field :price, :class => "form-control"
+            = f.number_field :price, :id => "js-sell-price", :class => "form-control"
           
         .form-group.row
           = f.label Setting.sells.count, :class => "col-sm-3 col-form-label"
           .col-sm-9
-            = f.number_field :count, :class => "form-control"
+            = f.number_field :count, :id => "js-sell-count", :class => "form-control"
+        .form-group.row
+          = f.label '手续费', :class => "col-3 col-form-label"
+          #js-sell-poundage.col-9
           
       
         .form-group.row
-          .col-sm-3.offset-sm-2
-            = f.submit '保存', :class => "btn btn-success"
-          .col-sm-3.offset-sm-1
-            = link_to '返回', sells_path, :class => "btn btn-danger"
+          .col-3
+            = link_to "取消", trades_path, :class => "btn btn-secondary"
+          .col-3.offset-2
+            = f.submit '创建', :class => "btn btn-success"

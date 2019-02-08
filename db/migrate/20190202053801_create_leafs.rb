@@ -4,6 +4,7 @@ class CreateLeafs < ActiveRecord::Migration
       t.integer :pick,            null: false, default: 0 
       t.integer :unpick,          null: false, default: 0 
       t.float :count,             null: false, default: 0 
+      t.float :freeze_count,      null: false, default: 0 
       t.integer :status,          null: false, default: 0  
       t.datetime :pick_time
 

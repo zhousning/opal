@@ -3,7 +3,7 @@ class TradesController < ApplicationController
 
   def index
     @demands = Demand.where(:status => Setting.demands.enable).order("created_at DESC") 
-    @sells = Sell.all
+    @sells = Sell.where(:status => Setting.sells.enable).order("created_at DESC") 
   end
 
   def betray_new
@@ -27,6 +27,30 @@ class TradesController < ApplicationController
     demand_user.leaf.add_count(@demand.count)
     demand_user.account.sub_freeze_coin(@demand.price*@demand.count)
     @demand.disable
+    redirect_to trades_url
+  end
+
+  def buy_new
+    @sell = Sell.find(params[:id])
+    @coin = current_user.account.coin
+    total = @sell.price*@sell.count
+    if @sell.user == current_user || @coin < total
+      redirect_to trades_url
+    end
+  end
+
+  def buy_create
+    @sell = Sell.find(params[:id])
+    total = @sell.price*@sell.count
+
+    current_user.account.sub_coin(total)
+    current_user.leaf.add_count(@sell.count)
+
+    sell_user = @sell.user
+    sell_user.account.add_coin(total*(1-Setting.systems.poundage))
+    sell_user.leaf.sub_freeze_count(@sell.count)
+    @sell.disable
+
     redirect_to trades_url
   end
 end

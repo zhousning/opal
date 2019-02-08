@@ -86,6 +86,8 @@ development:
   sells:
     price: 单价
     count: 数量
+    enable: enable
+    disable: disable
   systems:
     poundage: 0.1
 test:

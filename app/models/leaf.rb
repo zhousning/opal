@@ -2,15 +2,16 @@
 #
 # Table name: leafs
 #
-#  id         :integer          not null, primary key
-#  pick       :integer          default(0), not null
-#  unpick     :integer          default(0), not null
-#  count      :float            default(0.0), not null
-#  status     :integer          default(0), not null
-#  pick_time  :datetime
-#  user_id    :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id           :integer          not null, primary key
+#  pick         :integer          default(0), not null
+#  unpick       :integer          default(0), not null
+#  count        :float            default(0.0), not null
+#  freeze_count :float            default(0.0), not null
+#  status       :integer          default(0), not null
+#  pick_time    :datetime
+#  user_id      :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
 #
 
 class Leaf < ActiveRecord::Base
@@ -30,6 +31,14 @@ class Leaf < ActiveRecord::Base
 
   def sub_count(value)
     update_attribute :count, (self.count - value) 
+  end
+
+  def add_freeze_count(value)
+    update_attribute :freeze_count, (self.freeze_count + value) 
+  end
+
+  def sub_freeze_count(value)
+    update_attribute :freeze_count, (self.freeze_count - value) 
   end
 
   def add_pick_time

@@ -1,47 +1,28 @@
 class SellsController < ApplicationController
-  layout "application_control"
+  layout "application_mobile"
   before_action :authenticate_user!
   load_and_authorize_resource
-
-  def index
-    @sells = Sell.all
-  end
-
-  def show
-    @sell = Sell.find(params[:id])
-  end
 
   def new
     @sell = Sell.new
   end
 
-  def edit
-    @sell = Sell.find(params[:id])
-  end
-
-  def update
-    @sell = Sell.find(params[:id])
-    if @sell.update(sell_params)
-      redirect_to sell_path(@sell) 
-    else
-      render :edit
-    end
-  end
-
   def create
-    @sell = Sell.new(sell_params)
-    #@sell.user = current_user
-    if @sell.save
-      redirect_to @sell
+    @leaf = current_user.leaf
+    if params[:sell][:count].to_f <= @leaf.count
+      @sell = Sell.new(sell_params)
+      @sell.user = current_user
+      if @sell.save
+        @leaf.sub_count(params[:sell][:count].to_f)
+        @leaf.add_freeze_count(params[:sell][:count].to_f)
+        redirect_to trades_url 
+      else
+        render :new
+      end
     else
       render :new
     end
-  end
 
-  def destroy
-    @sell = Sell.find(params[:id])
-    @sell.destroy
-    redirect_to :action => :index
   end
 
   private

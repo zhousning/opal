@@ -1,0 +1,23 @@
+.container
+  .row
+    .col-12
+      %h2
+        买入 
+      = form_tag buy_create_trade_url(@sell) do 
+        .form-group.row
+          = label_tag nil, '我的余额', :class => "col-3 col-form-label"
+          .col-9
+            = @coin
+        .form-group.row
+          = label_tag nil, Setting.sells.price, :class => "col-3 col-form-label"
+          .col-9
+            = @sell.price
+        .form-group.row
+          = label_tag nil, '买入数量', :class => "col-3 col-form-label"
+          .col-9
+            = @sell.count
+        .form-group.row
+          .col-3
+            = link_to "取消", trades_path, :class => "btn btn-secondary"
+          .col-3.offset-2
+            = submit_tag "确认", :class => "btn btn-success"

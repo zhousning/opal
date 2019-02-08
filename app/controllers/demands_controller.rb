@@ -13,7 +13,7 @@ class DemandsController < ApplicationController
 
   def create
     coin = current_user.account.coin
-    sum = demand_params[:price].to_i*demand_params[:count].to_i
+    sum = demand_params[:price].to_f*demand_params[:count].to_f
     if coin >= sum
       @demand = Demand.new(demand_params, :status => Setting.demands.enable)
       @demand.user = current_user
