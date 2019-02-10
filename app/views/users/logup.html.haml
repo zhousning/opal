@@ -1,0 +1,33 @@
+.container-fluid.h-100
+  .row.h-100.align-items-center.px-5
+    .col-sm-12
+      = form_for @signup_user, :url => registration_path(@signup_user), :html => {:class => "form-horizontal"} do |f|
+        .form-group.row.justify-content-center.mb-5
+          = image_tag 'logo.png', :class => "img-thubnail"
+        .form-group.row.mb-5
+          %label.col-2.col-form-label.col-form-label-lg{:for => "email"} 邮箱 
+          .col-10
+            = f.email_field :email, :class => "form-control form-control-lg", :placeholder => "邮箱"
+        .form-group.row.mb-5
+          %label.col-2.col-form-label.col-form-label-lg{:for => "name"} 姓名 
+          .col-10
+            = f.text_field :name, :class => "form-control form-control-lg", :placeholder => "姓名"
+        .form-group.row.mb-5
+          %label.col-2.col-form-label.col-form-label-lg{:for => "password"} 密码 
+          .col-10
+            = f.password_field :password, autocomplete: "off", :class => "form-control form-control-lg", :placeholder => "密码"
+        .form-group.row.mb-5
+          %label.col-2.col-form-label.col-form-label-lg{:for => "password"} 确认密码 
+          .col-10
+            = f.password_field :password_confirmation, autocomplete: "off", :class => "form-control form-control-lg", :placeholder => "确认密码"
+        .form-group.row.mb-5
+          .col-12
+            = f.submit "注 册", class: "btn btn-success btn-lg btn-block "
+        .form-group.row.mb-5
+          .col-12
+            = link_to "登 录", login_users_path, :class => "btn btn-info btn-lg btn-block "
+        .help-block
+          点击注册，表明你同意我们的 
+          %a 服务条款
+          和
+          %a 隐私政策

@@ -1,11 +1,19 @@
 class UsersController < ApplicationController
-  layout "application_control"
-  before_action :authenticate_user!
+  layout "application_control", :except => [:mobile_authc_new, :mobile_authc_create, :mobile_authc_status, :login, :logup, :control]
+  before_action :authenticate_user!, :except => [:login, :logup, :control]
   load_resource
-  authorize_resource :except => [:control]
+  authorize_resource :except => [:login, :logup, :control]
 
   def index
     @users = User.all.reject{|u| u.email == Setting.admins.email }
+  end
+
+  def login
+    @signin_user = User.new
+  end
+
+  def logup
+    @signup_user = User.new
   end
 
   def show
@@ -44,7 +52,7 @@ class UsersController < ApplicationController
   def mobile_authc_create
     @user = User.find(params[:id])
     @user.pend
-    if @user.save
+    if @user.update(user_authc_params)
       redirect_to mobile_authc_status_user_url(@user)
     else
       render :mobile_authc_new

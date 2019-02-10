@@ -38,9 +38,33 @@
             %span.badge.badge-pill.badge-light
               茶晶
               = current_user.citrine.count
+    .col-4.flex-column
+      - if user_signed_in?
+        .col-12.d-flex.justify-content-center
+          = image_tag "protocol.png", :class => "img-thumbnail bg-transparent border-0"
+        .col-12.d-flex.justify-content-center
+          = image_tag "tea-house.png", :class => "img-thumbnail bg-transparent border-0"
+        .col-12.d-flex.justify-content-center
+          = link_to invite_tasks_path, :class => "nav-link" do
+            = image_tag "invite.png", :class => "img-thumbnail bg-transparent border-0"
+        .col-12.d-flex.justify-content-center
+          = image_tag "citrine-exchange.png", :class => "img-thumbnail bg-transparent border-0"
   .row.h-50
     .col-12.h-100
-      - if user_signed_in?
-        .d-flex.align-items-center.justify-content-center.h-100
-          = link_to "采摘", pick_leaf_path(current_user.leaf), :class => "btn btn-success" 
-    
+      .d-flex.align-items-center.justify-content-center.h-100
+        - if user_signed_in?
+          - if current_user.status == Setting.users.passed
+            = link_to pick_leaf_path(current_user.leaf) do
+              = image_tag "leaf.png", :class => "img-thumbnail bg-transparent border-0"
+              %h2.text-center.text-body
+                采茶
+          - else
+            = link_to mobile_authc_new_user_path(current_user) do
+              = image_tag "leaf.png", :class => "img-thumbnail bg-transparent border-0"
+              %h2.text-center.text-body
+                创建钱包
+        - else
+          = link_to login_users_path do
+            = image_tag "leaf.png", :class => "img-thumbnail bg-transparent border-0"
+            %h2.text-center.text-body
+              请登录
