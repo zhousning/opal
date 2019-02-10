@@ -60,7 +60,25 @@ class UsersController < ApplicationController
     @user.pass
     @user.tree.add_count(1) if @user.tree.count == 0 
     @user.leaf.enable
+    @user.citrine.add_count(Setting.awards.one_citrine)
+    unless @user.inviter.blank?
+      higher_up = User.find_by_number(@user.inviter)
+      if higher_up
+        higher_up.citrine.add_count(Setting.awards.ten_citrine)
+        higher(higher_up)
+      end
+    end
     redirect_to :action => :index
+  end
+
+  def higher(user)
+    unless user.inviter.blank?
+      higher_up = User.find_by_number(user.inviter)
+      if higher_up
+        higher_up.citrine.add_count(Setting.awards.one_citrine)
+        higher(higher_up)
+      end
+    end
   end
 
   def reject 

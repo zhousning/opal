@@ -349,6 +349,7 @@ DEPENDENCIES
   jquery-rails (~> 4.0.4)
   mini_magick
   mini_racer
+  popper_js (~> 1.14.5)
   rails (= 4.2.3)
   rails_kindeditor
   rolify

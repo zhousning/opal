@@ -45,6 +45,7 @@ class TradesController < ApplicationController
 
     current_user.account.sub_coin(total)
     current_user.leaf.add_count(@sell.count)
+    Consume.create(:category => Setting.consumes.category_purchase_leaf, :coin_cost => total, :status => Setting.consumes.status_success, :user_id => current_user.id)
 
     sell_user = @sell.user
     sell_user.account.add_coin(total*(1-Setting.systems.poundage))

@@ -1,0 +1,14 @@
+- provide(:title, t('.title'))
+
+.container
+  .row
+    .col-md-9
+      = text_field_tag "invite_link", @invite_link, :class => "form-control", :readonly => "true"
+    .col-md-2
+      %a#invite-copy-btn.btn.btn-info.btn-block{:tabindex=>"0", :role=>"button", :'data-clipboard-target' => "#invite_link"}
+        复制
+    .col-md-12
+      %p
+        1. 把链接通过微信、QQ、空间、群组、微博、贴吧等方式分享给好友
+      %p
+        2. 好友注册实名认证后，您即可获得茶晶 

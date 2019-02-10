@@ -9,6 +9,8 @@
 #  identity               :string           default(""), not null
 #  alipay                 :string           default(""), not null
 #  status                 :integer          default(0), not null
+#  number                 :string           default(""), not null
+#  inviter                :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  reset_password_token   :string
 #  reset_password_sent_at :datetime
@@ -28,6 +30,7 @@ class User < ActiveRecord::Base
   has_one :tree
   has_one :leaf
   has_one :account
+  has_one :citrine
 
   has_many :consumes
   has_many :demands
@@ -45,6 +48,14 @@ class User < ActiveRecord::Base
     build_account
     build_tree
     build_leaf
+    build_citrine
+  end
+
+  before_save :store_unique_number
+  def store_unique_number
+    if self.number == ""
+      self.number = Time.now.to_i.to_s + "%04d" % [rand(10000)]
+    end
   end
 
   STATUS = %w(opening, pending, rejected, passed)

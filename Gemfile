@@ -98,6 +98,8 @@ gem 'activeadmin_blaze_theme'
 
 gem 'cocoon'
 
+gem 'popper_js', '~> 1.14.5'
+
 #gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
 

@@ -27,6 +27,10 @@ Rails.application.routes.draw do
     get :pick, :on => :member
   end
 
+  resources :tasks, :only => [] do
+    get :invite, :on => :collection
+  end
+
   resources :trades, :only => [:index] do
     get :betray_new, :on => :member
     post :betray_create, :on => :member

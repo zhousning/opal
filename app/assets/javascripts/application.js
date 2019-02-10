@@ -12,12 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-sprockets
 //= require popper
+//= require bootstrap-sprockets
 //= require jquery-readyselector 
 //= require headroom
-//= require jquery-pin 
 //= require cocoon
+//= require clipboard
 //= require jquery
 //= require jquery_ujs
 //= require kindeditor

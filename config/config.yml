@@ -26,6 +26,9 @@ development:
   users: *2
   roles: *3
   permissions: *4
+  awards:
+    ten_citrine: 10
+    one_citrine: 1
   wares:
     title: 宝贝标题
     price: 价格
