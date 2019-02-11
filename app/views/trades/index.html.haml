@@ -38,36 +38,40 @@
         #pop1.tab-pane.fade.show.active{"aria-labelledby" => "pop1-tab", :role => "tabpanel"}
           .pt-3
           - @demands.each do |d|
-            %table
+            %table.table
               %thead
-                %th 时间
-                %th 数量
-                %th 单价
-                %th 操作
+                %tr
+                  %th 时间
+                  %th 数量
+                  %th 单价
+                  %th 操作
               %tbody
-                %td
-                  = d.created_at.strftime("%H:%M")
-                %td
-                  = d.count 
-                %td
-                  = d.price 
-                %td
-                  = link_to '求购', betray_new_trade_path(d.id), :class => "btn btn-info" 
+                %tr
+                  %td
+                    = d.created_at.strftime("%H:%M")
+                  %td
+                    = d.count 
+                  %td
+                    = d.price 
+                  %td
+                    = link_to '求购', betray_new_trade_path(d.id), :class => "btn btn-info" 
         #pop2.tab-pane.fade{"aria-labelledby" => "pop2-tab", :role => "tabpanel"}
           .pt-3
           - @sells.each do |d|
-            %table
+            %table.table
               %thead
-                %th 时间
-                %th 数量
-                %th 单价
-                %th 操作
+                %tr
+                  %th 时间
+                  %th 数量
+                  %th 单价
+                  %th 操作
               %tbody
-                %td
-                  = d.created_at.strftime("%H:%M")
-                %td
-                  = d.count 
-                %td
-                  = d.price 
-                %td
-                  = link_to '买入', buy_new_trade_path(d.id), :class => "btn btn-info" 
+                %tr
+                  %td
+                    = d.created_at.strftime("%H:%M")
+                  %td
+                    = d.count 
+                  %td
+                    = d.price 
+                  %td
+                    = link_to '买入', buy_new_trade_path(d.id), :class => "btn btn-info" 

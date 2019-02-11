@@ -1,2 +1,42 @@
-%h1 Teams#index
-%p Find me in app/views/teams/index.html.haml
+.container-fluid.py-5
+  .row
+    .col-12.text-center
+      %nav.nav-justified
+        #nav-tab.nav.nav-tabs{:role => "tablist"}
+          %a#pop1-tab.nav-item.nav-link.active{"aria-controls" => "pop1", "aria-selected" => "true", "data-toggle" => "tab", :href => "#pop1", :role => "tab"}
+            %h3
+              我的直推
+              = @childrens.size
+          %a#pop2-tab.nav-item.nav-link{"aria-controls" => "pop2", "aria-selected" => "false", "data-toggle" => "tab", :href => "#pop2", :role => "tab"}
+            %h3
+              团队人数
+              = @members.size
+      #nav-tabContent.tab-content
+        #pop1.tab-pane.fade.show.active{"aria-labelledby" => "pop1-tab", :role => "tabpanel"}
+          .pt-3
+          - @childrens.each do |d|
+            %table.table
+              %thead
+                %tr
+                  %th 时间
+                  %th 姓名 
+              %tbody
+                %tr
+                  %td
+                    = d.created_at.strftime("%Y-%m-%d")
+                  %td
+                    = d.name
+        #pop2.tab-pane.fade{"aria-labelledby" => "pop2-tab", :role => "tabpanel"}
+          .pt-3
+          %table.table
+            %thead
+              %tr
+                %th 时间
+                %th 姓名 
+            %tbody
+              - @members.each do |d|
+                %tr
+                  %td
+                    = d.created_at.strftime("%Y-%m-%d")
+                  %td
+                    = d.name

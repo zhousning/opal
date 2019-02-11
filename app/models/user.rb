@@ -38,6 +38,10 @@ class User < ActiveRecord::Base
   
   belongs_to :role
 
+  belongs_to :parent,   :class_name => 'User'
+  has_many   :children, :class_name => 'User', :foreign_key => 'parent_id'
+
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 

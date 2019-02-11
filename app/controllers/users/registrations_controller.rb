@@ -11,7 +11,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    super
+    super do |resource|
+      if resource.persisted? and resource.inviter != ""
+        user_inviter = User.find_by_number(resource.inviter)
+        if user_inviter
+          resource.update_attribute(:parent_id, user_inviter.id)
+        end
+      end
+    end
   end
 
   def after_sign_up_path_for(resource)
