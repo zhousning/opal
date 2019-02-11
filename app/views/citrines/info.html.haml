@@ -1,0 +1,37 @@
+.container-fluid
+  .row.mt-5
+    .col-6
+      %h1.text-center
+        现有茶晶
+      %h2.text-secondary.mt-5.text-center
+        = @citrine.count
+    .col-6
+      %h1.text-center
+        总获茶晶
+      %h2.text-secondary.mt-5.text-center
+        = @citrine.total
+%h3.bg-light.my-5.text-center.py-4
+  资金明细
+.container-fluid
+  .row
+    .col-12
+      %table.table
+        %thead
+          %th.text-center 
+            %h4
+              收支
+          %th.text-center
+            %h4
+              内容
+          %th.text-center
+            %h4
+              时间
+        %tbody
+          - @citrine.consumes.each do |c|
+            %tr.mt-3
+              %td.text-center.font-1-5rem
+                = c.coin_cost
+              %td.text-center.font-1-5rem
+                = c.category
+              %td.text-center.font-1-5rem
+                = c.created_at.strftime("%Y-%m-%d %H:%M")

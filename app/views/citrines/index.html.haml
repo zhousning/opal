@@ -1,0 +1,13 @@
+.container-fluid.h-100
+  .row
+    .col-12.mt-5
+      = image_tag 'exchange-header.png', :class => "img-thubnail w-100"
+    .col-10.mx-auto.mt-5
+      %h1.text-center
+        茶晶兑换规则
+      %h2.text-secondary.mt-5.text-center
+        每500茶晶兑换一棵茶树
+      %h2.text-secondary.mt-5.text-center
+        兑换茶晶不可转让
+    .col-10.mx-auto.mt-5
+      = link_to '兑 换', exchange_citrines_path, :class => "btn btn-lg btn-block btn-info"

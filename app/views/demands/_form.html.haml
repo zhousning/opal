@@ -1,5 +1,5 @@
-.container-fluid
-  .row
+.container-fluid.h-100
+  .row.h-100.py-5.px-5
     .col-12
       = form_for @demand do |f|
         - if @demand.errors.any?
@@ -8,23 +8,27 @@
             %ul
               - @demand.errors.full_messages.each do |msg|
                 %li= msg
-      
-        .form-group.row
-          = f.label Setting.demands.price, :class => "col-3 col-form-label"
-          .col-9
-            = f.number_field :price, :id => "js-demand-price", :class => "form-control"
+        .form-group.row.justify-content-center.mb-5
+          %h2
+            发布需求
+        .form-group.row.mb-5
+          = f.label Setting.demands.price, :class => "col-2 col-form-label col-form-label-lg text-right"
+          .col-10
+            = f.number_field :price, :id => "js-demand-price", :class => "form-control border-0 form-control-lg"
+          .col-12
+            %hr
           
+        .form-group.row.mb-5
+          = f.label Setting.demands.count, :class => "col-2 col-form-label col-form-label-lg text-right"
+          .col-10
+            = f.number_field :count, :id => "js-demand-count", :class => "form-control border-0 form-control-lg"
+          .col-12
+            %hr
+        .form-group.row.mb-5
+          = f.label '需支付', :class => "col-2 col-form-label col-form-label-lg text-right"
+          #js-demand-pay.col-10
         .form-group.row
-          = f.label Setting.demands.count, :class => "col-3 col-form-label"
-          .col-9
-            = f.number_field :count, :id => "js-demand-count", :class => "form-control"
-        .form-group.row
-          = f.label '需支付', :class => "col-3 col-form-label"
-          #js-demand-pay.col-9
-          
-      
-        .form-group.row
-          .col-3
-            = link_to "取消", trades_path, :class => "btn btn-secondary"
           .col-3.offset-2
-            = f.submit '创建', :class => "btn btn-success"
+            = link_to "取消", trades_path, :class => "btn btn-secondary btn-block btn-lg"
+          .col-3.offset-2
+            = f.submit '创建', :class => "btn btn-success btn-block btn-lg"

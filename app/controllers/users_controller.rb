@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
   layout "application_control", :except => [:mobile_authc_new, :mobile_authc_create, :mobile_authc_status, :login, :logup, :control]
+  layout "application_mobile", :only => [:mobile_authc_new, :mobile_authc_create, :mobile_authc_status, :login, :logup, :control]
   before_action :authenticate_user!, :except => [:login, :logup, :control]
-  load_resource
-  authorize_resource :except => [:login, :logup, :control]
+  #load_resource
+  #authorize_resource :except => [:login, :logup, :control]
 
   def index
     @users = User.all.reject{|u| u.email == Setting.admins.email }

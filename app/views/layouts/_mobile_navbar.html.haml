@@ -1,9 +1,11 @@
 %nav.nav.nav-pills.nav-fill.bg-light.fixed-bottom
-  = link_to mobile_index_trees_path, :class => "nav-item nav-link flex-column" do
-    = image_tag iconic('home'), :class => "w-25"
-    %p.text-secondary
-      首页
+  = link_to mobile_index_trees_path, :class => "nav-item nav-link" do
+    = image_tag 'bar-home.png', :class => "img-thubnail"
+  = link_to '', :class => "nav-item nav-link" do
+    = image_tag 'bar-pool.png', :class => "img-thubnail"
   = link_to mobile_index_wares_path, :class => "nav-item nav-link" do
-    商城
+    = image_tag 'bar-ware.png', :class => "img-thubnail"
   = link_to trades_path, :class => "nav-item nav-link" do
-    茶坊
+    = image_tag 'bar-teahouse.png', :class => "img-thubnail"
+  = link_to '', :class => "nav-item nav-link" do
+    = image_tag 'bar-my.png', :class => "img-thubnail"

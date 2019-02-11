@@ -26,6 +26,8 @@ development:
   users: *2
   roles: *3
   permissions: *4
+  citrines:
+    exchange_max: 500
   awards:
     ten_citrine: 10
     one_citrine: 1
@@ -73,7 +75,7 @@ development:
     status: 状态
     category_none: none
     category_purchase_leaf: 求购茶叶 
-    category_generate_document: generate_document
+    category_exchange_tree: 兑换茶树 
     category_download_document: download_document
     category_buy_document: buy_document
     status_none: none

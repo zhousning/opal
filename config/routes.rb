@@ -21,6 +21,13 @@ Rails.application.routes.draw do
     get :reject, :on => :member
   end
 
+  resources :citrines, :only => [:index] do
+    get :exchange, :on => :collection
+    get :info, :on => :collection
+  end
+
+  resources :teams, :only => [:index]
+
   resources :trees do
     get :mobile_index, :on => :collection
   end
