@@ -35,6 +35,7 @@ class User < ActiveRecord::Base
   has_many :consumes
   has_many :demands
   has_many :sells
+  has_many :orders
   
   belongs_to :role
 

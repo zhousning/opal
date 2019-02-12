@@ -57,6 +57,17 @@ development:
   notices:
     title: 标题
     content: 内容
+  orders:
+    category_none: "none"
+    category_recharge: "recharge"
+    state_none: 0
+    state_trade_created: 1
+    state_trade_success: 2
+    state_trade_failed: 3
+    state_none_string: 未定义
+    state_trade_created_string: 已创建
+    state_trade_success_string: 支付成功
+    state_trade_failed_string: 支付失败
   accounts:
     coin: 金额
     password: 安全密码

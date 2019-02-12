@@ -21,6 +21,12 @@ Rails.application.routes.draw do
     get :reject, :on => :member
   end
 
+  resources :orders, :only => [:index, :new, :create, :show] do
+    get :pay, :on => :collection
+    get :alipay_return, :on => :collection
+    post :alipay_notify, :on => :collection
+  end
+
   resources :citrines, :only => [:index] do
     get :exchange, :on => :collection
     get :info, :on => :collection

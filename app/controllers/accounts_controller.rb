@@ -45,6 +45,7 @@ class AccountsController < ApplicationController
   end
 
   def recharge
+    redirect_to new_order_url
   end
 
   private

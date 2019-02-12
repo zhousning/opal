@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/zhousning/alipay.git
+  revision: 5b12c7501cf7bb18ab3a8854166f7986742e49e6
+  specs:
+    alipay (0.12.0)
+
 GEM
   remote: https://gems.ruby-china.com/
   specs:
@@ -331,6 +337,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin (~> 1.0.0.pre2)
   activeadmin_blaze_theme
+  alipay!
   annotate
   bootstrap (~> 4.2.1)
   bootstrap3-datetimepicker-rails (~> 4.17.37)

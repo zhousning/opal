@@ -90,7 +90,7 @@ gem 'activeadmin_blaze_theme'
 #gem 'newrelic_rpm'
 
 #gem 'alipay', '~> 0.12.0'
-#gem 'alipay', :git=>'https://github.com/meilian/alipay.git'
+gem 'alipay', :git=>'https://github.com/zhousning/alipay.git'
 
 #gem 'lazy_high_charts'
 
