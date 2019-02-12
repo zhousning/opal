@@ -1,0 +1,56 @@
+- provide(:title, t('.title'))
+
+- content_for :main_body do
+  .container-fluid
+    .row
+      .col-md-12
+        %table.table.text-center.table-bordered
+          %thead
+            %tr
+            
+              %th 
+                = Setting.trade_orders.number
+              %th 
+                = Setting.trade_orders.price
+              %th 
+                = Setting.trade_orders.state
+              %th 
+                = Setting.trade_orders.name
+              %th 
+                = Setting.trade_orders.phone
+              %th 
+                = Setting.trade_orders.address
+              %th
+          %tbody
+            %tr
+            
+              %td
+                = @trade_order.number
+              %td
+                = @trade_order.price
+              %td
+                = @trade_order.state
+              %td
+                = @trade_order.name
+              %td
+                = @trade_order.phone
+              %td
+                = @trade_order.address
+              %td
+    - if @trade_order.state == Setting.trade_orders.pending
+      - if current_user.account.coin >= order.price
+        = form_for pay_create_trade_orders_path(@trade_order) do |f|
+          .form-group.row.mb-5
+            = f.label '安全密码', :class => "col-2 col-form-label-lg text-right  col-form-label"
+            .col-10
+              = password_field_tag :password, :class => "form-control border-0 form-control-lg"
+            .col-12
+              %hr
+          .form-group.row
+            .col-12
+              = f.submit '立即支付', :class => "btn btn-success btn-block btn-lg"
+      - else
+        = link_to '余额不足，立即充值', recharge_accounts_path, :class => "btn btn-success btn-block btn-lg"
+    
+
+= render "layouts/control_panel"

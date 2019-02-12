@@ -58,8 +58,8 @@ development:
     title: 标题
     content: 内容
   orders:
-    category_none: "none"
-    category_recharge: "recharge"
+    category_none: none
+    category_recharge: recharge
     state_none: 0
     state_trade_created: 1
     state_trade_success: 2
@@ -85,8 +85,8 @@ development:
     coin_now: 余额
     status: 状态
     category_none: none
-    category_purchase_leaf: 求购茶叶 
-    category_exchange_tree: 兑换茶树 
+    category_purchase_leaf: 求购茶叶
+    category_exchange_tree: 兑换茶树
     category_download_document: download_document
     category_buy_document: buy_document
     status_none: none
@@ -106,6 +106,19 @@ development:
     disable: disable
   systems:
     poundage: 0.1
+  trade_orders:
+    number: 订单编号
+    price: 价格
+    state: 状态
+    name: 姓名
+    phone: 电话
+    address: 地址
+    opening: opening
+    pending: pending
+    paid: paid
+    departed: departed
+    completed: completed
+    canceled: canceled
 test:
   admins: *1
   users: *2

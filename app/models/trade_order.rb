@@ -1,0 +1,64 @@
+class TradeOrder < ActiveRecord::Base
+  belongs_to :user
+  belongs_to :ware
+
+  STATE = %w(opening pending paid departed completed canceled)
+  validates_inclusion_of :state, :in => STATE
+
+  before_save :store_unique_number
+  def store_unique_number
+    unless self.number
+      self.number = Time.now.to_i.to_s + "%04d" % [rand(10000)]
+    end
+  end
+
+  #添加paid?和completed?等方法
+  STATE.each do |state|
+    define_method "#{state}?" do
+      self.state == state
+    end
+  end
+
+  def pend
+    if opening?
+      update_attribute :state, 'pending'
+    end
+  end
+
+  #只在pending状态可以pay
+  def pay
+    if pending?
+      add_plan    #业务逻辑，订单生效
+      update_attribute :state, 'paid'
+    end
+  end
+
+  def depart 
+    if paid?
+      update_attribute :state, 'departed'
+    end
+  end
+
+  #只在pending和paid状态可以complete
+  def complete
+    if departed?
+      update_attribute :state, 'completed'
+    end
+  end
+
+  #只在pending和paid状态可以cancel
+  def cancel
+    if pending? or paid? or departed?
+      remove_plan if paid? || departed?  #业务逻辑，取消订单
+      update_attribute :state, 'canceled'
+    end
+  end
+
+  def add_plan
+    self.user.account.sub_coin(self.price)
+  end
+
+  def remove_plan
+    self.user.account.add_coin(self.price)
+  end
+end

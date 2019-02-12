@@ -3,8 +3,8 @@ class CreateOrders < ActiveRecord::Migration
     create_table :orders do |t|
       t.string    :number
       t.string    :category, null: false, default: "none"
-      t.integer   :money          # 业务，同时也是支付金额
-      t.integer   :coin           # 业务，金额相应的币值
+      t.float   :money          # 业务，同时也是支付金额
+      t.float   :coin           # 业务，金额相应的币值
       t.integer   :status, null: false, default: 0  # no use
 
       t.string    :subject        # 发送，支付标题

@@ -1,0 +1,45 @@
+.container-fluid.h-100
+  .row.h-100.py-5.px-5
+    .col-12
+      = form_for ware_trade_orders_path(@ware, @trade_order) do |f|
+        - if @trade_order.errors.any?
+          #error_explanation
+            %h2= "#{pluralize(@trade_order.errors.count, "error")} prohibited this buyer from being saved:"
+            %ul
+              - @trade_order.errors.full_messages.each do |msg|
+                %li= msg
+      
+        .form-group.row.justify-content-center.mb-5
+          %h2
+            订单信息
+        .form-group.row.mb-5
+          = f.label Setting.trade_orders.price, :class => "col-2 col-form-label-lg text-right  col-form-label"
+          .col-10
+            = f.number_field :price, :class => "form-control border-0 form-control-lg"
+          .col-12
+            %hr
+          
+        .form-group.row.mb-5
+          = f.label Setting.trade_orders.name, :class => "col-2 col-form-label-lg text-right  col-form-label"
+          .col-10
+            = f.text_field :name, :class => "form-control border-0 form-control-lg"
+          .col-12
+            %hr
+          
+        .form-group.row.mb-5
+          = f.label Setting.trade_orders.phone, :class => "col-2 col-form-label-lg text-right  col-form-label"
+          .col-10
+            = f.text_field :phone, :class => "form-control border-0 form-control-lg"
+          .col-12
+            %hr
+          
+        .form-group.row.mb-5
+          = f.label Setting.trade_orders.address, :class => "col-2 col-form-label-lg text-right  col-form-label"
+          .col-10
+            = f.text_area :address, :class => "form-control border-0 form-control-lg", :rows => "20"
+          .col-12
+            %hr
+          
+        .form-group.row
+          .col-12
+            = f.submit '创建', :class => "btn btn-success btn-block btn-lg"

@@ -27,6 +27,10 @@ Rails.application.routes.draw do
     post :alipay_notify, :on => :collection
   end
 
+  resources :trade_orders, :only => [:index, :show] do
+    post :pay_create, :on => :member
+  end
+
   resources :citrines, :only => [:index] do
     get :exchange, :on => :collection
     get :info, :on => :collection
@@ -67,6 +71,7 @@ Rails.application.routes.draw do
     get :mobile_show, :on => :member
     get :up, :on => :member
     get :down, :on => :member
+    resources :trade_orders, :only => [:new, :create]
   end
 
   resources :notices do
