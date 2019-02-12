@@ -26,8 +26,7 @@
 class Order < ActiveRecord::Base
   belongs_to :user
 
-  validates :money,      :presence => true,
-                         :numericality => {:only_integer => true}
+  validates :money,      :presence => true
   validates :subject,    :presence => true
 
   #validates :order_id,   :presence => true
@@ -80,7 +79,7 @@ class Order < ActiveRecord::Base
   end
 
   def pay_url
-    Alipay::Service.create_direct_pay_by_user_url(
+    Alipay::Service.create_direct_pay_by_user_wap_url(
       :out_trade_no      => number,
       :subject           => subject,
       :total_fee         => money,

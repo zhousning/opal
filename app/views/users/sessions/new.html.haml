@@ -1,28 +1,36 @@
 - provide(:title, t('.title'))
 
 = devise_error_messages!
-%section.login-block
-  .container
-    .row
-      .col-sm-4.login-sec
-        %h2.text-center 开票系统 
-        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-          .form-group
-            %label.text-uppercase{:for => "exampleInputEmail1"} 邮箱 
-            = f.email_field :email, autofocus: true, class: "form-control"
-          .form-group
-            %label.text-uppercase{:for => "exampleInputPassword1"} 密码
-            = f.password_field :password, autocomplete: "off", class: "form-control"
-          -#
-            - if devise_mapping.rememberable?
-              .form-check
-                %label.form-check-label
-                  = f.check_box :remember_me, class: "form-check-input"
-                  %small
-                    记住我 
-          .form-group.row.justify-content-between
-            .col-sm-4
-              = f.submit "登 录", class: "btn btn-login "
-            .col-sm-4
-              = render "users/shared/links"
-      .col-sm-8.banner-sec
+.container-fluid.h-100
+  .row.h-100.py-5.px-5
+    .col-sm-12
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .form-group.row.justify-content-center.mb-5
+          = image_tag 'logo.png', :class => "img-thubnail"
+        .form-group.row.mb-5
+          %label.col-2.col-form-label.col-form-label-lg.text-right{:for => "email"}
+            = image_tag 'session-phone.png', :class => "img-thubnail"
+          .col-10
+            = f.text_field :email, autofocus: true, :class => "form-control border-0 form-control-lg", :placeholder => "手机号"
+          .col-12
+            %hr
+        .form-group.row.mb-5
+          %label.col-2.col-form-label.col-form-label-lg.text-right{:for => "password"}
+            = image_tag 'session-password.png', :class => "img-thubnail"
+          .col-10
+            = f.password_field :password, autocomplete: "off", :class => "form-control border-0 form-control-lg", :placeholder => "密码"
+          .col-12
+            %hr
+        .form-group.row.mb-5
+          .col-12
+            = f.submit "登 录", class: "btn btn-success btn-lg btn-block "
+        .form-group.row.mb-5
+          .col-12
+            = link_to "注 册", logup_users_path, :class => "btn btn-info btn-lg btn-block "
+        -#
+          - if devise_mapping.rememberable?
+            .form-check
+              %label.form-check-label
+                = f.check_box :remember_me, class: "form-check-input"
+                %small
+                  记住我 

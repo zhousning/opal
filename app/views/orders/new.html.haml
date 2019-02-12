@@ -1,27 +1,17 @@
 - provide(:title, t('.title'))
 
-.personal-launchpad
-  .personal-container-piercing
-    .personal-container-header
-      %h1.personal-container-title
+.container-fluid.h-100
+  .row.h-100.py-5.px-5
+    .col-12
+      %h1
         充值中心
-      %a.btn.btn-primary.manage-btn.order-history{:href => orders_path}
-        %span.glyphicon.glyphicon-usd
-        充值记录
-    .order-container-wrapper
-      .order-group
-        .row.order-title
-          =image_tag "users_wallet.png"
-          %span
-            支付宝充值
-        .row
-          = form_for @order, :html=>{:class=>"form-horizontal", :target => "_blank"}, :validate => true do |f|
-            .order-img-box
-              =image_tag "zhifubao.png"
-            %ul.order-card#order-active
-              %li
-                = f.text_field :money, :class => "order-money", :id => "order-recharge", :placeholder => "请输入充值金额"
-                元
-                .order-tipe
-              %li
-                = f.submit "支付宝充值", :class=>"order-next order-lg"
+      .row
+        = form_for @order, :html=>{:class=>"form-horizontal", :target => "_blank"}, :validate => true do |f|
+          .form-group.row.mb-5
+            = f.label '￥', :class => "col-2 col-form-label col-form-label-lg text-right"
+            .col-10
+              = f.number_field :money, :id => "js-demand-price", :class => "form-control border-0 form-control-lg", :placeholder => "请输入充值金额"
+            .col-12
+              %hr
+          .form-group.row.text-center
+            = f.submit '', :class=>"btn btn-block btn-lg alipay-btn"

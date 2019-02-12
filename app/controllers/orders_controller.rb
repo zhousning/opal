@@ -17,20 +17,20 @@ class OrdersController < ApplicationController
     #Todo: 只要点击按钮就会创建订单，需要添加限制条件
     @order = Order.new(order_params)
 
-    if @order.money and @order.money >= 10
+    if @order.money and @order.money >= 0.01
       @order.category = Setting.orders.category_recharge
       @order.coin = @order.money;
 
-      @order.subject = "账户充值"
+      @order.subject = "茶源账户充值"
       @order.user = current_user
 
       if @order.save
         redirect_to @order.pay_url
       else
-        redirect_to new_order_url
+        render :new
       end
     else
-      redirect_to new_order_url
+      render :new
     end
   end
 
