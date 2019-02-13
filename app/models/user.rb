@@ -38,6 +38,7 @@ class User < ActiveRecord::Base
   has_many :sells
   has_many :orders
   has_many :trade_orders
+  has_many :extract_cashes
   
   belongs_to :role
 

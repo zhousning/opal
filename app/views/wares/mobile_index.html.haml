@@ -1,10 +1,19 @@
 - provide(:title, t('.title'))
 
+#carouselExampleIndicators.carousel.slide.mb-5{"data-ride" => "carousel"}
+  %ol.carousel-indicators
+    %li{"data-slide-to" => "0", "data-target" => "#carouselExampleIndicators", :class => "active"}
+    %li{"data-slide-to" => "1", "data-target" => "#carouselExampleIndicators"}
+  .carousel-inner
+    .user-carousel-item.carousel-item{:class => "active"}
+      = image_tag 'ware-header1.png', :class => "d-block w-100 "
+    .user-carousel-item.carousel-item
+      = image_tag 'ware-header2.png', :class => "d-block w-100 "
 .container-fluid
   .row
     - @wares.each_with_index do |ware, index|
       .col-6.mb-4
-        = link_to mobile_show_ware_path(ware) do 
+        = link_to mobile_show_ware_path(ware), :class => "text-dark" do 
           .card
             = image_tag ware.enclosures[0].file_url(:big), :class => "card-img-top"
             .card-body

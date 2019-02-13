@@ -1,0 +1,32 @@
+- provide(:title, t('.title'))
+
+.container-fluid.py-5.px-5
+  .row
+    .col-12
+      - if @extract_cashes
+        - @extract_cashes.each_with_index do |extract_cash, index|
+          %table.table
+            %thead
+              %tr
+                %th
+                  日期
+                %th
+                  = Setting.extract_cashes.coin
+                %th
+                  状态
+            %tbody
+              %tr
+                %td
+                  = extract_cash.created_at.strftime("%Y-%m-%d %H:%M")
+                %td
+                  = extract_cash.coin
+                %td
+                  - if extract_cash.status == Setting.extract_cashes.pending
+                    = Setting.extract_cashes.pending_title
+                  - else
+                    = Setting.extract_cashes.agree_title
+      - else
+        %h3.text-center
+          暂无提现记录
+              %th 
+                = Setting.extract_cashes.status

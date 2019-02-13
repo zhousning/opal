@@ -125,7 +125,14 @@ development:
     completed: completed
     completed_title: 已完成
     canceled: canceled
-    canceled_title: 已取消 
+    canceled_title: 已取消
+  extract_cashes:
+    coin: 提取金额
+    status: 状态
+    pending: pending
+    pending_title: 待审核
+    agree: agree
+    agree_title: 已提现
 test:
   admins: *1
   users: *2
