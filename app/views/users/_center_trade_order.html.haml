@@ -1,0 +1,24 @@
+.card.mt-3
+  .card-header.bg-white.py-3
+    .row
+      .col-3
+        %h3
+          商城订单
+      .col-9.text-right
+        = link_to all_trade_orders_path do
+          %h3.text-dark
+            查看全部订单>> 
+  .card-body.text-center.py-4
+    .row
+      .col
+        = link_to pending_trade_orders_path do
+          = image_tag 'center-pending.png', :class => 'img-thubnail'
+      .col
+        = link_to paid_trade_orders_path do
+          = image_tag 'center-paid.png', :class => 'img-thubnail'
+      .col
+        = link_to departed_trade_orders_path do
+          = image_tag 'center-departed.png', :class => 'img-thubnail'
+      .col
+        = link_to completed_trade_orders_path do
+          = image_tag 'center-completed.png', :class => 'img-thubnail'

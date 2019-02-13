@@ -54,4 +54,18 @@ class TradesController < ApplicationController
 
     redirect_to trades_url
   end
+
+  def my_demand
+    @demands = current_user.demands.where(:status => Setting.demands.enable).order("created_at DESC") 
+  end
+
+  def demand_manage
+  end
+
+  def my_sell
+    @sells = current_user.sells.where(:status => Setting.sells.enable).order("created_at DESC") 
+  end
+
+  def sell_manage
+  end
 end

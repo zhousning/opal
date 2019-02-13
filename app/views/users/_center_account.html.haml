@@ -1,0 +1,30 @@
+.card.py-3.px-3
+  - if current_user.status == Setting.users.passed
+    = image_tag 'center-account.png', :class => 'card-img-top'
+  - elsif current_user.status == Setting.users.opening
+    = link_to mobile_authc_new_user_path(current_user) do 
+      = image_tag 'center-account.png', :class => 'card-img-top'
+  - else
+    = link_to mobile_authc_status_user_path(current_user) do 
+      = image_tag 'center-account.png', :class => 'card-img-top'
+  .card-body
+    .row
+      .col.text-center
+        %h3
+          余额
+        %h4
+          = current_user.account.coin
+      .col.text-center
+        %h3
+          佣金
+        %h4
+        
+      .col.text-center
+        %h3
+          茶晶
+        %h4
+          = current_user.citrine.count
+      .col.text-center
+        %h3
+          等级
+        %h4

@@ -113,6 +113,7 @@ development:
     name: 姓名
     phone: 电话
     address: 地址
+    wayno: 物流信息
     opening: opening
     opening_title: 新建
     pending: pending

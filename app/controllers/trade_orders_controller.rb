@@ -54,6 +54,26 @@ class TradeOrdersController < ApplicationController
     redirect_to :action => :index
   end
 
+  def pending
+    @trade_orders = current_user.trade_orders.where(:state => Setting.trade_orders.pending)
+  end
+
+  def paid
+    @trade_orders = current_user.trade_orders.where(:state => Setting.trade_orders.paid)
+  end
+
+  def departed
+    @trade_orders = current_user.trade_orders.where(:state => Setting.trade_orders.departed)
+  end
+
+  def completed
+    @trade_orders = current_user.trade_orders.where(:state => Setting.trade_orders.completed)
+  end
+
+  def all
+    @trade_orders = current_user.trade_orders 
+  end
+
   private
     def trade_order_params
       params.require(:trade_order).permit( :name, :phone, :address)

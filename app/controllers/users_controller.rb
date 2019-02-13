@@ -9,6 +9,9 @@ class UsersController < ApplicationController
     @users = User.all.reject{|u| u.email == Setting.admins.email }
   end
 
+  def center
+    @user = current_user
+  end
   def login
     @signin_user = User.new
   end

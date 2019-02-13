@@ -1,0 +1,27 @@
+- provide(:title, t('.title'))
+
+.container-fluid.py-5.px-5
+  - if @trade_orders
+    - @trade_orders.each do |trade_order|
+      .card.mb-5
+        .card-header
+          = Setting.trade_orders.number
+          = trade_order.number
+        .card-body
+          = link_to trade_order_path(trade_order) do
+            .media
+              = image_tag trade_order.ware.enclosures[0].file_url(:small_width), :class => "mr-3"
+              .media-body
+                %h5.mt-0
+                  = trade_order.ware.title
+            %h3
+              = trade_order.price
+            %p
+              = state(trade_order.state)
+            - if trade_order.state == Setting.trade_orders.departed
+              %p
+                = Setting.trade_orders.wayno
+                = trade_order.wayno
+  - else
+    %h3.text-center
+      暂无订单

@@ -1,0 +1,25 @@
+.card.mt-3
+  .card-header.bg-white.py-3
+    .row
+      .col-3
+        %h3
+          坊市订单
+      .col-9.text-right
+        %h3
+          -#
+            查看全部订单>> 
+  .card-body.text-center.py-4
+    .row
+      .col
+        = link_to my_demand_trades_path do
+          = image_tag 'my-demand.png', :class => 'img-thubnail'
+      .col
+        = link_to my_sell_trades_path do
+          = image_tag 'my-sell.png', :class => 'img-thubnail'
+      -#
+        .col
+          = link_to paid_trade_orders_path do
+            = image_tag 'center-demand.png', :class => 'img-thubnail'
+        .col
+          = link_to completed_trade_orders_path do
+            = image_tag 'center-sell.png', :class => 'img-thubnail'

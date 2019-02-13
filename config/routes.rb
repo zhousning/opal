@@ -10,8 +10,14 @@ Rails.application.routes.draw do
   require 'sidekiq/cron/web'
   mount Sidekiq::Web => '/sidekiq'
 
+
+  resources :home, :only => [] do
+    get :custom_service, :on => :collection
+  end
+  
   resources :users do
     get :control, :on => :collection
+    get :center, :on => :collection
     get :login, :on => :collection
     get :logup, :on => :collection
     get :mobile_authc_new, :on => :member
@@ -29,6 +35,11 @@ Rails.application.routes.draw do
 
   resources :trade_orders, :only => [:index, :show] do
     post :pay_create, :on => :member
+    get :pending, :on => :collection
+    get :paid, :on => :collection
+    get :departed, :on => :collection
+    get :completed, :on => :collection
+    get :all, :on => :collection
   end
 
   resources :citrines, :only => [:index] do
@@ -55,6 +66,8 @@ Rails.application.routes.draw do
     post :betray_create, :on => :member
     get :buy_new, :on => :member
     post :buy_create, :on => :member
+    get :my_demand, :on => :collection
+    get :my_sell, :on => :collection
   end
 
   resources :demands
@@ -81,7 +94,7 @@ Rails.application.routes.draw do
 
   resources :roles
 
-  root :to => 'home#index'
+  root :to => 'trees#mobile_index'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

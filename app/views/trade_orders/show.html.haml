@@ -29,6 +29,10 @@
         %li.list-group-item
           = state(@trade_order.state)
         %li.list-group-item
+          - if @trade_order.state == Setting.trade_orders.departed
+            = Setting.trade_orders.wayno
+            = @trade_order.wayno
+        %li.list-group-item
           - if @trade_order.state == Setting.trade_orders.pending
             - if current_user.account.coin >= @trade_order.price
               = form_tag pay_create_trade_order_url(@trade_order) do |f|

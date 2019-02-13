@@ -7,6 +7,7 @@ class CreateTradeOrders < ActiveRecord::Migration
       t.string :name
       t.string :phone
       t.string :address
+      t.string :wayno #运单号
 
       t.references :user
       t.references :ware

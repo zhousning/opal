@@ -1,0 +1,25 @@
+- provide(:title, t('.title'))
+
+.container-fluid.py-5.px-5
+  .row
+    .col-12
+      - if @sells
+        - @sells.each do |d|
+          %table.table
+            %thead
+              %tr
+                %th 时间
+                %th 数量
+                %th 单价
+                %th 操作
+            %tbody
+              %tr
+                %td
+                  = d.created_at.strftime("%H:%M")
+                %td
+                  = d.count 
+                %td
+                  = d.price 
+      - else
+        %h3.text-center
+          暂无转让信息
