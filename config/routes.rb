@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   
   resources :users do
     get :control, :on => :collection
+    get :level, :on => :collection
     get :center, :on => :collection
     get :login, :on => :collection
     get :logup, :on => :collection

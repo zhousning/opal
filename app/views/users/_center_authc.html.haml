@@ -1,6 +1,6 @@
 %ul.list-group.mt-3
   - if current_user.status == Setting.users.opening
-    = link_to mobile_authc_new_user_path(current_user), :class => "list-group-item list-group-item-action py-3" do
+    = link_to mobile_authc_new_user_path(current_user), :class => "list-group-item list-group-item-action py-5 px-5" do
       .row
         .col-3
           %h3
@@ -9,7 +9,7 @@
           %h3
             >
   - else
-    = link_to mobile_authc_status_user_path(current_user), :class => "list-group-item list-group-item-action py-3" do
+    = link_to mobile_authc_status_user_path(current_user), :class => "list-group-item list-group-item-action py-5 px-5" do
       .row
         .col-3
           %h3

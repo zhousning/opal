@@ -40,6 +40,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def level
+    @citrine_count = current_user.citrine.total
+  end
+
   def control
   end
 

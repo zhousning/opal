@@ -1,0 +1,69 @@
+- provide(:title, t('.title'))
+
+.card.w-100
+  = image_tag 'level-header.png', :class => "card-img"
+  .card-img-overlay.py-5
+    .row
+      .col-12.text-center
+        = image_tag level_image(@citrine_count), :class => "img-thubnail"
+        %h2.card-text.center.text-white.mt-5
+          当前等级
+          = level_title(@citrine_count)
+
+.card
+  .card-header.bg-white.py-3
+    .row
+      .col-3
+        %h3.font-weight-bold
+          专属权益
+  .card-body.text-center
+    %ul.list-unstyled
+      %li.media.my-4.px-5.text-left
+        = image_tag 'v1.png', :class => 'mr-3'
+        .media-body
+          %h3.mt-0.mb-2.font-weight-bold
+            佣金奖励权
+          %p.text-secondary.font-1-5rem
+            推荐好友购买商品，享受10%的邀请奖励
+      %li.media.my-4.px-5.text-left
+        = image_tag 'v2.png', :class => 'mr-3'
+        .media-body
+          %h3.mt-0.mb-2.font-weight-bold
+            等级分红权
+          %p.text-secondary.font-1-5rem
+            参与每日等级分红，等级越高，分红越多
+      %li.media.my-4.px-5.text-left
+        = image_tag 'v3.png', :class => 'mr-3'
+        .media-body
+          %h3.mt-0.mb-2.font-weight-bold
+            兑换特殊权
+          %p.text-secondary.font-1-5rem
+            享受节日特殊商品一片茶叶兑换的特权
+      %li.media.my-4.px-5.text-left
+        = image_tag 'v4.png', :class => 'mr-3'
+        .media-body
+          %h3.mt-0.mb-2.font-weight-bold
+            提现优先权
+          %p.text-secondary.font-1-5rem
+            不管体现订单有多少，您都是第一位
+      %li.media.my-4.px-5.text-left
+        = image_tag 'v4.png', :class => 'mr-3'
+        .media-body
+          %h3.mt-0.mb-2.font-weight-bold
+            问答优先权
+          %p.text-secondary.font-1-5rem
+            享受专属客服12小时直接服务，有问秒答特权
+      %li.media.my-4.px-5.text-left
+        = image_tag 'v5.png', :class => 'mr-3'
+        .media-body
+          %h3.mt-0.mb-2.font-weight-bold
+            优先体验权
+          %p.text-secondary.font-1-5rem
+            茶源世界新产品，新模式的优先体验特权
+      %li.media.my-4.px-5.text-left
+        = image_tag 'v5.png', :class => 'mr-3'
+        .media-body
+          %h3.mt-0.mb-2.font-weight-bold
+            参与决策权
+          %p.text-secondary.font-1-5rem
+            茶源世界规则制定和修改的投票表决权

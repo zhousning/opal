@@ -25,6 +25,8 @@
         %h4
           = current_user.citrine.count
       .col.text-center
-        %h3
-          等级
-        %h4
+        = link_to level_users_path do
+          %h3.text-dark
+            等级
+          %h4.text-dark
+            = level_title(current_user.citrine.count)

@@ -6,9 +6,9 @@
     .row
       .col-12.text-center.py-5
         = image_tag 'logo.png', :class => "img-thubnail"
-        .card-text.center.text-white
-          = current_user.name
         %h2.card-text.center.text-white
+          = current_user.name
+        %h3.card-text.center.text-white
           一杯茶开启茶源生活
 
 = render 'center_account'
@@ -22,7 +22,7 @@
 = render 'center_system'
 
 %ul.list-group.mt-3.mb-5
-  = link_to destroy_user_session_path, :class => "list-group-item list-group-item-action py-3", :"data-method"=>"delete" do
+  = link_to destroy_user_session_path, :class => "list-group-item list-group-item-action py-5 px-5", :"data-method"=>"delete" do
     .row
       .col-3
         %h3
