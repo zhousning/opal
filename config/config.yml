@@ -114,11 +114,17 @@ development:
     phone: 电话
     address: 地址
     opening: opening
+    opening_title: 新建
     pending: pending
+    pending_title: 待支付
     paid: paid
+    paid_title: 已支付,待发货
     departed: departed
+    departed_title: 已发货
     completed: completed
+    completed_title: 已完成
     canceled: canceled
+    canceled_title: 已取消 
 test:
   admins: *1
   users: *2

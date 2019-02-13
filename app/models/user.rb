@@ -12,6 +12,7 @@
 #  number                 :string           default(""), not null
 #  inviter                :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
+#  parent_id              :integer
 #  reset_password_token   :string
 #  reset_password_sent_at :datetime
 #  remember_created_at    :datetime

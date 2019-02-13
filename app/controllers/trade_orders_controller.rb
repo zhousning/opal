@@ -1,5 +1,5 @@
 class TradeOrdersController < ApplicationController
-  layout "mobile_navbar"
+  layout "application_mobile"
   before_action :authenticate_user!
 
   def index
@@ -20,13 +20,9 @@ class TradeOrdersController < ApplicationController
   end
 
   def pay_create
-    if current_user.account.password == params[:password]
-      @trade_order = TradeOrder.find(params[:id])
-      @trade_order.paied
-      redirect_to @trade_order
-    else
-      render :show
-    end
+    @trade_order = TradeOrder.find(params[:id])
+    @trade_order.pay if current_user.account.password == params[:password]
+    redirect_to @trade_order
   end
   
   def update
@@ -43,8 +39,9 @@ class TradeOrdersController < ApplicationController
     @trade_order.user = current_user
     @ware = Ware.find(params[:ware_id])
     @trade_order.ware = @ware
+    @trade_order.price = @ware.price
     if @trade_order.save
-      @trade_order.pending
+      @trade_order.pend
       redirect_to @trade_order
     else
       render :new
@@ -59,7 +56,7 @@ class TradeOrdersController < ApplicationController
 
   private
     def trade_order_params
-      params.require(:trade_order).permit( :price, :name, :phone, :address)
+      params.require(:trade_order).permit( :name, :phone, :address)
     end
   
 end

@@ -1,9 +1,7 @@
 .fixed-bottom.bg-white
   %ul.nav.justify-content-center
     %li.nav-item.col-3.border-top
-      = link_to mobile_index_wares_path, :class => "nav-link" do
-        %span
-          -#
-            = evil_icon 'ei-chevron-left', :class => "text-center text-light"
+      = link_to mobile_index_wares_path, :class => "nav-link mt-3 text-center " do
+        = image_tag iconic('home'), :class => 'w-50'
     %li.nav-item.col.bg-danger.py-4
       = link_to "立即购买", new_ware_trade_order_path(@ware), :class => "nav-link text-center text-white font-3rem"

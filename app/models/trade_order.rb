@@ -1,9 +1,26 @@
+# == Schema Information
+#
+# Table name: trade_orders
+#
+#  id         :integer          not null, primary key
+#  number     :string
+#  price      :float
+#  state      :string
+#  name       :string
+#  phone      :string
+#  address    :string
+#  user_id    :integer
+#  ware_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class TradeOrder < ActiveRecord::Base
   belongs_to :user
   belongs_to :ware
 
   STATE = %w(opening pending paid departed completed canceled)
-  validates_inclusion_of :state, :in => STATE
+  #validates_inclusion_of :state, :in => STATE
 
   before_save :store_unique_number
   def store_unique_number

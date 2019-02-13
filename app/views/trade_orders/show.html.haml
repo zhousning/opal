@@ -1,56 +1,45 @@
 - provide(:title, t('.title'))
 
-- content_for :main_body do
-  .container-fluid
-    .row
-      .col-md-12
-        %table.table.text-center.table-bordered
-          %thead
-            %tr
-            
-              %th 
-                = Setting.trade_orders.number
-              %th 
-                = Setting.trade_orders.price
-              %th 
-                = Setting.trade_orders.state
-              %th 
-                = Setting.trade_orders.name
-              %th 
-                = Setting.trade_orders.phone
-              %th 
-                = Setting.trade_orders.address
-              %th
-          %tbody
-            %tr
-            
-              %td
-                = @trade_order.number
-              %td
-                = @trade_order.price
-              %td
-                = @trade_order.state
-              %td
-                = @trade_order.name
-              %td
-                = @trade_order.phone
-              %td
-                = @trade_order.address
-              %td
-    - if @trade_order.state == Setting.trade_orders.pending
-      - if current_user.account.coin >= order.price
-        = form_for pay_create_trade_orders_path(@trade_order) do |f|
-          .form-group.row.mb-5
-            = f.label '安全密码', :class => "col-2 col-form-label-lg text-right  col-form-label"
-            .col-10
-              = password_field_tag :password, :class => "form-control border-0 form-control-lg"
-            .col-12
-              %hr
-          .form-group.row
-            .col-12
-              = f.submit '立即支付', :class => "btn btn-success btn-block btn-lg"
-      - else
-        = link_to '余额不足，立即充值', recharge_accounts_path, :class => "btn btn-success btn-block btn-lg"
-    
-
-= render "layouts/control_panel"
+.container-fluid.py-5
+  .row
+    .col-md-12
+      %ul.list-group
+        %li.list-group-item
+          = Setting.trade_orders.number
+          = @trade_order.number
+        %li.list-group-item
+          = link_to mobile_show_ware_path(@trade_order.ware) do 
+            .media
+              = image_tag @trade_order.ware.enclosures[0].file_url(:small_width), :class => "mr-3"
+              .media-body
+                %h5.mt-0
+                  = @trade_order.ware.title
+        %li.list-group-item
+          = Setting.trade_orders.price
+          = @trade_order.price
+        %li.list-group-item
+          = Setting.trade_orders.name
+          = @trade_order.name
+        %li.list-group-item
+          = Setting.trade_orders.phone
+          = @trade_order.phone
+        %li.list-group-item
+          = Setting.trade_orders.address
+          = @trade_order.address
+        %li.list-group-item
+          = state(@trade_order.state)
+        %li.list-group-item
+          - if @trade_order.state == Setting.trade_orders.pending
+            - if current_user.account.coin >= @trade_order.price
+              = form_tag pay_create_trade_order_url(@trade_order) do |f|
+                .form-group.row.mb-5
+                  = label_tag nil, '安全密码', :class => "col-2 col-form-label-lg text-right  col-form-label"
+                  .col-10
+                    = password_field_tag 'password', nil, :class => "form-control form-control-lg"
+                  .col-12
+                    %hr
+                .form-group.row
+                  .col-12
+                    = submit_tag '立即支付', :class => "btn btn-success btn-block btn-lg"
+            - else
+              = link_to '余额不足，立即充值', recharge_accounts_path, :class => "btn btn-success btn-block btn-lg"

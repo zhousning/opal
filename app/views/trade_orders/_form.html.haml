@@ -1,7 +1,7 @@
 .container-fluid.h-100
   .row.h-100.py-5.px-5
     .col-12
-      = form_for ware_trade_orders_path(@ware, @trade_order) do |f|
+      = form_for @trade_order, :url => ware_trade_orders_path(@ware) do |f|
         - if @trade_order.errors.any?
           #error_explanation
             %h2= "#{pluralize(@trade_order.errors.count, "error")} prohibited this buyer from being saved:"
@@ -11,14 +11,7 @@
       
         .form-group.row.justify-content-center.mb-5
           %h2
-            订单信息
-        .form-group.row.mb-5
-          = f.label Setting.trade_orders.price, :class => "col-2 col-form-label-lg text-right  col-form-label"
-          .col-10
-            = f.number_field :price, :class => "form-control border-0 form-control-lg"
-          .col-12
-            %hr
-          
+            收货地址
         .form-group.row.mb-5
           = f.label Setting.trade_orders.name, :class => "col-2 col-form-label-lg text-right  col-form-label"
           .col-10
@@ -36,7 +29,7 @@
         .form-group.row.mb-5
           = f.label Setting.trade_orders.address, :class => "col-2 col-form-label-lg text-right  col-form-label"
           .col-10
-            = f.text_area :address, :class => "form-control border-0 form-control-lg", :rows => "20"
+            = f.text_area :address, :class => "form-control border-0 form-control-lg", :rows => "5"
           .col-12
             %hr
           
