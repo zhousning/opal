@@ -1,6 +1,6 @@
-.container-fluid
-  .row.justify-content-sm-center
-    .col-sm-6
+.container-fluid.h-100
+  .row.h-100.py-5.px-5
+    .col-12
       = form_for @account do |f|
         - if @account.errors.any?
           #error_explanation
@@ -8,15 +8,17 @@
             %ul
               - @account.errors.full_messages.each do |msg|
                 %li= msg
+        .form-group.row.justify-content-center.mb-5
+          %h2
+            更改安全密码
       
-        .form-group.row
-          = f.label Setting.accounts.password, :class => "col-sm-3 col-form-label"
-          .col-sm-9
-            = f.number_field :password, :class => "form-control"
+        .form-group.row.mb-5
+          = f.label Setting.accounts.password, :class => "col-2 col-form-label col-form-label-lg text-right"
+          .col-10
+            = f.number_field :password, :class => "form-control border-0 form-control-lg"
+          .col-12
+            %hr
           
-      
         .form-group.row
-          .col-sm-3.offset-sm-2
-            = f.submit '保存', :class => "btn btn-success"
-          .col-sm-3.offset-sm-1
-            = link_to '返回', accounts_path, :class => "btn btn-danger"
+          .col-3.offset-2
+            = f.submit '更 改', :class => "btn btn-success btn-block btn-lg"

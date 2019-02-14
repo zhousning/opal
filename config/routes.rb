@@ -78,9 +78,10 @@ Rails.application.routes.draw do
   resources :demands
   resources :sells
 
-  resources :accounts, :only => [] do
+  resources :accounts, :only => [:edit, :update] do
     get :recharge, :on => :collection 
     get :info, :on => :collection
+    get :status, :on => :collection
   end
 
   resources :wares do

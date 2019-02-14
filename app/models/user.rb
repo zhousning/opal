@@ -45,18 +45,16 @@ class User < ActiveRecord::Base
   belongs_to :parent,   :class_name => 'User'
   has_many   :children, :class_name => 'User', :foreign_key => 'parent_id'
 
+  validates_uniqueness_of :phone
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
-  validates_uniqueness_of :phone
 
   def email_required?
     false
   end
 
   before_create :build_default_data
-
   def build_default_data
     build_account
     build_tree

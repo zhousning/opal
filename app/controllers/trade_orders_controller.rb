@@ -21,7 +21,7 @@ class TradeOrdersController < ApplicationController
 
   def pay_create
     @trade_order = TradeOrder.find(params[:id])
-    @trade_order.pay if current_user.account.password == params[:password]
+    @trade_order.pay if current_user.account.password == convert_to_md5(params[:password])
     redirect_to @trade_order
   end
   

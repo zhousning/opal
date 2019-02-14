@@ -15,6 +15,8 @@
 class Account < ActiveRecord::Base
   belongs_to :user
 
+  validates_presence_of :password
+
   def add_coin(value)
     self.update_attribute :coin, (self.coin + value)
   end
@@ -32,6 +34,6 @@ class Account < ActiveRecord::Base
   end
 
   def add_password(value)
-    self.update_attribute :password, value
+    self.update_attribute :password, Digest::MD5.hexdigest(value) unless value.blank?
   end
 end

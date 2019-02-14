@@ -44,4 +44,7 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.permit :account_update, keys: added_attrs
     end
 
+    def convert_to_md5(value)
+      Digest::MD5.hexdigest(value) unless value.blank?
+    end
 end

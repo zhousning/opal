@@ -1,7 +1,6 @@
 class AccountsController < ApplicationController
   layout "application_mobile"
   before_action :authenticate_user!
-  load_and_authorize_resource
 
   def info 
     @account = current_user.account 
@@ -12,6 +11,20 @@ class AccountsController < ApplicationController
     redirect_to new_order_url
   end
 
+  def edit
+    @account = current_user.account 
+  end
+
+  def update
+    @account = Account.find(params[:id])
+    unless params[:account][:password].blank?
+      @account.add_password(params[:account][:password])
+      redirect_to status_accounts_path
+    else
+      redirect_to edit_account_path(@account)
+    end
+  end
+  
   private
     def account_params
       params.require(:account).permit( :password)
