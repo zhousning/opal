@@ -4,4 +4,13 @@
       = link_to mobile_index_wares_path, :class => "nav-link mt-3 text-center " do
         = image_tag iconic('home'), :class => 'w-50'
     %li.nav-item.col.bg-danger.py-4
-      = link_to "立即购买", new_ware_trade_order_path(@ware), :class => "nav-link text-center text-white font-3rem"
+      - if user_signed_in?
+        - if current_user.status == Setting.users.passed
+          = link_to "立即购买", new_ware_trade_order_path(@ware), :class => "nav-link text-center text-white font-3rem"
+        - elsif current_user.status == Setting.users.opening
+          = link_to "立即购买", mobile_authc_new_user_path(current_user), :class => "nav-link text-center text-white font-3rem"
+        - else
+          = link_to "立即购买", mobile_authc_status_user_path(current_user), :class => "nav-link text-center text-white font-3rem"
+      - else
+        = link_to '立即购买', login_users_path, :class => "nav-link text-center text-white font-3rem"
+            

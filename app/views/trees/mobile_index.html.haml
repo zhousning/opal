@@ -66,11 +66,21 @@
               = image_tag "leaf.png", :class => "img-thumbnail bg-transparent border-0"
               %h2.text-center.text-body
                 茶树正在努力
-          - else
+          - elsif current_user.status == Setting.users.opening
             = link_to mobile_authc_new_user_path(current_user) do
               = image_tag "leaf.png", :class => "img-thumbnail bg-transparent border-0"
               %h2.text-center.text-body
                 创建钱包
+          - elsif current_user.status == Setting.users.pending
+            = link_to mobile_authc_status_user_path(current_user) do 
+              = image_tag "leaf.png", :class => "img-thumbnail bg-transparent border-0"
+              %h2.text-center.text-body
+                认证已提交
+          - else
+            = link_to mobile_authc_new_user_path(current_user) do
+              = image_tag "leaf.png", :class => "img-thumbnail bg-transparent border-0 d-block mx-auto"
+              %h2.text-center.text-body
+                认证失败，重新认证
         - else
           = link_to login_users_path do
             = image_tag "leaf.png", :class => "img-thumbnail bg-transparent border-0"

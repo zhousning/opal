@@ -1,7 +1,7 @@
 .card.mt-3.px-5
   .card-header.bg-white.py-4
     .row
-      .col-3
+      .col-12
         %h3
           = Setting.extract_cashes.coin
   .card-body.text-center.py-4
@@ -13,6 +13,7 @@
               %h2= "#{pluralize(@extract_cash.errors.count, "error")} prohibited this buyer from being saved:"
               %ul
                 - @extract_cash.errors.full_messages.each do |msg|
+                  %li= msg
         
           .form-group.row.mb-5
             = f.label '￥', :class => "col-2 col-form-label-lg text-right  col-form-label"
@@ -23,4 +24,4 @@
             
           .form-group.row
             .col-12
-              = f.submit '提现', :class => "btn btn-success btn-block btn-lg"
+              = f.submit "提现", :class => "btn btn-success btn-block btn-lg"

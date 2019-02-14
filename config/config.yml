@@ -60,6 +60,7 @@ development:
   orders:
     category_none: none
     category_recharge: recharge
+    paid: paid
     state_none: 0
     state_trade_created: 1
     state_trade_success: 2

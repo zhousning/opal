@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   resources :home, :only => [] do
     get :custom_service, :on => :collection
   end
+
+  resources :extract_cashes, :only => [:index, :new, :create] 
   
   resources :users do
     get :control, :on => :collection
@@ -28,7 +30,7 @@ Rails.application.routes.draw do
     get :reject, :on => :member
   end
 
-  resources :orders, :only => [:index, :new, :create, :show] do
+  resources :orders, :only => [:new, :create] do
     get :pay, :on => :collection
     get :alipay_return, :on => :collection
     post :alipay_notify, :on => :collection
@@ -74,18 +76,17 @@ Rails.application.routes.draw do
   resources :demands
   resources :sells
 
-  resources :accounts do
+  resources :accounts, :only => [] do
     get :recharge, :on => :collection 
+    get :info, :on => :collection
   end
-
-  resources :buyers
 
   resources :wares do
     get :mobile_index, :on => :collection
     get :mobile_show, :on => :member
     get :up, :on => :member
     get :down, :on => :member
-    resources :trade_orders, :only => [:new, :create]
+    resources :trade_orders,:only => [:new, :create]
   end
 
   resources :notices do

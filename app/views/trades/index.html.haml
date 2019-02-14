@@ -4,16 +4,52 @@
   = image_tag 'trade-header.png', :class => "card-img-top"
   .card-body.py-5
     .row
-      .col-6.text-center
-        = link_to new_demand_path do
-          %h2.text-secondary
-            = image_tag 'publish-demand.png', :class => "img-thubnail"
-            发布需求
-      .col-6.text-center
-        = link_to new_sell_path do
-          %h2.text-secondary
-            = image_tag 'publish-sell.png', :class => "img-thubnail"
-            发布转让
+      - if user_signed_in?
+        - if current_user.status == Setting.users.passed
+          .col-6.text-center
+            = link_to new_demand_path do
+              %h2.text-secondary
+                = image_tag 'publish-demand.png', :class => "img-thubnail"
+                发布需求
+          .col-6.text-center
+            = link_to new_sell_path do
+              %h2.text-secondary
+                = image_tag 'publish-sell.png', :class => "img-thubnail"
+                发布转让
+        - elsif current_user.status == Setting.users.opening
+          .col-6.text-center
+            = link_to mobile_authc_new_user_path(current_user) do
+              %h2.text-secondary
+                = image_tag 'publish-demand.png', :class => "img-thubnail"
+                发布需求
+          .col-6.text-center
+            = link_to mobile_authc_new_user_path(current_user) do
+              %h2.text-secondary
+                = image_tag 'publish-sell.png', :class => "img-thubnail"
+                发布转让
+        - else
+          .col-6.text-center
+            = link_to mobile_authc_status_user_path(current_user) do
+              %h2.text-secondary
+                = image_tag 'publish-demand.png', :class => "img-thubnail"
+                发布需求
+          .col-6.text-center
+            = link_to mobile_authc_status_user_path(current_user) do
+              %h2.text-secondary
+                = image_tag 'publish-sell.png', :class => "img-thubnail"
+                发布转让
+      - else
+        .col-6.text-center
+          = link_to login_users_path do
+            %h2.text-secondary
+              = image_tag 'publish-demand.png', :class => "img-thubnail"
+              发布需求
+        .col-6.text-center
+          = link_to login_users_path do
+            %h2.text-secondary
+              = image_tag 'publish-sell.png', :class => "img-thubnail"
+              发布转让
+          
 %hr.mb-5
 .container-fluid
   .row

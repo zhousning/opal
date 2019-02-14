@@ -5,10 +5,6 @@ class OrdersController < ApplicationController
   before_filter :authenticate_user!, :except=>[:alipay_notify]
   protect_from_forgery :only=>[:alipay_notify]
 
-  def index
-    @orders = current_user.orders
-  end
-
   def new
     @order = Order.new
   end
@@ -34,10 +30,6 @@ class OrdersController < ApplicationController
     end
   end
 
-  def show
-    @order = Order.find_by_number(params[:id])
-  end
-
   def pay
     @order = Order.find_by_number(params[:id])
     redirect_to @order.pay_url
@@ -48,8 +40,9 @@ class OrdersController < ApplicationController
     if callback_params.any? && Alipay::Sign.verify?(callback_params)
       #同步处理会在5秒钟后自动跳转，假设异步消息比同步要快
       #这里只提示不修改状态，否则可能会出现重复处理!!!
-      @order = Order.find_by_number(params[:out_trade_no])
-      redirect_to order_url(:id=>@order.number)
+      #@order = Order.find_by_number(params[:out_trade_no])
+      #redirect_to order_url(:id=>@order.number)
+      redirect_to info_accounts_url 
 
       #if @order.paid? || @order.completed?
       #  flash.now[:success] = I18n.t('order_paid_message')

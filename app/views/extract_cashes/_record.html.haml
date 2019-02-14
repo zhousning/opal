@@ -1,20 +1,23 @@
-- provide(:title, t('.title'))
-
-.container-fluid.py-5.px-5
+.card-header.bg-white.py-4
+  .row
+    .col-12
+      %h3
+        提现记录
+.card-body.text-center.py-4
   .row
     .col-12
       - if @extract_cashes
-        - @extract_cashes.each_with_index do |extract_cash, index|
-          %table.table
-            %thead
-              %tr
-                %th
-                  日期
-                %th
-                  = Setting.extract_cashes.coin
-                %th
-                  状态
-            %tbody
+        %table.table
+          %thead
+            %tr
+              %th
+                日期
+              %th
+                = Setting.extract_cashes.coin
+              %th
+                状态
+          %tbody
+            - @extract_cashes.each_with_index do |extract_cash, index|
               %tr
                 %td
                   = extract_cash.created_at.strftime("%Y-%m-%d %H:%M")
@@ -28,5 +31,3 @@
       - else
         %h3.text-center
           暂无提现记录
-              %th 
-                = Setting.extract_cashes.status
