@@ -70,7 +70,7 @@ gem 'sidekiq'
 gem 'sinatra', :require => nil
 gem "sidekiq-cron", "~> 1.1"
 
-#gem 'rest-client'
+gem 'rest-client'
 
 gem 'gon'
 

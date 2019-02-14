@@ -8,10 +8,10 @@
         .form-group.row.justify-content-center.mb-5
           = image_tag 'logo.png', :class => "img-thubnail"
         .form-group.row.mb-5
-          %label.col-2.col-form-label.col-form-label-lg.text-right{:for => "email"}
+          %label.col-2.col-form-label.col-form-label-lg.text-right{:for => "phone"}
             = image_tag 'session-phone.png', :class => "img-thubnail"
           .col-10
-            = f.text_field :email, autofocus: true, :class => "form-control border-0 form-control-lg", :placeholder => "手机号"
+            = f.phone_field :phone, autofocus: true, :class => "form-control border-0 form-control-lg", :placeholder => "手机号"
           .col-12
             %hr
         .form-group.row.mb-5
@@ -26,7 +26,7 @@
             = f.submit "登 录", class: "btn btn-success btn-lg btn-block "
         .form-group.row.mb-5
           .col-12
-            = link_to "注 册", logup_users_path, :class => "btn btn-info btn-lg btn-block "
+            = link_to "注 册", new_user_registration_path, :class => "btn btn-info btn-lg btn-block "
         -#
           - if devise_mapping.rememberable?
             .form-check

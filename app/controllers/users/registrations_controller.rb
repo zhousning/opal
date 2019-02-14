@@ -1,5 +1,4 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  before_action :configure_sign_up_params, only: [:create]
 # before_action :configure_account_update_params, only: [:update]
 
   def new
@@ -11,13 +10,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    super do |resource|
-      if resource.persisted? and resource.inviter != ""
-        user_inviter = User.find_by_number(resource.inviter)
-        if user_inviter
-          resource.update_attribute(:parent_id, user_inviter.id)
+    code = params[:confirm_code]
+    if code == cookies[:reg_code]
+      super do |resource|
+        if resource.persisted? and resource.inviter != ""
+          user_inviter = User.find_by_number(resource.inviter)
+          if user_inviter
+            resource.update_attribute(:parent_id, user_inviter.id)
+          end
         end
       end
+    else
+      redirect_to new_user_registration_url
     end
   end
 
@@ -26,9 +30,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
 
-  def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:inviter])
-  end
 
   #def after_inactive_sign_up_path_for(resource)
   #  sendmail_users_url

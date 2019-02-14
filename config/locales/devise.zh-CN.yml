@@ -76,6 +76,7 @@ zh-CN:
               taken: 邮箱已被注册，请使用其他邮箱注册
             phone:
               blank: 手机不能为空
+              taken: 手机已被注册，请使用其他手机注册
             name:
               blank: 姓名不能为空
             province:

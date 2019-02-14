@@ -17,12 +17,14 @@ Rails.application.routes.draw do
 
   resources :extract_cashes, :only => [:index, :new, :create] 
   
+  resources :systems, :only => [] do
+    get :send_confirm_code, :on => :collection
+  end
+
   resources :users do
     get :control, :on => :collection
     get :level, :on => :collection
     get :center, :on => :collection
-    get :login, :on => :collection
-    get :logup, :on => :collection
     get :mobile_authc_new, :on => :member
     post :mobile_authc_create, :on => :member
     get :mobile_authc_status, :on => :member

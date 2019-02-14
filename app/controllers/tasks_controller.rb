@@ -3,6 +3,6 @@ class TasksController < ApplicationController
   before_filter :authenticate_user!
 
   def invite
-    @invite_link = logup_users_url(:inviter=>current_user.number)
+    @invite_link = new_user_registration_url(:inviter=>current_user.number)
   end
 end

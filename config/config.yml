@@ -3,6 +3,7 @@ defaults:
   admins: &1
     class_name: all
     email: admin@qq.com
+    phone: '15854752120'
   users: &2
     class_name: User
     opening: 0

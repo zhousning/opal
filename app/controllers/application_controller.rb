@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
   include CanCan::ControllerAdditions
+  before_action :configure_permitted_parameters_name, if: :devise_controller?
 
   protect_from_forgery with: :exception
-
 
   before_filter :user_access_log
 
@@ -36,6 +36,12 @@ class ApplicationController < ActionController::Base
 
     def is_super_admin?
       redirect_to root_path and return unless current_user.super_admin?
+    end
+
+    def configure_permitted_parameters_name
+      added_attrs = [:phone, :email, :password, :password_confirmation, :remember_me, :inviter]
+      devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
+      devise_parameter_sanitizer.permit :account_update, keys: added_attrs
     end
 
 end

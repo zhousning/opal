@@ -12,13 +12,13 @@ admin_permissions = Permission.create(:name => Setting.permissions.super_admin, 
 
 role.permissions << admin_permissions
 
-user = User.new(:email => Setting.admins.email, :password => Setting.admins.email, :password_confirmation => Setting.admins.email)
+user = User.new(:phone => Setting.admins.phone, :password => Setting.admins.phone, :password_confirmation => Setting.admins.phone)
 user.save!
 
 user.roles = []
 user.roles << role
 
 
-u = User.create(:email => "dayi@qq.com", :password => "dayi@qq.com", :password_confirmation => "dayi@qq.com")
+u = User.create(:phone => "15763703188", :password => "15763703188", :password_confirmation => "15763703188")
 
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')

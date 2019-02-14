@@ -30,4 +30,8 @@ class Account < ActiveRecord::Base
   def sub_freeze_coin(value)
     self.update_attribute :freeze_coin, (self.freeze_coin - value)
   end
+
+  def add_password(value)
+    self.update_attribute :password, value
+  end
 end

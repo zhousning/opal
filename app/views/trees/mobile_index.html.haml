@@ -82,7 +82,7 @@
               %h2.text-center.text-body
                 认证失败，重新认证
         - else
-          = link_to login_users_path do
+          = link_to new_user_session_path do
             = image_tag "leaf.png", :class => "img-thumbnail bg-transparent border-0"
             %h2.text-center.text-body
               请登录
