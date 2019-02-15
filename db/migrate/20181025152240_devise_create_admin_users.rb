@@ -5,6 +5,7 @@ class DeviseCreateAdminUsers < ActiveRecord::Migration
     create_table :admin_users do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
+      t.string :phone,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
 
       ## Recoverable
@@ -36,7 +37,7 @@ class DeviseCreateAdminUsers < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    add_index :admin_users, :email,                unique: true
+    add_index :admin_users, :phone,                unique: true
     add_index :admin_users, :reset_password_token, unique: true
     # add_index :admin_users, :confirmation_token,   unique: true
     # add_index :admin_users, :unlock_token,         unique: true

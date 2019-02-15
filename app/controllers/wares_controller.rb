@@ -2,7 +2,6 @@ class WaresController < ApplicationController
   layout "application_control", :except => [:mobile_index, :mobile_show]
   #layout "application_mobile", :only => [:mobile_index, :mobile_show]
   before_action :authenticate_user!, :except => [:mobile_index, :mobile_show]
-  load_and_authorize_resource :except => [:mobile_index, :mobile_show]
 
   def index
     @wares = Ware.all

@@ -5,10 +5,11 @@
 #  id         :integer          not null, primary key
 #  number     :string
 #  price      :float
-#  state      :string
+#  state      :string           default("opening"), not null
 #  name       :string
 #  phone      :string
 #  address    :string
+#  wayno      :string
 #  user_id    :integer
 #  ware_id    :integer
 #  created_at :datetime         not null
@@ -77,5 +78,21 @@ class TradeOrder < ActiveRecord::Base
 
   def remove_plan
     self.user.account.add_coin(self.price)
+  end
+
+  def trade_order_state(state)
+    if state == Setting.trade_orders.opening
+      Setting.trade_orders.opening_title
+    elsif state == Setting.trade_orders.pending
+      Setting.trade_orders.pending_title
+    elsif state == Setting.trade_orders.paid
+      Setting.trade_orders.paid_title
+    elsif state == Setting.trade_orders.departed
+      Setting.trade_orders.departed_title
+    elsif state == Setting.trade_orders.completed
+      Setting.trade_orders.completed_title
+    elsif state == Setting.trade_orders.canceled
+      Setting.trade_orders.canceled_title
+    end
   end
 end

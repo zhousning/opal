@@ -2,7 +2,7 @@ ActiveAdmin.register AdminUser do
 
   permit_params :email, :password, :password_confirmation
 
-  menu label: "管理员", :priority => 10
+  menu label: "管理员", :priority => 2
   config.per_page = 20
   config.sort_order = "id_asc"
 

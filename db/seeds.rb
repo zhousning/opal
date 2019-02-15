@@ -21,4 +21,4 @@ user.roles << role
 
 u = User.create(:phone => "15763703188", :password => "15763703188", :password_confirmation => "15763703188")
 
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+AdminUser.create!(phone: '15859859888', email: 'mytea@world.com', password: 'myteaworld', password_confirmation: 'myteaworld')

@@ -5,8 +5,8 @@
 #  id          :integer          not null, primary key
 #  number      :string
 #  category    :string           default("none"), not null
-#  money       :integer
-#  coin        :integer
+#  money       :float
+#  coin        :float
 #  status      :integer          default(0), not null
 #  subject     :string
 #  trade_no    :string

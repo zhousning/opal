@@ -1,51 +1,48 @@
 - provide(:title, t('.title'))
 
-- content_for :main_body do
-  .container-fluid
-    .row
-      .col-md-12
-        %table.table.text-center.table-bordered
-          %thead
-            %tr
-            
-              %th 
-                = Setting.wares.title
-              %th 
-                = Setting.wares.price
-              %th 
-                = Setting.wares.citrine_count
-              %th 
-                = Setting.wares.freight
-              %th 
-                = Setting.wares.category
-              %th 
-                = Setting.wares.brand
-              %th
-          %tbody
-            %tr
-            
-              %td
-                = @ware.title
-              %td
-                = @ware.price
-              %td
-                = @ware.citrine_count
-              %td
-                = @ware.freight
-              %td
-                = @ware.category
-              %td
-                = @ware.brand
-              %td
-                = link_to '编辑', edit_ware_path(@ware), :class => "btn btn-success"
-                = link_to '返回', wares_path, :class => "btn btn-danger"
-    
-      .col-md-12
-        - @ware.enclosures.each do |e|
-          = image_tag e.file_url(:small_width)
-      .col-md-12
-        = Setting.wares.description
-        = @ware.description.html_safe
-    
-
-= render "layouts/control_panel"
+.container-fluid.py-5
+  .row
+    .col-md-12
+      %table.table.text-center.table-bordered
+        %thead
+          %tr
+          
+            %th 
+              = Setting.wares.title
+            %th 
+              = Setting.wares.price
+            %th 
+              = Setting.wares.citrine_count
+            %th 
+              = Setting.wares.freight
+            %th 
+              = Setting.wares.category
+            %th 
+              = Setting.wares.brand
+            %th
+        %tbody
+          %tr
+          
+            %td
+              = @ware.title
+            %td
+              = @ware.price
+            %td
+              = @ware.citrine_count
+            %td
+              = @ware.freight
+            %td
+              = @ware.category
+            %td
+              = @ware.brand
+            %td
+              = link_to '编辑', edit_ware_path(@ware), :class => "btn btn-success"
+              = link_to '返回', wares_path, :class => "btn btn-danger"
+  
+    .col-md-12
+      - @ware.enclosures.each do |e|
+        = image_tag e.file_url(:small_width)
+    .col-md-12
+      = Setting.wares.description
+      = @ware.description.html_safe
+  

@@ -14,6 +14,13 @@ defaults:
     pending_title: 待审核
     rejected_title: 不通过
     passed_title: 通过
+    phone: 电话
+    password: 密码
+    password_confirmation: 确认密码
+    name: 姓名
+    identity: 身份证
+    alipay: 支付宝
+    status: 认证状态
   roles: &3
     class_name: Role
     super_admin: 超级管理员

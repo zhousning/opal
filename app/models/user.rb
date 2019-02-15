@@ -79,6 +79,10 @@ class User < ActiveRecord::Base
     end
   end
 
+
+  def user_status(value)
+  end
+
   def pend
     update_attribute :status, Setting.users.pending
   end
