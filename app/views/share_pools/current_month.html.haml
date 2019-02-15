@@ -1,0 +1,13 @@
+- provide(:title, t('.title'))
+
+.container-fluid.h-100.py-5
+  .row.mt-5.h-50
+    .col-md-12.text-center
+      %h1.mb-5.text-warning.font-weight-bold
+        = @share_pool.current_total
+      %h2.mb-5.text-white
+        = Setting.share_pools.current_total
+      %h1.mb-5.text-warning.font-weight-bold
+        = @share_pool.own_tea
+      %h2.mb-5.text-white
+        = Setting.share_pools.own_tea

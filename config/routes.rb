@@ -16,6 +16,10 @@ Rails.application.routes.draw do
   end
 
   resources :extract_cashes, :only => [:index, :new, :create] 
+
+  resources :share_pools, :only => [:show] do
+    get :current_month, :on => :collection
+  end
   
   resources :systems, :only => [] do
     get :send_confirm_code, :on => :collection

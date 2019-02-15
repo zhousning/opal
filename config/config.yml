@@ -142,6 +142,16 @@ development:
     pending_title: 待审核
     agree: agree
     agree_title: 已提现
+  share_pools:
+    today_enter: 今日入账
+    total: 月分红池总额度 
+    user_total: 昨日分红池总额
+    pay: 昨日白银茶主平均分红 
+    ware_total: 昨日黄金茶主平均分红 
+    gross_sale: 昨日铂金茶主平均分红 
+    diamond: 昨日钻石茶主平均分红 
+    current_total: 分红池当月总额
+    own_tea: 持茶/片所得
 test:
   admins: *1
   users: *2
