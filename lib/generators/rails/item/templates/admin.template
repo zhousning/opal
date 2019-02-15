@@ -6,6 +6,10 @@ ActiveAdmin.register <%= @mc %>  do
   config.per_page = 20
   config.sort_order = "id_asc"
 
+  <% @attrs.each do |attr| %>
+  filter :<%= attr %>, :label => Setting.<%= @mpu %>.<%= attr %><% end %>
+  filter :created_at
+
   index :title=>"todo" do
     selectable_column
     id_column
@@ -20,10 +24,6 @@ ActiveAdmin.register <%= @mc %>  do
     end
     actions
   end
-
-  <% @attrs.each do |attr| %>
-  filter :<%= attr %>, :label => Setting.<%= @mpu %>.<%= attr %><% end %>
-  filter :created_at
 
   form do |f|
     f.inputs "详情" do

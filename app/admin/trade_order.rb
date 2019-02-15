@@ -32,7 +32,7 @@ ActiveAdmin.register TradeOrder  do
   
   filter :number, :label => Setting.trade_orders.number 
   filter :price, :label => Setting.trade_orders.price 
-  filter :state, :label => Setting.trade_orders.state 
+  filter :state, :label => Setting.trade_orders.state
   filter :wayno, :label => Setting.trade_orders.wayno
   filter :name, :label => Setting.trade_orders.name 
   filter :phone, :label => Setting.trade_orders.phone 
