@@ -1,3 +1,0 @@
-$(".leafs").ready(function() {
-
-});

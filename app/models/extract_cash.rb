@@ -13,6 +13,8 @@
 class ExtractCash < ActiveRecord::Base
   belongs_to :user
 
+  validates :coin,        :numericality => {:greater_than => 0}
+
   def agree
     update_attribute :status, Setting.extract_cashes.agree 
   end

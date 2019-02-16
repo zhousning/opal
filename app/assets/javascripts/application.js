@@ -15,7 +15,6 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require jquery-readyselector 
-//= require headroom
 //= require cocoon
 //= require clipboard
 //= require jquery

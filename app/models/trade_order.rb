@@ -6,9 +6,9 @@
 #  number     :string
 #  price      :float
 #  state      :string           default("opening"), not null
-#  name       :string
-#  phone      :string
-#  address    :string
+#  name       :string           not null
+#  phone      :string           not null
+#  address    :string           not null
 #  wayno      :string
 #  user_id    :integer
 #  ware_id    :integer
@@ -19,6 +19,8 @@
 class TradeOrder < ActiveRecord::Base
   belongs_to :user
   belongs_to :ware
+
+  validates_presence_of :name, :phone, :address
 
   STATE = %w(opening pending paid departed completed canceled)
   #validates_inclusion_of :state, :in => STATE

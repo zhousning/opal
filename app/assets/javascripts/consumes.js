@@ -1,3 +1,0 @@
-$(".consumes").ready(function() {
-
-});

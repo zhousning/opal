@@ -15,7 +15,10 @@
 class Account < ActiveRecord::Base
   belongs_to :user
 
-  validates_presence_of :password
+  validates :coin,        :numericality => {:greater_than_or_equal_to => 0}, :on => :update
+  validates :freeze_coin, :numericality => {:greater_than_or_equal_to => 0}, :on => :update
+
+  #validates :password, :presence => true
 
   def add_coin(value)
     self.update_attribute :coin, (self.coin + value)

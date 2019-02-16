@@ -3,8 +3,8 @@
 # Table name: citrines
 #
 #  id         :integer          not null, primary key
-#  count      :integer          default(0), not null
-#  total      :integer          default(0), not null
+#  count      :float            default(0.0), not null
+#  total      :float            default(0.0), not null
 #  user_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
