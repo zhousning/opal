@@ -16,7 +16,7 @@ class AccountsController < ApplicationController
   end
 
   def update
-    @account = Account.find(params[:id])
+    @account = current_user.account 
     unless params[:account][:password].blank?
       @account.add_password(params[:account][:password])
       redirect_to status_accounts_path

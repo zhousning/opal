@@ -1,7 +1,6 @@
 class SellsController < ApplicationController
   layout "application_mobile"
   before_action :authenticate_user!
-  load_and_authorize_resource
 
   def new
     @sell = Sell.new

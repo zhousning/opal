@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     get :custom_service, :on => :collection
   end
 
-  resources :extract_cashes, :only => [:index, :new, :create] 
+  resources :extract_cashes, :only => [ :new, :create] 
 
   resources :share_pools, :only => [:show] do
     get :current_month, :on => :collection
@@ -25,15 +25,12 @@ Rails.application.routes.draw do
     get :send_confirm_code, :on => :collection
   end
 
-  resources :users do
-    get :control, :on => :collection
+  resources :users, :only => []  do
     get :level, :on => :collection
     get :center, :on => :collection
     get :mobile_authc_new, :on => :member
     post :mobile_authc_create, :on => :member
     get :mobile_authc_status, :on => :member
-    get :pass, :on => :member
-    get :reject, :on => :member
   end
 
   resources :orders, :only => [:new, :create] do
@@ -58,11 +55,9 @@ Rails.application.routes.draw do
 
   resources :teams, :only => [:index]
 
-  resources :trees do
-    get :mobile_index, :on => :collection
-  end
+  resources :trees, :only => [:index]
 
-  resources :leafs do
+  resources :leafs, :only => [] do
     get :pick, :on => :member
   end
 
@@ -79,8 +74,8 @@ Rails.application.routes.draw do
     get :my_sell, :on => :collection
   end
 
-  resources :demands
-  resources :sells
+  resources :demands, :only => [:new, :create]
+  resources :sells, :only => [:new, :create]
 
   resources :accounts, :only => [:edit, :update] do
     get :recharge, :on => :collection 

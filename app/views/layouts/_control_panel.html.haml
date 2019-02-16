@@ -9,30 +9,11 @@
               = current_user.email
               %span.sr-only (current)
           %li.nav-item
-            = link_to control_users_path, :class => "nav-link" do
-              %span{"data-feather" => "file"}
-              个人中心
           - if can? :index, Role 
             %li.nav-item
               = link_to roles_path, :class => "nav-link" do
                 %span{"data-feather" => "file"}
                 角色管理
-            %li.nav-item
-              = link_to mobile_index_wares_path, :class => "nav-link" do
-                %span{"data-feather" => "file"}
-                  mobile ware index
-            %li.nav-item
-              = link_to notices_path, :class => "nav-link" do
-                公告管理
-            %li.nav-item
-              = link_to invite_tasks_path, :class => "nav-link" do
-                分享
-            %li.nav-item
-              = link_to mobile_authc_new_user_path(current_user), :class => "nav-link" do
-                mobile_authc_new
-            %li.nav-item
-              = link_to mobile_index_trees_path, :class => "nav-link" do
-                mobile index trees_
           - if can? :index, Ware 
             %li.nav-item
               = link_to wares_path, :class => "nav-link" do

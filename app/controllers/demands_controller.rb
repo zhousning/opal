@@ -1,14 +1,9 @@
 class DemandsController < ApplicationController
   layout "application_mobile"
   before_action :authenticate_user!
-  load_and_authorize_resource
 
   def new
     @demand = Demand.new
-  end
-
-  def create
-    leafs = current_user
   end
 
   def create

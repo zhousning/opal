@@ -1,5 +1,6 @@
 class CitrinesController < ApplicationController
   layout "application_mobile"
+  before_action :authenticate_user!, :except => [:index]
 
   def index
   end
@@ -15,7 +16,7 @@ class CitrinesController < ApplicationController
       current_user.tree.add_count(1)
       @citrine.sub_count(Setting.citrines.exchange_max)
       Consume.create(:category => Setting.consumes.category_exchange_tree, :coin_cost => Setting.citrines.exchange_max, :status => Setting.consumes.status_success, :user_id => current_user.id, :citrine_id => @citrine.id)
-      redirect_to mobile_index_trees_url
+      redirect_to trees_url
     else
       redirect_to citrines_url
     end

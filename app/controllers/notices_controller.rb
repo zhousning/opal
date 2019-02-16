@@ -39,7 +39,6 @@ class NoticesController < ApplicationController
 
   def create
     @notice = Notice.new(notice_params)
-    #@notice.user = current_user
     if @notice.save
       redirect_to @notice
     else
