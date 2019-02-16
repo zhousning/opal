@@ -1,7 +1,5 @@
-- provide(:title, t('.title'))
-
 .container-fluid.py-5.px-5
-  - if @trade_orders
+  - if @trade_orders.size != 0
     - @trade_orders.each do |trade_order|
       .card.mb-5
         .card-header

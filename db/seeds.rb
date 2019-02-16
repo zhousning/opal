@@ -18,8 +18,10 @@ user.save!
 user.roles = []
 user.roles << role
 
-User.create(:phone => "15763703188", :password => "15763703188", :password_confirmation => "15763703188")
+User.create!(:phone => "15763703188", :password => "15763703188", :password_confirmation => "15763703188")
 
-#AdminUser.create!(:phone => Setting.admins.phone, :password => Setting.admins.password, :password_confirmation => Setting.admins.password)
+AdminUser.create!(:phone => Setting.admins.phone, :email => Setting.admins.email, :password => Setting.admins.password, :password_confirmation => Setting.admins.password)
 
-SharePool.create(today_enter: 17890, total: 3242341, user_total:21234, pay: 453232, ware_total:3332, gross_sale: 1232, diamond: 9580, current_total: 3423, own_tea: 1.84)
+SharePool.create!(today_enter: 17890, total: 3242341, user_total:21234, pay: 453232, ware_total:3332, gross_sale: 1232, diamond: 9580, current_total: 3423, own_tea: 1.84)
+
+Notice.create!(:title => "茶源世界", :content => "欢迎来到茶源世界")

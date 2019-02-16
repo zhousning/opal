@@ -5,6 +5,11 @@ class TradesController < ApplicationController
   def index
     @demands = Demand.where(:status => Setting.demands.enable).order("created_at DESC") 
     @sells = Sell.where(:status => Setting.sells.enable).order("created_at DESC") 
+    @chart = LazyHighCharts::HighChart.new('graph') do |f|
+      f.xAxis(categories: ["1", "2", "3", "4", "5", "6", "7"], style: { :color => "black"})
+      f.series(data: [70, 85, 120, 140, 150, 170, 200], color: 'green')
+      f.chart({defaultSeriesType: "line"})
+    end
   end
 
   def betray_new

@@ -3,7 +3,7 @@
 .container-fluid.py-5.px-5
   .row
     .col-12
-      - if @demands
+      - if @demands.size != 0
         - @demands.each do |d|
           %table.table
             %thead

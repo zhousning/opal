@@ -3,7 +3,7 @@
 .container-fluid.py-5.px-5
   .row
     .col-12
-      - if @sells
+      - if @sells.size != 0
         - @sells.each do |d|
           %table.table
             %thead

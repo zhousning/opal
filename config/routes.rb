@@ -98,7 +98,7 @@ Rails.application.routes.draw do
 
   resources :roles
 
-  root :to => 'trees#mobile_index'
+  root :to => 'trees#index'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

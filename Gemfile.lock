@@ -139,6 +139,7 @@ GEM
     has_scope (0.7.2)
       actionpack (>= 4.1)
       activesupport (>= 4.1)
+    hash-deep-merge (0.1.1)
     html2haml (2.2.0)
       erubis (~> 2.7.0)
       haml (>= 4.0, < 6)
@@ -181,6 +182,8 @@ GEM
       activerecord
       kaminari-core (= 1.1.1)
     kaminari-core (1.1.1)
+    lazy_high_charts (1.5.8)
+      hash-deep-merge
     libv8 (6.7.288.46.1)
     loofah (2.2.3)
       crass (~> 1.0.2)
@@ -352,9 +355,9 @@ DEPENDENCIES
   iconv
   jbuilder (~> 2.0)
   jquery-rails
+  lazy_high_charts
   mini_magick
   mini_racer
-  popper_js (~> 1.14.5)
   rails (= 4.2.3)
   rails_kindeditor
   rest-client

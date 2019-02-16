@@ -15,8 +15,6 @@
           
             %th 
               = Setting.notices.title
-            %th 
-              = Setting.notices.content
             %th
         %tbody
           - @notices.each_with_index do |notice, index|
@@ -26,8 +24,6 @@
             
               %td
                 = notice.title
-              %td
-                = notice.content
               %td
                 = link_to "查看", notice_path(notice), :class => "btn btn-primary btn-sm"
                 = link_to "编辑", edit_notice_path(notice), :class => "btn btn-success btn-sm"

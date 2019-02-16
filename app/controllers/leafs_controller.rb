@@ -4,12 +4,12 @@ class LeafsController < ApplicationController
 
 
   def pick
+    tree_count = current_user.tree.count
     leaf = current_user.leaf 
-    unpick = leaf.unpick
+    unpick = leaf.unpick*tree_count
     leaf.add_pick(leaf.unpick)
 
     if unpick != 0
-      tree_count = current_user.tree.count
       count = 0.42/6*unpick
       leaf.add_count(count)
     end

@@ -15,18 +15,18 @@ class UsersController < ApplicationController
   end
 
   def mobile_authc_create
-    @user = current_user 
-    @user.pend
     account_password = params[:account_password]
     if account_password.blank?
-      render :mobile_authc_new
-    end
-
-    if @user.update(user_authc_params)
-      @user.account.add_password(account_password)
-      redirect_to mobile_authc_status_user_url(@user)
+      redirect_to mobile_authc_new_user_url
     else
-      render :mobile_authc_new
+      @user = current_user 
+      @user.pend
+      if @user.update(user_authc_params)
+        @user.account.add_password(account_password)
+        redirect_to mobile_authc_status_user_url(@user)
+      else
+        render :mobile_authc_new
+      end
     end
   end
 

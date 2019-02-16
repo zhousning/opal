@@ -94,13 +94,13 @@ gem 'activeadmin_blaze_theme'
 #gem 'alipay', '~> 0.12.0'
 gem 'alipay', :git=>'https://github.com/zhousning/alipay.git'
 
-#gem 'lazy_high_charts'
+gem 'lazy_high_charts'
 
 #gem 'kaminari'
 
 gem 'cocoon'
 
-gem 'popper_js', '~> 1.14.5'
+#gem 'popper_js', '~> 1.14.5'
 
 #gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'

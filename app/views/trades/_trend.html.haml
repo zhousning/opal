@@ -1,0 +1,27 @@
+.card.mt-3.px-5
+  .card-header.bg-white.py-4
+    .row
+      .col
+        %h3.text-center
+          茶叶涨幅图
+  .card-body.text-center.py-4
+    .row
+      .col
+        = high_chart("some_id", @chart)
+  .card-body
+    .row
+      .col.text-center
+        %h3
+          今日总求购:
+        %h4
+          34125445片
+      .col.text-center
+        %h3
+          今日茶叶价:
+        %h4
+          78元
+      .col.text-center
+        %h3
+          今日成交量:
+        %h4
+          134227片

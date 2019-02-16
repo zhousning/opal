@@ -18,7 +18,7 @@
             %td
               = @notice.title
             %td
-              = @notice.content
+              = @notice.content.html_safe
             %td
               = link_to '编辑', edit_notice_path(@notice), :class => "btn btn-success"
               = link_to '返回', notices_path, :class => "btn btn-danger"

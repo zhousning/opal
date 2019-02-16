@@ -12,12 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require popper
 //= require bootstrap-sprockets
 //= require jquery-readyselector 
 //= require cocoon
 //= require clipboard
-//= require jquery
-//= require jquery_ujs
 //= require kindeditor
 //= require_tree .
+//
+//= require highcharts/highcharts
+//= require highcharts/highcharts-more
+//= require highcharts/highstock
