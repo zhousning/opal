@@ -1,11 +1,10 @@
----
 defaults:
-  admins: &1
+  admins:
     class_name: all
     email: 'mytea@world.com'
     phone: '15859859888'
     password: 'myteaworld'
-  users: &2
+  users:
     class_name: User
     opening: 0
     pending: 1
@@ -22,19 +21,14 @@ defaults:
     identity: 身份证
     alipay: 支付宝
     status: 认证状态
-  roles: &3
+  roles:
     class_name: Role
     super_admin: 超级管理员
     buyer: 客户信息管理
     tax_category: 商品税收分类编码库管理
     invoice: 发票管理
-  permissions: &4
+  permissions:
     super_admin: 管理系统所有资源
-development:
-  admins: *1
-  users: *2
-  roles: *3
-  permissions: *4
   citrines:
     exchange_max: 500
   awards:
@@ -154,13 +148,12 @@ development:
     diamond: 昨日钻石茶主平均分红 
     current_total: 分红池当月总额
     own_tea: 持茶/片所得
+
+development:
+  <<: *defaults
+
 test:
-  admins: *1
-  users: *2
-  roles: *3
-  permissions: *4
+  <<: *defaults
+
 production:
-  admins: *1
-  users: *2
-  roles: *3
-  permissions: *4
+  <<: *defaults
