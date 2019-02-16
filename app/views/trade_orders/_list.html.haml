@@ -17,7 +17,7 @@
             %h3
               = trade_order.price
             %p
-              = state(trade_order.state)
+              = trade_order.trade_order_state
             - if trade_order.state == Setting.trade_orders.departed
               %p
                 = Setting.trade_orders.wayno

@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
   has_many :demands
   has_many :sells
   has_many :orders
-  has_many :trade_orders
+  has_many :users
   has_many :extract_cashes
   
   belongs_to :role
@@ -76,6 +76,18 @@ class User < ActiveRecord::Base
   STATUS.each do |status|
     define_method "#{status}?" do
       self.status == Setting.users.status
+    end
+  end
+
+  def state
+    if self.status == Setting.users.opening
+      Setting.users.pending_title
+    elsif self.status == Setting.users.pending
+      Setting.users.pending_title
+    elsif self.status == Setting.users.rejected
+      Setting.users.rejected_title
+    elsif self.status == Setting.users.passed
+      Setting.users.passed_title
     end
   end
 

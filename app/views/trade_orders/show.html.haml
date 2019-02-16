@@ -27,7 +27,7 @@
           = Setting.trade_orders.address
           = @trade_order.address
         %li.list-group-item
-          = state(@trade_order.state)
+          = @trade_order.trade_order_state
         %li.list-group-item
           - if @trade_order.state == Setting.trade_orders.departed
             = Setting.trade_orders.wayno

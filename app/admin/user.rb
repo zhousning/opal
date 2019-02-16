@@ -16,7 +16,9 @@ ActiveAdmin.register User  do
     column Setting.users.name, :name
     column Setting.users.identity, :identity
     column Setting.users.alipay, :alipay
-    column Setting.users.status, :status
+    column Setting.users.status, :status do |f|
+      f.state
+    end
 
     column "创建时间", :created_at, :sortable=>:created_at do |f|
       f.created_at.strftime('%Y-%m-%d %H:%M:%S')
@@ -46,7 +48,6 @@ ActiveAdmin.register User  do
       f.input :name, :label => Setting.users.name 
       f.input :identity, :label => Setting.users.identity 
       f.input :alipay, :label => Setting.users.alipay 
-      f.input :status, :label => Setting.users.status 
     end
     f.actions
   end
@@ -56,7 +57,6 @@ ActiveAdmin.register User  do
       row "ID" do
         user.id
       end
-      
       row Setting.users.phone do
         user.phone
       end
@@ -76,15 +76,18 @@ ActiveAdmin.register User  do
         user.alipay
       end
       row Setting.users.status do
-        user.status
+        user.state
       end
 
       row "创建时间" do
-        nn
         user.created_at.strftime('%Y-%m-%d %H:%M:%S')
       end
       row "更新时间" do
         user.updated_at.strftime('%Y-%m-%d %H:%M:%S')
+      end
+      row "审核" do
+        link_to(Setting.users.passed_title, pass_admin_user_path(user.id)) + "  " +
+        link_to(Setting.users.rejected_title, reject_admin_user_path(user.id))
       end
     end
   end
@@ -95,35 +98,20 @@ ActiveAdmin.register User  do
     user.tree.add_count(1) if user.tree.count == 0 
     user.leaf.enable
     user.citrine.add_count(Setting.awards.one_citrine)
-    unless user.inviter.blank?
-      higher_up = User.find_by_number(user.inviter)
-      if higher_up
-        higher_up.citrine.add_count(Setting.awards.ten_citrine)
-        higher(higher_up)
-      end
+    father = user.parent
+    while father 
+        father.citrine.add_count(Setting.awards.ten_citrine)
+        father = father.parent
     end
-    redirect_to :action => :index
+    redirect_to admin_user_path(params[:id])
   end
 
   member_action :reject do
     user = User.find(params[:id])
     user.reject
     user.leaf.disable
-    redirect_to :action => :index
+    redirect_to admin_user_path(params[:id])
   end
 
-  def higher(user)
-    unless user.inviter.blank?
-      higher_up = User.find_by_number(user.inviter)
-      if higher_up
-        higher_up.citrine.add_count(Setting.awards.one_citrine)
-        higher(higher_up)
-      end
-    end
-  end
-
-def nn
-  "ddd"
-end
 end
 
