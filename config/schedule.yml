@@ -1,4 +1,4 @@
 produce_leaf:
-  cron: "*/120 * * * *"
+  cron: "37 */1 * * *"
   class: "HardWorker"
   queue: default

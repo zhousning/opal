@@ -116,6 +116,7 @@ development:
     disable: disable
   systems:
     poundage: 0.1
+    host: '120.55.50.204' 
   trade_orders:
     number: 订单编号
     price: 价格

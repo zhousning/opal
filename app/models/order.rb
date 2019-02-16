@@ -89,8 +89,8 @@ class Order < ActiveRecord::Base
       #:logistics_type    => 'DIRECT',
       #:logistics_fee     => '0',
       #:logistics_payment => 'SELLER_PAY',
-      :return_url        => Rails.application.routes.url_helpers.alipay_return_orders_url(:host => 'www.kuai65.com'),
-      :notify_url        => Rails.application.routes.url_helpers.alipay_notify_orders_url(:host => 'www.kuai65.com')
+      :return_url        => Rails.application.routes.url_helpers.alipay_return_orders_url(:host => Setting.systems.host),
+      :notify_url        => Rails.application.routes.url_helpers.alipay_notify_orders_url(:host => Setting.systems.host)
       #:receive_name      => 'none',
       #:receive_address   => 'none',
       #:receive_zip       => '100000',
