@@ -2,8 +2,9 @@
 defaults:
   admins: &1
     class_name: all
-    email: admin@qq.com
-    phone: '15854752120'
+    email: 'mytea@world.com'
+    phone: '15859859888'
+    password: 'myteaworld'
   users: &2
     class_name: User
     opening: 0

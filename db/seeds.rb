@@ -12,14 +12,14 @@ admin_permissions = Permission.create(:name => Setting.permissions.super_admin, 
 
 role.permissions << admin_permissions
 
-user = User.new(:phone => Setting.admins.phone, :password => Setting.admins.phone, :password_confirmation => Setting.admins.phone)
+user = User.new(:phone => Setting.admins.phone, :password => Setting.admins.password, :password_confirmation => Setting.admins.password)
 user.save!
 
 user.roles = []
 user.roles << role
 
+User.create(:phone => "15763703188", :password => "15763703188", :password_confirmation => "15763703188")
+
+AdminUser.create!(:phone => Setting.admins.phone, :password => Setting.admins.password, :password_confirmation => Setting.admins.password)
+
 SharePool.create(today_enter: 17890, total: 3242341, user_total:21234, pay: 453232, ware_total:3332, gross_sale: 1232, diamond: 9580, current_total: 3423, own_tea: 1.84)
-
-u = User.create(:phone => "15763703188", :password => "15763703188", :password_confirmation => "15763703188")
-
-AdminUser.create!(phone: '15859859888', email: 'mytea@world.com', password: 'myteaworld', password_confirmation: 'myteaworld')

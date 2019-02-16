@@ -1,5 +1,6 @@
 class TradesController < ApplicationController
   layout "application_mobile"
+  before_action :authenticate_user!, :except => [:index]
 
   def index
     @demands = Demand.where(:status => Setting.demands.enable).order("created_at DESC") 
@@ -59,11 +60,11 @@ class TradesController < ApplicationController
     @demands = current_user.demands.where(:status => Setting.demands.enable).order("created_at DESC") 
   end
 
-  def demand_manage
-  end
-
   def my_sell
     @sells = current_user.sells.where(:status => Setting.sells.enable).order("created_at DESC") 
+  end
+
+  def demand_manage
   end
 
   def sell_manage

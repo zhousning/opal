@@ -1,37 +1,38 @@
 class WaresController < ApplicationController
   layout "application_control", :except => [:mobile_index, :mobile_show]
-  #layout "application_mobile", :only => [:mobile_index, :mobile_show]
+  layout "application_mobile", :only => [:mobile_index, :mobile_show]
   before_action :authenticate_user!, :except => [:mobile_index, :mobile_show]
-
-  def index
-    @wares = Ware.all
-  end
+  before_filter :is_super_admin?, :except => [:mobile_index, :mobile_show]
 
   def mobile_index
     @wares = Ware.where(:status => Setting.wares.up)
-  end
-
-  def show
-    @ware = Ware.find(params[:id])
   end
 
   def mobile_show
     @ware = Ware.find(params[:id])
   end
   
-  def new
-    @ware = Ware.new
+  def index
+    @wares = Ware.all
   end
 
-  def down
+  def show
     @ware = Ware.find(params[:id])
-    @ware.down
-    redirect_to wares_path
+  end
+
+  def new
+    @ware = Ware.new
   end
 
   def up
     @ware = Ware.find(params[:id])
     @ware.up
+    redirect_to wares_path
+  end
+
+  def down
+    @ware = Ware.find(params[:id])
+    @ware.down
     redirect_to wares_path
   end
 
@@ -50,7 +51,6 @@ class WaresController < ApplicationController
 
   def create
     @ware = Ware.new(ware_params)
-    #@ware.user = current_user
     if @ware.save
       redirect_to @ware
     else
