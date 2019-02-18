@@ -60,7 +60,7 @@ Rails.application.routes.draw do
 
   resources :trees, :only => [:index]
 
-  resources :leafs, :only => [] do
+  resources :leafs, :only => [:index] do
     get :pick, :on => :member
   end
 
@@ -77,8 +77,8 @@ Rails.application.routes.draw do
     get :my_sell, :on => :collection
   end
 
-  resources :demands, :only => [:new, :create]
-  resources :sells, :only => [:new, :create]
+  resources :demands, :only => [:index, :new, :create, :destroy]
+  resources :sells, :only => [:index, :new, :create]
 
   resources :accounts, :only => [:edit, :update] do
     get :recharge, :on => :collection 

@@ -8,6 +8,7 @@ class CreateConsumes < ActiveRecord::Migration
       t.string :status, null: false, default: "none"
 
       t.references :user
+      t.references :demand
       t.references :citrine
       t.timestamps null: false
     end

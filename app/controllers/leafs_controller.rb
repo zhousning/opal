@@ -3,6 +3,10 @@ class LeafsController < ApplicationController
   before_action :authenticate_user!
 
 
+  def index
+    @count = current_user.leaf.count
+  end
+
   def pick
     tree_count = current_user.tree.count
     leaf = current_user.leaf 

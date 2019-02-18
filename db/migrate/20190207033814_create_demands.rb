@@ -3,6 +3,7 @@ class CreateDemands < ActiveRecord::Migration
     create_table :demands do |t|
       t.float :price, null: false
       t.float :count, null: false
+      t.float :total
       t.string :status, null: false, default: Setting.demands.enable
 
       t.references :user

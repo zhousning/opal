@@ -15,7 +15,7 @@ class Sell < ActiveRecord::Base
   belongs_to :user
 
   validates :price,        :numericality => {:greater_than => 0}
-  validates :count,        :numericality => {:greater_than => 0}
+  validates :count,        :numericality => {:greater_than_or_equal_to => 5}
 
   def disable
     update_attribute :status, Setting.sells.disable

@@ -16,6 +16,7 @@
 
 class Consume < ActiveRecord::Base
   belongs_to :user
+  belongs_to :demand
   belongs_to :citrines
 
   before_save :store_unique_number

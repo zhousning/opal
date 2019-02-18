@@ -1,0 +1,58 @@
+- provide(:title, t('.title'))
+
+.card.px-5.mb-5.border-0
+  .card-header.bg-white.py-4
+    .row
+      .col
+        %h3.text-center
+          我的需求
+  .card-body.text-center.py-5.mb-5
+    %nav.nav-justified
+      #nav-tab.nav.nav-tabs{:role => "tablist"}
+        %a#pop1-tab.nav-item.nav-link.active{"aria-controls" => "pop1", "aria-selected" => "true", "data-toggle" => "tab", :href => "#pop1", :role => "tab"}
+          %h3
+            求购中
+        %a#pop2-tab.nav-item.nav-link{"aria-controls" => "pop2", "aria-selected" => "false", "data-toggle" => "tab", :href => "#pop2", :role => "tab"}
+          %h3
+            已完成
+    #nav-tabContent.tab-content
+      #pop1.tab-pane.fade.show.active{"aria-labelledby" => "pop1-tab", :role => "tabpanel"}
+        .pt-3
+        %table.table
+          %thead
+            %tr
+              %th 时间
+              %th 数量
+              %th 单价
+              %th 操作
+          %tbody
+            - @demands.each do |demand|
+              %tr
+                %td
+                  = demand.created_at.strftime("%H:%M")
+                %td
+                  = demand.count 
+                %td
+                  = demand.price 
+                %td
+                  = link_to "取消", demand, :method => :delete, :data => {:confirm => "确定取消吗?"}, :class => "btn btn-danger btn-sm"
+      #pop2.tab-pane.fade{"aria-labelledby" => "pop2-tab", :role => "tabpanel"}
+        .pt-3
+        %table.table
+          %thead
+            %tr
+              %th 时间
+              %th 数量
+              %th 单价
+              %th 状态 
+          %tbody
+            - @demand_successes.each do |d|
+              %tr
+                %td
+                  = d.created_at.strftime("%H:%M")
+                %td
+                  = d.count 
+                %td
+                  = d.price 
+                %td
+                  成功

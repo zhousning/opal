@@ -27,10 +27,7 @@
         .form-group.row.mb-5
           .col-12
             = link_to "注 册", new_user_registration_path, :class => "btn btn-info btn-lg btn-block "
-        -#
-          - if devise_mapping.rememberable?
-            .form-check
-              %label.form-check-label
-                = f.check_box :remember_me, class: "form-check-input"
-                %small
-                  记住我 
+        - if devise_mapping.rememberable?
+          .form-check
+            %label.form-check-label
+              = f.check_box :remember_me, :checked=>true, class: "form-check-input d-none"

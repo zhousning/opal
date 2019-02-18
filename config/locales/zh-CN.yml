@@ -78,9 +78,13 @@ zh-CN:
   demands:
     new:
       title: 发布求购
+    index:
+      title: 我的求购
   sells:
     new:
       title: 发布转让
+    index:
+      title: 我的转让
   extract_cashes:
     new:
       title: 提现
@@ -154,10 +158,6 @@ zh-CN:
       title: 求购 
     buy_new:
       title: 转让 
-    my_demand:
-      title: 我的求购
-    my_sell:
-      title: 我的转让
   users:
     center: 
       title: 个人中心
@@ -175,3 +175,7 @@ zh-CN:
     index:
       title:
         采茶记录
+  leafs:
+    index:
+      title:
+        我的茶叶

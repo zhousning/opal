@@ -18,6 +18,8 @@ user.save!
 user.roles = []
 user.roles << role
 
+Account.create(:coin => 43241, :status => Setting.accounts.enable, :user_id => user.id)
+
 User.create!(:phone => "15763703188", :password => "15763703188", :password_confirmation => "15763703188")
 
 AdminUser.create!(:phone => Setting.admins.phone, :email => Setting.admins.email, :password => Setting.admins.password, :password_confirmation => Setting.admins.password)

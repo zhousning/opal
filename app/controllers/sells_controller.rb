@@ -2,6 +2,11 @@ class SellsController < ApplicationController
   layout "application_mobile"
   before_action :authenticate_user!
 
+  def index 
+    @sells = current_user.sells.where(:status => Setting.sells.enable).order("created_at DESC") 
+  end
+
+
   def new
     @sell = Sell.new
   end
