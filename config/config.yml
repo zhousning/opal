@@ -1,10 +1,11 @@
+---
 defaults:
-  admins:
+  admins: &1
     class_name: all
-    email: 'mytea@world.com'
+    email: mytea@world.com
     phone: '15859859888'
-    password: 'myteaworld'
-  users:
+    password: myteaworld
+  users: &2
     class_name: User
     opening: 0
     pending: 1
@@ -21,20 +22,20 @@ defaults:
     identity: 身份证
     alipay: 支付宝
     status: 认证状态
-  roles:
+  roles: &3
     class_name: Role
     super_admin: 超级管理员
     buyer: 客户信息管理
     tax_category: 商品税收分类编码库管理
     invoice: 发票管理
-  permissions:
+  permissions: &4
     super_admin: 管理系统所有资源
-  citrines:
+  citrines: &5
     exchange_max: 500
-  awards:
+  awards: &6
     ten_citrine: 10
     one_citrine: 1
-  wares:
+  wares: &7
     title: 宝贝标题
     price: 价格
     citrine_count: 赠送茶晶数
@@ -46,10 +47,10 @@ defaults:
     up_title: 上架
     down: 0
     down_title: 下架
-  trees:
+  trees: &8
     name: 名字
     count: 茶树数量
-  leafs:
+  leafs: &9
     produce_max: 12
     pick: 已采摘
     unpick: 未采摘
@@ -57,10 +58,10 @@ defaults:
     pick_time: 采摘时间
     disable: 0
     enable: 1
-  notices:
+  notices: &10
     title: 标题
     content: 内容
-  orders:
+  orders: &11
     category_none: none
     category_recharge: recharge
     paid: paid
@@ -72,7 +73,7 @@ defaults:
     state_trade_created_string: 已创建
     state_trade_success_string: 支付成功
     state_trade_failed_string: 支付失败
-  accounts:
+  accounts: &12
     coin: 金额
     password: 安全密码
     award_sign_up: 10
@@ -82,7 +83,7 @@ defaults:
     award_invite_recharge: 40
     enable: enable
     disable: disable
-  consumes:
+  consumes: &13
     number: 消费编号
     category: 项目
     coin_cost: 消费
@@ -98,20 +99,20 @@ defaults:
     status_success: success
     status_failed: failed
     status_exception: exception
-  demands:
+  demands: &14
     price: 单价
     count: 数量
     enable: enable
     disable: disable
-  sells:
+  sells: &15
     price: 单价
     count: 数量
     enable: enable
     disable: disable
-  systems:
+  systems: &16
     poundage: 0.1
-    host: '120.55.50.204' 
-  trade_orders:
+    host: 120.55.50.204
+  trade_orders: &17
     number: 订单编号
     price: 价格
     state: 状态
@@ -131,29 +132,82 @@ defaults:
     completed_title: 已完成
     canceled: canceled
     canceled_title: 已取消
-  extract_cashes:
+  extract_cashes: &18
     coin: 提取金额
     status: 状态
     pending: pending
     pending_title: 待审核
     agree: agree
     agree_title: 已提现
-  share_pools:
+  share_pools: &19
     today_enter: 今日入账
-    total: 月分红池总额度 
+    total: 月分红池总额度
     user_total: 昨日分红池总额
-    pay: 昨日白银茶主平均分红 
-    ware_total: 昨日黄金茶主平均分红 
-    gross_sale: 昨日铂金茶主平均分红 
-    diamond: 昨日钻石茶主平均分红 
+    pay: 昨日白银茶主平均分红
+    ware_total: 昨日黄金茶主平均分红
+    gross_sale: 昨日铂金茶主平均分红
+    diamond: 昨日钻石茶主平均分红
     current_total: 分红池当月总额
     own_tea: 持茶/片所得
-
 development:
-  <<: *defaults
-
+  admins: *1
+  users: *2
+  roles: *3
+  permissions: *4
+  citrines: *5
+  awards: *6
+  wares: *7
+  trees: *8
+  leafs: *9
+  notices: *10
+  orders: *11
+  accounts: *12
+  consumes: *13
+  demands: *14
+  sells: *15
+  systems: *16
+  trade_orders: *17
+  extract_cashes: *18
+  share_pools: *19
+  pick_records:
+    number: 数量
 test:
-  <<: *defaults
-
+  admins: *1
+  users: *2
+  roles: *3
+  permissions: *4
+  citrines: *5
+  awards: *6
+  wares: *7
+  trees: *8
+  leafs: *9
+  notices: *10
+  orders: *11
+  accounts: *12
+  consumes: *13
+  demands: *14
+  sells: *15
+  systems: *16
+  trade_orders: *17
+  extract_cashes: *18
+  share_pools: *19
 production:
-  <<: *defaults
+  admins: *1
+  users: *2
+  roles: *3
+  permissions: *4
+  citrines: *5
+  awards: *6
+  wares: *7
+  trees: *8
+  leafs: *9
+  notices: *10
+  orders: *11
+  accounts: *12
+  consumes: *13
+  demands: *14
+  sells: *15
+  systems: *16
+  trade_orders: *17
+  extract_cashes: *18
+  share_pools: *19

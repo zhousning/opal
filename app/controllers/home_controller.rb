@@ -6,4 +6,7 @@ class HomeController < ApplicationController
 
   def custom_service
   end
+
+  def help
+  end
 end

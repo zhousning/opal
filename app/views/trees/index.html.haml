@@ -29,16 +29,17 @@
               茶树
               = current_user.tree.count
         .col-4
-          %h2
-            %span.badge.badge-pill.badge-light
-              茶叶
-              = current_user.leaf.count
+          = link_to pick_records_path do
+            %h2
+              %span.badge.badge-pill.badge-light
+                茶叶
+                = sprintf("%0.2f" ,current_user.leaf.count)
         .col-4
           = link_to info_citrines_path do
             %h2
               %span.badge.badge-pill.badge-light
                 茶晶
-                = current_user.citrine.count
+                = sprintf("%0.2f" , current_user.citrine.count)
     .col-4.flex-column
       - if user_signed_in?
         .col-12.d-flex.justify-content-center

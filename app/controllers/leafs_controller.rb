@@ -7,11 +7,12 @@ class LeafsController < ApplicationController
     tree_count = current_user.tree.count
     leaf = current_user.leaf 
     unpick = leaf.unpick*tree_count
-    leaf.add_pick(leaf.unpick)
 
     if unpick != 0
-      count = 0.42/6*unpick
+      count = (0.42/6)*unpick
+      leaf.add_pick(unpick)
       leaf.add_count(count)
+      PickRecord.create!(:number => count, :user_id => current_user.id)
     end
 
     redirect_to trees_path

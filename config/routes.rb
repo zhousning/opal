@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :home, :only => [] do
     get :custom_service, :on => :collection
+    get :help, :on => :collection
   end
 
   resources :extract_cashes, :only => [ :new, :create] 
@@ -24,6 +25,8 @@ Rails.application.routes.draw do
   resources :systems, :only => [] do
     get :send_confirm_code, :on => :collection
   end
+
+  resources :pick_records, :only => [:index]
 
   resources :users, :only => []  do
     get :level, :on => :collection

@@ -40,6 +40,7 @@ class User < ActiveRecord::Base
   has_many :trade_orders
   has_many :users
   has_many :extract_cashes
+  has_many :pick_records
   
   belongs_to :role
 

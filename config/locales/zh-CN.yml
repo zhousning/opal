@@ -10,6 +10,8 @@ zh-CN:
   home:
     index:
       title: "首页"
+    help:
+      title: "帮助中心"
 
   users:
     control:
@@ -169,3 +171,7 @@ zh-CN:
     index:
       title:
         茶源世界
+  pick_records:
+    index:
+      title:
+        采茶记录

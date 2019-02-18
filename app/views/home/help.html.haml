@@ -1,0 +1,201 @@
+- provide(:title, t('.title'))
+
+%h3.text-center.my-5
+  帮助中心
+#accordion
+  .card
+    #headingOne.card-header.bg-white
+      %a.w-100.btn.btn-link.show{"aria-controls" => "collapseOne", "aria-expanded" => "true", "data-target" => "#collapseOne", "data-toggle" => "collapse"}
+        .row
+          .col-10
+            %h4.text-left
+              1.如何采摘茶叶？
+          .col-2.text-right
+            %h4
+              >
+    #collapseOne.collapse{"aria-labelledby" => "headingOne", "data-parent" => "#accordion"}
+      .card-body
+        %h5.text-secondary
+          每隔4小时产出一次茶叶，每天产6次，如果用户48小时不领取，茶叶将会停止产出，直到用户领取之后才会继续产出；每4小时产出的茶叶量等于全网算力x您的茶树数量/6；
+  .card
+    #headingTwo.card-header.bg-white
+      %a.w-100.btn.btn-link{"aria-controls" => "collapseOne", "aria-expanded" => "false", "data-target" => "#collapseTwo", "data-toggle" => "collapse"}
+        .row
+          .col-10
+            %h4.text-left
+              2.如何查看自己的邀请码？
+          .col-2.text-right
+            %h4
+              >
+    #collapseTwo.collapse{"aria-labelledby" => "headingOne", "data-parent" => "#accordion"}
+      .card-body
+        %h5.text-secondary
+          点击茶树页面中的“邀请好友”，即可查看自己的邀请码
+  .card
+    #headingThree.card-header.bg-white
+      %a.w-100.btn.btn-link{"aria-controls" => "collapseOne", "aria-expanded" => "false", "data-target" => "#collapseThree", "data-toggle" => "collapse"}
+        .row
+          .col-10
+            %h4.text-left
+              3.交易中心何时开启？
+          .col-2.text-right
+            %h4
+              >
+    #collapseThree.collapse{"aria-labelledby" => "headingOne", "data-parent" => "#accordion"}
+      .card-body
+        %h5.text-secondary
+          交易中心在每天的上午10点到20点整这个时间段开启
+  .card
+    #headingFour.card-header.bg-white
+      %a.w-100.btn.btn-link{"aria-controls" => "collapseOne", "aria-expanded" => "false", "data-target" => "#collapseFour", "data-toggle" => "collapse"}
+        .row
+          .col-10
+            %h4.text-left
+              4.提现多久到账？
+          .col-2.text-right
+            %h4
+              >
+    #collapseFour.collapse{"aria-labelledby" => "headingOne", "data-parent" => "#accordion"}
+      .card-body
+        %h5.text-secondary
+          在工作时间内提现，2小时内到账；工作时间为每天的10点整到18点整；如在工作时间外提现，那就第二天到账；每周星期六为休息日，不给于提现；
+  .card
+    #headingFive.card-header.bg-white
+      %a.w-100.btn.btn-link{"aria-controls" => "collapseOne", "aria-expanded" => "false", "data-target" => "#collapseFive", "data-toggle" => "collapse"}
+        .row
+          .col-10
+            %h4.text-left
+              5.苹果手机下载后无法安装怎么办？
+          .col-2.text-right
+            %h4
+              >
+    #collapseFive.collapse{"aria-labelledby" => "headingOne", "data-parent" => "#accordion"}
+      .card-body
+        %h5.text-secondary
+          打开苹果手机安装如下操作进行设置：设置--->通用--->设备管理--->点击信任茶源世界
+  .card
+    #headingSix.card-header.bg-white
+      %a.w-100.btn.btn-link{"aria-controls" => "collapseOne", "aria-expanded" => "false", "data-target" => "#collapseSix", "data-toggle" => "collapse"}
+        .row
+          .col-10
+            %h4.text-left
+              6.如何查看我的团队？
+          .col-2.text-right
+            %h4
+              >
+    #collapseSix.collapse{"aria-labelledby" => "headingOne", "data-parent" => "#accordion"}
+      .card-body
+        %h5.text-secondary
+          点击茶树页面的“茶庄”，里面有详细的团队信息和邀请奖励所得
+  .card
+    #headingSeven.card-header.bg-white
+      %a.w-100.btn.btn-link{"aria-controls" => "collapseOne", "aria-expanded" => "false", "data-target" => "#collapseSeven", "data-toggle" => "collapse"}
+        .row
+          .col-10
+            %h4.text-left
+              7.如何获取茶树？
+          .col-2.text-right
+            %h4
+              >
+    #collapseSeven.collapse{"aria-labelledby" => "headingOne", "data-parent" => "#accordion"}
+      .card-body
+        %h5.text-secondary
+          注册实名成功后会赠送一棵茶树，剩余的点击茶树页面的“茶晶兑换”，按等量的茶晶进行置换
+  .card
+    #headingEight.card-header.bg-white
+      %a.w-100.btn.btn-link{"aria-controls" => "collapseOne", "aria-expanded" => "false", "data-target" => "#collapseEight", "data-toggle" => "collapse"}
+        .row
+          .col-10
+            %h4.text-left
+              8.如何获得茶晶？
+          .col-2.text-right
+            %h4
+              >
+    #collapseEight.collapse{"aria-labelledby" => "headingOne", "data-parent" => "#accordion"}
+      .card-body
+        %h5.text-secondary
+          平台前期会有3次茶晶卖出活动，之后茶晶只能由任务、邀请好友、抽奖、商城购物等途径获得
+  .card
+    #headingNine.card-header.bg-white
+      %a.w-100.btn.btn-link{"aria-controls" => "collapseOne", "aria-expanded" => "false", "data-target" => "#collapseNine", "data-toggle" => "collapse"}
+        .row
+          .col-10
+            %h4.text-left
+              9.每日分红是按什么算的？
+          .col-2.text-right
+            %h4
+              >
+    #collapseNine.collapse{"aria-labelledby" => "headingOne", "data-parent" => "#accordion"}
+      .card-body
+        %h5.text-secondary
+          平台的每日分红是按茶主等级而来，每日分红池的金额为当日商城所收益利润的40％、提现手续费的50％、交易手续费30％
+  .card
+    #headingTen.card-header.bg-white
+      %a.w-100.btn.btn-link{"aria-controls" => "collapseOne", "aria-expanded" => "false", "data-target" => "#collapseTen", "data-toggle" => "collapse"}
+        .row
+          .col-10
+            %h4.text-left
+              10.当月持茶分红是按什么算的？
+          .col-2.text-right
+            %h4
+              >
+    #collapseTen.collapse{"aria-labelledby" => "headingOne", "data-parent" => "#accordion"}
+      .card-body
+        %h5.text-secondary
+          当月持币分红是按用户持茶叶的数量而来的，分红金额为每日增加，来源为商城所收益利润的50％、提现手续费的50％、交易手续费70％
+  .card
+    #headingEleven.card-header.bg-white
+      %a.w-100.btn.btn-link{"aria-controls" => "collapseOne", "aria-expanded" => "false", "data-target" => "#collapseEleven", "data-toggle" => "collapse"}
+        .row
+          .col-10
+            %h4.text-left
+              11.每日分红怎么领取？
+          .col-2.text-right
+            %h4
+              >
+    #collapseEleven.collapse{"aria-labelledby" => "headingOne", "data-parent" => "#accordion"}
+      .card-body
+        %h5.text-secondary
+          每日分红显示数据在分红池即可查看，平台自动打款到茶主支付宝账号，再也不用担心不到账问题了，每日13点之前自动到茶主支付宝内
+  .card
+    #headingTwelve.card-header.bg-white
+      %a.w-100.btn.btn-link{"aria-controls" => "collapseOne", "aria-expanded" => "false", "data-target" => "#collapseTwelve", "data-toggle" => "collapse"}
+        .row
+          .col-10
+            %h4.text-left
+              12.当月持茶分红怎么领取？
+          .col-2.text-right
+            %h4
+              >
+    #collapseTwelve.collapse{"aria-labelledby" => "headingOne", "data-parent" => "#accordion"}
+      .card-body
+        %h5.text-secondary
+          每月的持茶分红一个月后用户自己领取，直接到余额，然后提现
+  .card
+    #headingThirty.card-header.bg-white
+      %a.w-100.btn.btn-link{"aria-controls" => "collapseOne", "aria-expanded" => "false", "data-target" => "#collapseThirty", "data-toggle" => "collapse"}
+        .row
+          .col-10
+            %h4.text-left
+              13.如何提升茶主等级？
+          .col-2.text-right
+            %h4
+              >
+    #collapseThirty.collapse{"aria-labelledby" => "headingOne", "data-parent" => "#accordion"}
+      .card-body
+        %h5.text-secondary
+          茶主等级是按照用户总获茶晶来计算的，获取茶晶就可提升等级
+  .card
+    #headingFourteen.card-header.bg-white
+      %a.w-100.btn.btn-link{"aria-controls" => "collapseOne", "aria-expanded" => "false", "data-target" => "#collapseFourteen", "data-toggle" => "collapse"}
+        .row
+          .col-10
+            %h4.text-left
+              14.茶主等级有什么用？
+          .col-2.text-right
+            %h4
+              >
+    #collapseThree.collapse{"aria-labelledby" => "headingOne", "data-parent" => "#accordion"}
+      .card-body
+        %h5.text-secondary
+          等级越高，每日获得分红越多；等级越高，后期活动所设定的优惠越大；
