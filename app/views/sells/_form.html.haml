@@ -14,20 +14,24 @@
             发布转让
         .form-group.row.mb-5
           = f.label Setting.sells.price, :class => "col-2 col-form-label col-form-label-lg text-right"
-          .col-10
-            = f.number_field :price, :id => "js-demand-price", :class => "form-control border-0 form-control-lg"
+          .col-7
+            = f.number_field :price, :id => "js-sell-price", :class => "form-control border-0 form-control-lg", :step => :any
+          %label{:class => "col-3 col-form-label col-form-label-lg text-right text-success font-weight-bold"}
+            = "( " + "#{@trade.min}" + "-" + "#{@trade.max}" + " )"
           .col-12
             %hr
           
         .form-group.row.mb-5
           = f.label Setting.sells.count, :class => "col-2 col-form-label col-form-label-lg text-right"
-          .col-10
-            = f.number_field :count, :id => "js-demand-count", :class => "form-control border-0 form-control-lg"
+          .col-7
+            = f.number_field :count, :id => "js-sell-count", :class => "form-control border-0 form-control-lg", :step => :any
+          %label{:class => "col-3 col-form-label col-form-label-lg text-right text-success font-weight-bold"}
+            ( >=5 )
           .col-12
             %hr
         .form-group.row.mb-5
           = f.label '手续费', :class => "col-2 col-form-label col-form-label-lg text-right"
-          #js-sell-poundage.col-10
+          %h2#js-sell-poundage.col-10
         .form-group.row
           .col-3.offset-2
             = link_to "取消", trades_path, :class => "btn btn-secondary btn-block btn-lg"

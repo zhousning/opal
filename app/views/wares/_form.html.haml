@@ -17,17 +17,17 @@
         .form-group.row
           = f.label Setting.wares.price, :class => "col-sm-3 col-form-label"
           .col-sm-9
-            = f.number_field :price, :class => "form-control"
+            = f.number_field :price, :class => "form-control", :step => :any
           
         .form-group.row
           = f.label Setting.wares.citrine_count, :class => "col-sm-3 col-form-label"
           .col-sm-9
-            = f.number_field :citrine_count, :class => "form-control"
+            = f.number_field :citrine_count, :class => "form-control", :step => :any
           
         .form-group.row
           = f.label Setting.wares.freight, :class => "col-sm-3 col-form-label"
           .col-sm-9
-            = f.number_field :freight, :class => "form-control"
+            = f.number_field :freight, :class => "form-control", :step => :any
           
         .form-group.row
           = f.label Setting.wares.description, :class => "col-sm-3 col-form-label"

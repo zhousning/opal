@@ -7,7 +7,7 @@
 #  price         :float            default(0.0), not null
 #  citrine_count :float            default(0.0), not null
 #  freight       :float            default(0.0), not null
-#  description   :text             default(""), not null
+#  description   :text
 #  category      :string           default(""), not null
 #  brand         :string           default(""), not null
 #  status        :integer          default(0), not null

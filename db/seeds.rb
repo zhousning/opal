@@ -27,3 +27,5 @@ AdminUser.create!(:phone => Setting.admins.phone, :email => Setting.admins.email
 SharePool.create!(today_enter: 17890, total: 3242341, user_total:21234, pay: 453232, ware_total:3332, gross_sale: 1232, diamond: 9580, current_total: 3423, own_tea: 1.84)
 
 Notice.create!(:title => "茶源世界", :content => "欢迎来到茶源世界")
+
+Trade.create!

@@ -5,6 +5,7 @@
 #  id         :integer          not null, primary key
 #  price      :float            not null
 #  count      :float            not null
+#  total      :float
 #  status     :string           default("enable"), not null
 #  user_id    :integer
 #  created_at :datetime         not null

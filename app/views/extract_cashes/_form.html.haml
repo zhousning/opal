@@ -18,7 +18,7 @@
           .form-group.row.mb-5
             = f.label '￥', :class => "col-2 col-form-label-lg text-right  col-form-label"
             .col-10
-              = f.number_field :coin, :class => "form-control border-0 form-control-lg"
+              = f.number_field :coin, :class => "form-control border-0 form-control-lg", :step => :any
             .col-12
               %hr
             

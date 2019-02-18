@@ -17,25 +17,34 @@ class DemandsController < ApplicationController
 
   def new
     @demand = Demand.new
+    @trade = Trade.first
   end
 
   def create
+    @trade = Trade.first
+    @demand = Demand.new(demand_params)
     coin = current_user.account.coin
-    sum = demand_params[:price].to_f*demand_params[:count].to_f
-    if coin >= sum
-      @demand = Demand.new(demand_params, :status => Setting.demands.enable)
-      @demand.total = sum
-      @demand.user = current_user
-      if @demand.save
-        current_user.account.sub_coin(sum)
-        current_user.account.add_freeze_coin(sum)
-        Consume.create(:category => Setting.consumes.category_purchase_leaf, :coin_cost => sum, :status => Setting.consumes.status_success, :user_id => current_user.id, :demand_id => @demand.id)
-        redirect_to trades_path 
+    price = demand_params[:price].to_f
+    count = demand_params[:count].to_f
+    sum = price*count
+
+    if (price >= @trade.min && price <= @trade.max) && count >=5  
+      if coin >= sum
+        @demand.total = sum
+        @demand.user = current_user
+        if @demand.save
+          current_user.account.sub_coin(sum)
+          current_user.account.add_freeze_coin(sum)
+          Consume.create(:category => Setting.consumes.category_purchase_leaf, :coin_cost => sum, :status => Setting.consumes.status_success, :user_id => current_user.id, :demand_id => @demand.id)
+          redirect_to trades_path 
+        else
+          render :new
+        end
       else
-        render :new
+        redirect_to recharge_accounts_url
       end
     else
-      redirect_to recharge_accounts_url
+      render :new
     end
   end
 

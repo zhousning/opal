@@ -1,14 +1,14 @@
 # == Schema Information
 #
-# Table name: notices
+# Table name: trades
 #
 #  id         :integer          not null, primary key
-#  title      :string           default(""), not null
-#  content    :text
+#  min        :float            default(1.0), not null
+#  max        :float            default(1.2), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class Notice < ActiveRecord::Base
+class Trade < ActiveRecord::Base
 
 end

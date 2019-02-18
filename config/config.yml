@@ -171,6 +171,9 @@ development:
   share_pools: *19
   pick_records:
     number: 数量
+  trades:
+    min: 交易最低价
+    max: 交易最高价
 test:
   admins: *1
   users: *2

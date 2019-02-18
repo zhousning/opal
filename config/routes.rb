@@ -78,7 +78,7 @@ Rails.application.routes.draw do
   end
 
   resources :demands, :only => [:index, :new, :create, :destroy]
-  resources :sells, :only => [:index, :new, :create]
+  resources :sells, :only => [:index, :new, :create, :destroy]
 
   resources :accounts, :only => [:edit, :update] do
     get :recharge, :on => :collection 
