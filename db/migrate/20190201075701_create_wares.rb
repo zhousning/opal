@@ -5,7 +5,7 @@ class CreateWares < ActiveRecord::Migration
       t.float :price,  null: false, default: 0 
       t.float :citrine_count,  null: false, default: 0 
       t.float :freight,  null: false, default: 0 
-      t.text :description,  null: false, default: ""
+      t.text :description
       t.string :category,  null: false, default: ""
       t.string :brand,  null: false, default: ""
       t.integer :status,  null: false, default: 0 
