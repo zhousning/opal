@@ -44,6 +44,7 @@ Rails.application.routes.draw do
 
   resources :trade_orders, :only => [:index, :show] do
     post :pay_create, :on => :member
+    get :cancel, :on => :member
     get :pending, :on => :collection
     get :paid, :on => :collection
     get :departed, :on => :collection

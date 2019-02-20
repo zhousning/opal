@@ -1,11 +1,11 @@
 class WaresController < ApplicationController
-  layout "application_mobile", :only => [:mobile_index, :mobile_show]
   layout "application_control", :except => [:mobile_index, :mobile_show]
   before_action :authenticate_user!, :except => [:mobile_index, :mobile_show]
   before_filter :is_super_admin?, :except => [:mobile_index, :mobile_show]
 
   def mobile_index
     @wares = Ware.where(:status => Setting.wares.up)
+    render :layout => "application_mobile"
   end
 
   def mobile_show

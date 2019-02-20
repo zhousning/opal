@@ -9,6 +9,7 @@ class CreateConsumes < ActiveRecord::Migration
 
       t.references :user
       t.references :demand
+      t.references :trade_order
       t.references :citrine
       t.timestamps null: false
     end

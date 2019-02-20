@@ -7,7 +7,7 @@ class TradeOrdersController < ApplicationController
   end
 
   def show
-    @trade_order = TradeOrder.find(params[:id])
+    @trade_order = current_user.trade_orders.find(params[:id])
   end
 
   def new
@@ -16,17 +16,20 @@ class TradeOrdersController < ApplicationController
   end
 
   def edit
-    @trade_order = TradeOrder.find(params[:id])
+    @trade_order = current_user.trade_orders.find(params[:id])
   end
 
   def pay_create
     @trade_order = TradeOrder.find(params[:id])
-    @trade_order.pay if current_user.account.password == convert_to_md5(params[:password])
+    if current_user.account.password == convert_to_md5(params[:password])
+      @trade_order.pay 
+      Consume.create(:category => Setting.consumes.category_buy_ware, :coin_cost => @trade_order.price, :status => Setting.consumes.status_success, :user_id => current_user.id, :trade_order_id => @trade_order.id)
+    end
     redirect_to @trade_order
   end
   
   def update
-    @trade_order = TradeOrder.find(params[:id])
+    @trade_order = current_user.trade_orders.find(params[:id])
     if @trade_order.update(trade_order_params)
       redirect_to trade_order_path(@trade_order) 
     else
@@ -48,10 +51,9 @@ class TradeOrdersController < ApplicationController
     end
   end
 
-  def destroy
-    @trade_order = TradeOrder.find(params[:id])
-    @trade_order.destroy
-    redirect_to :action => :index
+  def cancel
+    @trade_order = current_user.trade_order.find(params[:id])
+    @trade_order.cancel
   end
 
   def pending

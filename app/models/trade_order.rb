@@ -20,6 +20,8 @@ class TradeOrder < ActiveRecord::Base
   belongs_to :user
   belongs_to :ware
 
+  has_one :consume
+
   validates_presence_of :name, :phone, :address
 
   STATE = %w(opening pending paid departed completed canceled)
@@ -80,6 +82,7 @@ class TradeOrder < ActiveRecord::Base
 
   def remove_plan
     self.user.account.add_coin(self.price)
+    self.consume.destroy
   end
 
   def trade_order_state

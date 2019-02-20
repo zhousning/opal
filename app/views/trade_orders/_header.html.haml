@@ -1,0 +1,24 @@
+%h3.text-center.mb-0.bg-white.py-5
+  我的订单
+.container-fluid.bg-white
+  .row
+    .col.border-bottom
+      = link_to all_trade_orders_path, :class => (request.path == all_trade_orders_path ? "text-success border-bottom-success btn btn-block p-3 font-weight-bold" : "text-secondary btn btn-block p-3 font-weight-bold") do
+        %h4
+          全部
+    .col.border-bottom
+      = link_to pending_trade_orders_path, :class => (request.path == pending_trade_orders_path ? "text-success border-bottom-success btn btn-block p-3 font-weight-bold" : "text-secondary btn btn-block p-3 font-weight-bold") do
+        %h4
+          待付款
+    .col.border-bottom
+      = link_to paid_trade_orders_path , :class => (request.path == paid_trade_orders_path ? "text-success border-bottom-success btn btn-block p-3 font-weight-bold" : "text-secondary btn btn-block p-3 font-weight-bold") do
+        %h4
+          待发货
+    .col.border-bottom
+      = link_to departed_trade_orders_path, :class => (request.path == departed_trade_orders_path ? "text-success border-bottom-success btn btn-block p-3 font-weight-bold" : "text-secondary btn btn-block p-3 font-weight-bold") do 
+        %h4
+          待收货
+    .col.border-bottom
+      = link_to completed_trade_orders_path, :class => (request.path == completed_trade_orders_path ? "text-success border-bottom-success btn btn-block p-3 font-weight-bold" : "text-secondary btn btn-block p-3 font-weight-bold") do 
+        %h4
+          已完成

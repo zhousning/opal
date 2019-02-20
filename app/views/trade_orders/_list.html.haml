@@ -1,25 +1,45 @@
-.container-fluid.py-5.px-5
+= render 'header'
+
+.container-fluid.py-3.px-0.pb-5.mb-5
   - if @trade_orders.size != 0
     - @trade_orders.each do |trade_order|
-      .card.mb-5
-        .card-header
-          = Setting.trade_orders.number
-          = trade_order.number
+      .card.mb-3
+        %h4.card-header.bg-white.py-5
+          .row
+            .col-8
+              = Setting.trade_orders.number
+              = trade_order.number
+            .col-4.text-right.text-info
+              = trade_order.trade_order_state
         .card-body
           = link_to trade_order_path(trade_order) do
             .media
               = image_tag trade_order.ware.enclosures[0].file_url(:small_width), :class => "mr-3"
               .media-body
-                %h5.mt-0
+                %h5.mt-0.text-dark
                   = trade_order.ware.title
-            %h3
-              = trade_order.price
+                %h5.mt-5.text-danger
+                  ¥
+                  = trade_order.price
             %p
-              = trade_order.trade_order_state
             - if trade_order.state == Setting.trade_orders.departed
-              %p
+              %h5.text-secondary.mt-3
                 = Setting.trade_orders.wayno
                 = trade_order.wayno
+        .card-footer.bg-white
+          %h4.text-secondary.text-right
+            共1件商品,实付款: ¥
+            = trade_order.price
+          .row.py-3
+            .col-3.offset-5
+              - if trade_order.state != Setting.trade_orders.canceled && trade_order.state != Setting.trade_orders.completed
+                = link_to '取消订单', cancel_trade_order_path(trade_order), :data => {:confirm => "确定取消吗?"}, :class => "btn btn-block btn-outline-secondary"
+              - if trade_order.state == Setting.trade_orders.pending
+                .col-2
+                  = link_to '付款', root_path, :class => "btn btn-block btn-outline-secondary"
+            .col-2 
+              = link_to '详情', trade_order_path(trade_order), :class => "btn btn-block btn-outline-secondary"
+
   - else
     %h3.text-center
       暂无订单

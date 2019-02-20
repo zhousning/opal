@@ -6,7 +6,7 @@
     border-left: none;
     border-top: none;
 }
-.trades.index {
+.trades.index, .trade_orders.pending, .trade_orders.all, .trade_orders.paid, .trade_orders.departed, .trade_orders.completed {
   padding-bottom: 2rem;
   background: #dfdfdf;
 }

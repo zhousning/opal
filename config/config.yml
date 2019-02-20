@@ -92,8 +92,7 @@ defaults:
     category_none: none
     category_purchase_leaf: 求购茶叶
     category_exchange_tree: 兑换茶树
-    category_download_document: download_document
-    category_buy_document: buy_document
+    category_buy_ware: 购买茶叶商品
     status_none: none
     status_create: create
     status_success: success
