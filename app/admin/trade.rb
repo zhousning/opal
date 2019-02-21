@@ -1,6 +1,6 @@
 ActiveAdmin.register Trade  do
 
-  permit_params  :min, :max, :total_purchase, :price, :volume
+  permit_params  :min, :max, :total_purchase, :price, :volume, :start, :end
 
   actions :all, :except => [:destroy]
 
@@ -24,12 +24,11 @@ ActiveAdmin.register Trade  do
     column Setting.trades.total_purchase, :total_purchase
     column Setting.trades.price, :price
     column Setting.trades.volume, :volume
-
-    column "创建时间", :created_at, :sortable=>:created_at do |f|
-      f.created_at.strftime('%Y-%m-%d %H:%M:%S')
+    column Setting.trades.start, :start do |f|
+      f.start.strftime('%H:%M')
     end
-    column "更新时间", :updated_at do |f|
-      f.updated_at.strftime('%Y-%m-%d %H:%M:%S')
+    column Setting.trades.end, :end do |f|
+      f.end.strftime('%H:%M')
     end
     actions
   end
@@ -42,6 +41,8 @@ ActiveAdmin.register Trade  do
       f.input :total_purchase, :label => Setting.trades.total_purchase 
       f.input :price, :label => Setting.trades.price 
       f.input :volume, :label => Setting.trades.volume 
+      f.input :start, :label => Setting.trades.start 
+      f.input :end, :label => Setting.trades.end 
     end
     f.actions
   end
@@ -68,11 +69,11 @@ ActiveAdmin.register Trade  do
         trade.volume
       end
 
-      row "创建时间" do
-        trade.created_at.strftime('%Y-%m-%d %H:%M:%S')
+      row Setting.trades.start do
+        trade.start.strftime('%H:%M')
       end
-      row "更新时间" do
-        trade.updated_at.strftime('%Y-%m-%d %H:%M:%S')
+      row Setting.trades.end do
+        trade.end.strftime('%H:%M')
       end
     end
   end

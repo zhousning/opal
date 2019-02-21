@@ -11,6 +11,9 @@ class TradesController < ApplicationController
       f.chart({defaultSeriesType: "line"})
     end
     @trade = Trade.last
+    now = Time.now
+    @start = Time.new(now.year, now.month, now.day, @trade.start.hour, @trade.start.min)
+    @end = Time.new(now.year, now.month, now.day, @trade.end.hour, @trade.end.min)
   end
 
   def betray_new

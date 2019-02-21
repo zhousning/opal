@@ -7,7 +7,7 @@
 #  freeze_coin :float            default(0.0), not null
 #  status      :string           default("disable"), not null
 #  password    :string           default(""), not null
-#  number      :string           default(""), not null
+#  number      :string
 #  user_id     :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null

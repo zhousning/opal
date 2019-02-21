@@ -5,62 +5,70 @@
         %h3.text-center
           茶叶坊市
         %h3.text-center
-          固定开市时间(9:00-16:00)
+          固定开市时间(
+          = @start.strftime("%H:%M")
+          = "~" 
+          = @end.strftime("%H:%M")
+          )
   .card-body.text-center.py-5.mb-5
-    %nav.nav-justified
-      #nav-tab.nav.nav-tabs{:role => "tablist"}
-        %a#pop1-tab.nav-item.nav-link.active{"aria-controls" => "pop1", "aria-selected" => "true", "data-toggle" => "tab", :href => "#pop1", :role => "tab"}
-          %h3
-            需求列表
-        %a#pop2-tab.nav-item.nav-link{"aria-controls" => "pop2", "aria-selected" => "false", "data-toggle" => "tab", :href => "#pop2", :role => "tab"}
-          %h3
-            转让列表
-    #nav-tabContent.tab-content
-      #pop1.tab-pane.fade.show.active{"aria-labelledby" => "pop1-tab", :role => "tabpanel"}
-        .pt-3
-        %table.table
-          %thead
-            %tr
-              %th 时间
-              %th 数量
-              %th 单价
-              %th 操作
-          %tbody
-            - if @demands.size != 0
-              - @demands.each do |d|
-                %tr
-                  %td
-                    = d.created_at.strftime("%H:%M")
-                  %td
-                    = d.count 
-                  %td
-                    = d.price 
-                  %td
-                    = link_to '求购', betray_new_trade_path(d.id), :class => "btn btn-info" 
-            - else
-              %h3.text-center
-                暂无交易数据
-      #pop2.tab-pane.fade{"aria-labelledby" => "pop2-tab", :role => "tabpanel"}
-        .pt-3
-        %table.table
-          %thead
-            %tr
-              %th 时间
-              %th 数量
-              %th 单价
-              %th 操作
-          %tbody
-            - if @sells.size != 0
-              - @sells.each do |d|
-                %tr
-                  %td
-                    = d.created_at.strftime("%H:%M")
-                  %td
-                    = d.count 
-                  %td
-                    = d.price 
-                  %td
-                    = link_to '买入', buy_new_trade_path(d.id), :class => "btn btn-info" 
-            - else
-              %h3.text-center
-                暂无交易数据
+    - if @start < Time.now && Time.now < @end
+      %nav.nav-justified
+        #nav-tab.nav.nav-tabs{:role => "tablist"}
+          %a#pop1-tab.nav-item.nav-link.active{"aria-controls" => "pop1", "aria-selected" => "true", "data-toggle" => "tab", :href => "#pop1", :role => "tab"}
+            %h3
+              需求列表
+          %a#pop2-tab.nav-item.nav-link{"aria-controls" => "pop2", "aria-selected" => "false", "data-toggle" => "tab", :href => "#pop2", :role => "tab"}
+            %h3
+              转让列表
+      #nav-tabContent.tab-content
+        #pop1.tab-pane.fade.show.active{"aria-labelledby" => "pop1-tab", :role => "tabpanel"}
+          .pt-3
+          %table.table
+            %thead
+              %tr
+                %th 时间
+                %th 数量
+                %th 单价
+                %th 操作
+            %tbody
+              - if @demands.size != 0
+                - @demands.each do |d|
+                  %tr
+                    %td
+                      = d.created_at.strftime("%H:%M")
+                    %td
+                      = d.count 
+                    %td
+                      = d.price 
+                    %td
+                      = link_to '求购', betray_new_trade_path(d.id), :class => "btn btn-info" 
+              - else
+                %h3.text-center
+                  暂无交易数据
+        #pop2.tab-pane.fade{"aria-labelledby" => "pop2-tab", :role => "tabpanel"}
+          .pt-3
+          %table.table
+            %thead
+              %tr
+                %th 时间
+                %th 数量
+                %th 单价
+                %th 操作
+            %tbody
+              - if @sells.size != 0
+                - @sells.each do |d|
+                  %tr
+                    %td
+                      = d.created_at.strftime("%H:%M")
+                    %td
+                      = d.count 
+                    %td
+                      = d.price 
+                    %td
+                      = link_to '买入', buy_new_trade_path(d.id), :class => "btn btn-info" 
+              - else
+                %h3.text-center
+                  暂无交易数据
+    - else
+      %h3.text-center
+        未到开市时间

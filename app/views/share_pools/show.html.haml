@@ -3,7 +3,6 @@
 .container-fluid.py-5
   .row.mx-5.py-5
     .col-md-12.text-center
-      = render "tree" 
       %h1.text-white.mb-5
         = Setting.share_pools.today_enter
       %h2.text-warning.font-weight-bold
@@ -27,7 +26,6 @@
         .col-6.text-right
           %h3
             = @share_pool.user_total
-            >
     = link_to "", :class => "list-group-item list-group-item-action bg-transparent border-0 text-white" do
       .row.py-3.px-5.border-bottom.border-white
         .col-6
@@ -36,7 +34,6 @@
         .col-6.text-right
           %h3
             = @share_pool.pay
-            >
     = link_to "", :class => "list-group-item list-group-item-action bg-transparent border-0 text-white" do
       .row.py-3.px-5.border-bottom.border-white
         .col-6
@@ -45,7 +42,6 @@
         .col-6.text-right
           %h3
             = @share_pool.ware_total
-            >
     = link_to "", :class => "list-group-item list-group-item-action bg-transparent border-0 text-white" do
       .row.py-3.px-5.border-bottom.border-white
         .col-6
@@ -54,7 +50,6 @@
         .col-6.text-right
           %h3
             = @share_pool.gross_sale
-            >
     = link_to "", :class => "list-group-item list-group-item-action bg-transparent border-0 text-white" do
       .row.py-3.px-5.border-bottom.border-white
         .col-6
@@ -63,4 +58,3 @@
         .col-6.text-right
           %h3
             = @share_pool.diamond
-            >

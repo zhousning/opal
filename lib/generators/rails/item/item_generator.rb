@@ -8,20 +8,20 @@ class Rails::ItemGenerator < Rails::Generators::Base
   class_option :tag, :aliases => '-t', :type => :array, :default => []
   class_option :image, :aliases => '-i', :type => :boolean, :default => false 
 
-  def generate_model
-    attributes = columns.join(" ")
-    generate "model", "#{model} #{attributes} --force"
-  end
+  #def generate_model
+  #  attributes = columns.join(" ")
+  #  generate "model", "#{model} #{attributes} --force"
+  #end
 
-  def generate_setting
-    model_name = model.pluralize.underscore
-    hash = Hash.new
-    columns.each_with_index do |column, index|
-      key = column.slice(/([^:]+)/)
-      hash[key] = options[:label][index]
-    end
-    Setting.save(model_name, hash)
-  end
+  #def generate_setting
+  #  model_name = model.pluralize.underscore
+  #  hash = Hash.new
+  #  columns.each_with_index do |column, index|
+  #    key = column.slice(/([^:]+)/)
+  #    hash[key] = options[:label][index]
+  #  end
+  #  Setting.save(model_name, hash)
+  #end
 
   def generate_controller
     @mu = model.underscore
@@ -43,7 +43,7 @@ class Rails::ItemGenerator < Rails::Generators::Base
     #template 'show.template', "app/views/#{controller_name}/show.html.haml", @attrs, @mu, @mc, @mpc, @mpu, @enclosure
     #template 'js.template', "app/assets/javascripts/#{controller_name}.js", @attrs, @mu, @mc, @mpc, @mpu
     #template 'scss.template', "app/assets/stylesheets/#{controller_name}.scss"
-    template 'model.template', "app/models/#{@mu}.rb", @attrs, @mu, @mc, @mpc, @mpu, @enclosure
+    #template 'model.template', "app/models/#{@mu}.rb", @attrs, @mu, @mc, @mpc, @mpu, @enclosure
     if @enclosure
       template '_enclosure.template', "app/views/#{controller_name}/_enclosure_fields.html.haml"
     end

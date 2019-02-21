@@ -179,6 +179,10 @@ development:
     total_purchase: 今日总求购
     price: 今日茶叶价
     volume: 今日成交量
+    start: 交易开始时间
+    end: 交易结束时间
+    start_default: '09:00'
+    end_default: '16:00'
 test:
   admins: *1
   users: *2
