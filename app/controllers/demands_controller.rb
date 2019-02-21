@@ -17,11 +17,11 @@ class DemandsController < ApplicationController
 
   def new
     @demand = Demand.new
-    @trade = Trade.first
+    @trade = Trade.last
   end
 
   def create
-    @trade = Trade.first
+    @trade = Trade.last
     @demand = Demand.new(demand_params)
     coin = current_user.account.coin
     price = demand_params[:price].to_f

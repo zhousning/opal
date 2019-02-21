@@ -19,7 +19,7 @@ class ExtractCash < ActiveRecord::Base
     update_attribute :status, Setting.extract_cashes.agree 
   end
   
-  def agree
-    update_attribute :status, Setting.extract_cashes.pending
+  def disagree
+    update_attribute :status, Setting.extract_cashes.disagree
   end
 end

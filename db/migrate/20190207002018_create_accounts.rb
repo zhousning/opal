@@ -5,6 +5,7 @@ class CreateAccounts < ActiveRecord::Migration
       t.float  :freeze_coin,       null: false, default: 0
       t.string :status,            null: false, default: Setting.accounts.disable 
       t.string :password,          null: false, default: ''
+      t.string :number
 
       t.references :user
       t.timestamps null: false

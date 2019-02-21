@@ -14,14 +14,17 @@
         %h3
           今日总求购:
         %h4
-          34125445片
+          = @trade.total_purchase
+          片
       .col.text-center
         %h3
           今日茶叶价:
         %h4
-          78元
+          = @trade.price
+          元
       .col.text-center
         %h3
           今日成交量:
         %h4
-          134227片
+          = @trade.volume 
+          片

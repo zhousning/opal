@@ -7,6 +7,7 @@
 #  freeze_coin :float            default(0.0), not null
 #  status      :string           default("disable"), not null
 #  password    :string           default(""), not null
+#  number      :string           default(""), not null
 #  user_id     :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
@@ -19,6 +20,13 @@ class Account < ActiveRecord::Base
   validates :freeze_coin, :numericality => {:greater_than_or_equal_to => 0}, :on => :update
 
   #validates :password, :presence => true
+
+  before_save :store_unique_number
+  def store_unique_number
+    unless self.number
+      self.number = "0xx" + (SecureRandom.hex 16)
+    end
+  end
 
   def add_coin(value)
     self.update_attribute :coin, (self.coin + value)

@@ -10,6 +10,7 @@ class TradesController < ApplicationController
       f.series(data: [70, 85, 120, 140, 150, 170, 200], color: 'green')
       f.chart({defaultSeriesType: "line"})
     end
+    @trade = Trade.last
   end
 
   def betray_new

@@ -2,6 +2,11 @@
   - if current_user.status == Setting.users.passed
     = link_to info_accounts_path do 
       = image_tag 'center-account.png', :class => 'card-img-top'
+      .card-img-overlay.py-5
+        .row
+          .col-12.text-center
+            %h2.card-text.text-left.text-dark.pl-3
+              = current_user.account.number
   - elsif current_user.status == Setting.users.opening
     = link_to mobile_authc_new_user_path(current_user) do 
       = image_tag 'center-account.png', :class => 'card-img-top'

@@ -17,13 +17,13 @@ class SellsController < ApplicationController
 
   def new
     @sell = Sell.new
-    @trade = Trade.first
+    @trade = Trade.last
   end
 
   def create
     @leaf = current_user.leaf
     @sell = Sell.new(sell_params)
-    @trade = Trade.first
+    @trade = Trade.last
 
     price = sell_params[:price].to_f
     count = sell_params[:count].to_f

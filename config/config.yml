@@ -76,6 +76,7 @@ defaults:
   accounts: &12
     coin: 金额
     password: 安全密码
+    number: 卡号
     award_sign_up: 10
     award_check_in: 5
     award_share: 30
@@ -137,7 +138,9 @@ defaults:
     pending: pending
     pending_title: 待审核
     agree: agree
-    agree_title: 已提现
+    agree_title: 同意 
+    disagree: disagree
+    disagree_title: 不同意 
   share_pools: &19
     today_enter: 今日入账
     total: 月分红池总额度
@@ -173,6 +176,9 @@ development:
   trades:
     min: 交易最低价
     max: 交易最高价
+    total_purchase: 今日总求购
+    price: 今日茶叶价
+    volume: 今日成交量
 test:
   admins: *1
   users: *2
