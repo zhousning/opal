@@ -1,27 +1,38 @@
-.container
+.container.py-5.mt-5
   .row
     .col-12
-      %h2
+      %h2.text-center.mb-5
         卖出
       = form_tag betray_create_trade_url(@demand) do 
         .form-group.row
-          = label_tag nil, '我的茶叶', :class => "col-3 col-form-label"
+          = label_tag nil, '我的茶叶', :class => "col-3 col-form-label-lg"
           .col-9
-            = @leafs
+            %h4.mb-0
+              = @leafs
         .form-group.row
-          = label_tag nil, Setting.demands.price, :class => "col-3 col-form-label"
+          = label_tag nil, Setting.demands.price, :class => "col-3 col-form-label-lg"
           .col-9
-            = @demand.price
+            %h4.mb-0
+              = @demand.price
         .form-group.row
-          = label_tag nil, '卖出数量', :class => "col-3 col-form-label"
+          = label_tag nil, '卖出数量', :class => "col-3 col-form-label-lg"
           .col-9
-            = @demand.count
+            %h4.mb-0
+              = @demand.count
         .form-group.row
-          = label_tag nil, '手续费', :class => "col-3 col-form-label"
+          = label_tag nil, '手续费', :class => "col-3 col-form-label-lg"
           .col-9
-            = @poundage
+            %h4.mb-0
+              = @poundage
         .form-group.row
-          .col-3
+          = label_tag nil, '安全密码', :class => "col-3 col-form-label-lg"
+          .col-9
+            = password_field_tag 'password', nil, :class => "form-control form-control-lg"
+        .form-group.row
+          .col-12
+            %hr
+        .form-group.row
+          .col-3.offset-3
             = link_to "取消", trades_path, :class => "btn btn-secondary"
           .col-3.offset-2
             = submit_tag "确认", :class => "btn btn-success"

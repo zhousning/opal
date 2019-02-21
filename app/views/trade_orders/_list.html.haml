@@ -31,12 +31,12 @@
             共1件商品,实付款: ¥
             = trade_order.price
           .row.py-3
-            .col-3.offset-5
-              - if trade_order.state != Setting.trade_orders.canceled && trade_order.state != Setting.trade_orders.completed
+            - if trade_order.state != Setting.trade_orders.canceled && trade_order.state != Setting.trade_orders.completed
+              .col-3.offset-5
                 = link_to '取消订单', cancel_trade_order_path(trade_order), :data => {:confirm => "确定取消吗?"}, :class => "btn btn-block btn-outline-secondary"
-              - if trade_order.state == Setting.trade_orders.pending
-                .col-2
-                  = link_to '付款', root_path, :class => "btn btn-block btn-outline-secondary"
+            - if trade_order.state == Setting.trade_orders.pending
+              .col-2
+                = link_to '付款', trade_order_path(trade_order), :class => "btn btn-block btn-outline-secondary"
             .col-2 
               = link_to '详情', trade_order_path(trade_order), :class => "btn btn-block btn-outline-secondary"
 

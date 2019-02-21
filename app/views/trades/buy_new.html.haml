@@ -1,23 +1,39 @@
-.container
+.container.py-5.mt-5
   .row
     .col-12
-      %h2
+      %h2.text-center.mb-5
         买入 
-      = form_tag buy_create_trade_url(@sell) do 
+      = form_tag buy_create_trade_url(@sell), :id => "new_buy" do 
         .form-group.row
-          = label_tag nil, '我的余额', :class => "col-3 col-form-label"
+          = label_tag nil, '我的余额', :class => "col-3 col-form-label-lg"
           .col-9
-            = @coin
+            %h4.mb-0
+              = @coin
         .form-group.row
-          = label_tag nil, Setting.sells.price, :class => "col-3 col-form-label"
+          = label_tag nil, Setting.sells.price, :class => "col-3 col-form-label-lg"
           .col-9
-            = @sell.price
+            %h4.mb-0
+              = @sell.price
         .form-group.row
-          = label_tag nil, '买入数量', :class => "col-3 col-form-label"
+          = label_tag nil, '买入数量', :class => "col-3 col-form-label-lg"
           .col-9
-            = @sell.count
+            %h4.mb-0
+              = @sell.count
         .form-group.row
-          .col-3
+          = label_tag nil, '安全密码', :class => "col-3 col-form-label-lg"
+          .col-9
+            = password_field_tag 'password', nil, :class => "form-control form-control-lg"
+        .form-group.row
+          .col-8
+            = text_field_tag 'buy_confirm_code', nil, :class => "form-control form-control-lg"
+          .col-4
+            %button#buy-send-confirm-code.btn.btn-block.btn-lg.btn-info{:type => "button"}
+              验证码
+        .form-group.row
+          .col-12
+            %hr
+        .form-group.row
+          .col-3.offset-3
             = link_to "取消", trades_path, :class => "btn btn-secondary"
           .col-3.offset-2
             = submit_tag "确认", :class => "btn btn-success"
