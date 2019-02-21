@@ -1,0 +1,8 @@
+%button#authc-modal-btn.btn{"data-target" => "#authc-modal", "data-toggle" => "modal", :type => "button"}
+#authc-modal.modal{:role => "dialog", :tabindex => "-1"}
+  .modal-dialog.modal-lg{:role => "document"}
+    .modal-content
+      .modal-body
+        = render 'layouts/protocol_content'
+      .modal-footer
+        %button.btn.btn-success{"data-dismiss" => "modal", :type => "button"} 确定 

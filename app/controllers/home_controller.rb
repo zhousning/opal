@@ -9,4 +9,7 @@ class HomeController < ApplicationController
 
   def help
   end
+
+  def protocol
+  end
 end

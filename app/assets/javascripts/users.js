@@ -27,3 +27,7 @@ $(".registrations").ready(function() {
     }
   });
 });
+
+$(".users.mobile_authc_new").ready(function() {
+  $("#authc-modal-btn").click();
+});

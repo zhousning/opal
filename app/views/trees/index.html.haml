@@ -43,7 +43,8 @@
     .col-4.flex-column
       - if user_signed_in?
         .col-12.d-flex.justify-content-center
-          = image_tag "protocol.png", :class => "img-thumbnail bg-transparent border-0"
+          = link_to protocol_home_index_path do
+            = image_tag "protocol.png", :class => "img-thumbnail bg-transparent border-0"
         .col-12.d-flex.justify-content-center
           = link_to teams_path do
             = image_tag "tea-house.png", :class => "img-thumbnail bg-transparent border-0"

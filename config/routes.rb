@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :home, :only => [] do
     get :custom_service, :on => :collection
     get :help, :on => :collection
+    get :protocol, :on => :collection
   end
 
   resources :extract_cashes, :only => [ :new, :create] 
