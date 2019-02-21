@@ -14,3 +14,16 @@
         = image_tag 'logo.png', :class => "d-block m-auto img-thubnail"
         %h3.text-center
           认证通过
+        %ul.list-group.mx-auto.w-50.mt-5
+          %li.list-group-item.border-0.text-left
+            %h5.mt-3
+              = Setting.users.name
+              = @user.name
+          %li.list-group-item.border-0.text-left
+            %h5.mt-3
+              = Setting.users.phone
+              = @user.phone
+          %li.list-group-item.border-0.text-left
+            %h5.mt-3
+              = Setting.users.alipay
+              = @user.alipay

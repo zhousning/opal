@@ -97,11 +97,12 @@ ActiveAdmin.register User  do
     user.pass
     user.tree.add_count(1) if user.tree.count == 0 
     user.leaf.enable
-    user.citrine.add_count(Setting.awards.one_citrine)
     father = user.parent
-    while father 
-        father.citrine.add_count(Setting.awards.ten_citrine)
-        father = father.parent
+    if father
+      father.citrine.add_count(Setting.awards.ten_citrine)
+      if grandpa = father.parent
+        grandpa.citrine.add_count(Setting.awards.one_citrine) 
+      end
     end
     redirect_to admin_user_path(params[:id])
   end

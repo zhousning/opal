@@ -14,13 +14,13 @@
       #nav-tabContent.tab-content
         #pop1.tab-pane.fade.show.active{"aria-labelledby" => "pop1-tab", :role => "tabpanel"}
           .pt-3
-          - @childrens.each do |d|
-            %table.table
-              %thead
-                %tr
-                  %th 时间
-                  %th 姓名 
-              %tbody
+          %table.table
+            %thead
+              %tr
+                %th 时间
+                %th 姓名 
+            %tbody
+              - @childrens.each do |d|
                 %tr
                   %td
                     = d.created_at.strftime("%Y-%m-%d")

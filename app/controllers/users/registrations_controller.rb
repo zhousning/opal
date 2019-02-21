@@ -17,6 +17,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
           user_inviter = User.find_by_number(resource.inviter)
           if user_inviter
             resource.update_attribute(:parent_id, user_inviter.id)
+            user_inviter.citrine.add_count(Setting.awards.one_citrine)
           end
         end
       end
