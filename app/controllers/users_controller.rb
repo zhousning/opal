@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   layout "application_mobile"
-  before_action :authenticate_user!
+  before_filter :authenticate_user!, :except=>[:alipay_notify]
+  protect_from_forgery :only=>[:alipay_notify]
 
   def center
     @user = current_user
@@ -31,7 +32,7 @@ class UsersController < ApplicationController
 
   def authc_pay
     Alipay::Service.create_direct_pay_by_user_wap_url(
-      :out_trade_no      => Time.now.to_i.to_s + "%04d" % [rand(10000)],
+      :out_trade_no      => current_user.number,
       :subject           => "茶源实名认证",
       :total_fee         => 1,
       :return_url        => Rails.application.routes.url_helpers.alipay_return_users_url(:host => Setting.systems.host),
@@ -51,11 +52,12 @@ class UsersController < ApplicationController
   def alipay_notify
     notify_params = params.except(*request.path_parameters.keys)
     if Alipay::Sign.verify?(notify_params) and Alipay::Notify.verify?(notify_params)
+      user = User.find_by_number(params[:out_trade_no])
       case params[:trade_status]
       when 'TRADE_SUCCESS'
-        pass
+        pass(user)
       when 'TRADE_FINISHED'
-        pass
+        pass(user)
       end
 
       render :text => 'success'
@@ -79,8 +81,7 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :identity, :alipay)
     end
     
-    def pass
-      user = current_user 
+    def pass(user)
       user.pass
       user.tree.add_count(1) if user.tree.count == 0 
       user.leaf.enable
