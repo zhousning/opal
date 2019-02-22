@@ -97,6 +97,10 @@ gem 'lazy_high_charts'
 
 #gem 'kaminari'
 
+gem 'rqrcode_png'
+
+gem 'dragonfly', '~> 1.2.0'
+
 gem 'cocoon'
 
 #gem 'popper_js', '~> 1.14.5'

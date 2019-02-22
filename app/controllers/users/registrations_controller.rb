@@ -13,6 +13,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     code = params[:confirm_code]
     if code == cookies[:reg_code]
       super do |resource|
+        if resource.persisted?
+          invite_link = new_user_registration_url(:inviter=>resource.number)
+          qr_code_img = RQRCode::QRCode.new(invite_link).to_img.resize(300, 300)
+          resource.update_attribute :qr_code, qr_code_img.to_string
+        end
         if resource.persisted? and resource.inviter != ""
           user_inviter = User.find_by_number(resource.inviter)
           if user_inviter

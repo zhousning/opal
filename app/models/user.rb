@@ -28,6 +28,8 @@
 
 class User < ActiveRecord::Base
   rolify
+  dragonfly_accessor :qr_code
+
   has_one :tree
   has_one :leaf
   has_one :account

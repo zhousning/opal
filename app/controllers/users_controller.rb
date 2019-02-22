@@ -20,7 +20,6 @@ class UsersController < ApplicationController
       redirect_to mobile_authc_new_user_url
     else
       @user = current_user 
-      @user.pend
       if @user.update(user_authc_params)
         @user.account.add_password(account_password)
         redirect_to authc_pay
