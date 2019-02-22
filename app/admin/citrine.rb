@@ -2,6 +2,8 @@ ActiveAdmin.register Citrine  do
 
   permit_params  :count, :total
 
+  actions :all, :except => [:new, :destroy]
+
   menu label: "茶晶管理", :priority => 10 
   config.per_page = 20
   config.sort_order = "id_asc"
@@ -9,6 +11,7 @@ ActiveAdmin.register Citrine  do
   
   filter :count, :label => Setting.citrines.count
   filter :total, :label => Setting.citrines.total
+  filter :user, :label => Setting.users.phone
   filter :created_at
 
   index :title=>"todo" do

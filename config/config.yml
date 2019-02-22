@@ -22,7 +22,7 @@ defaults:
     identity: 身份证
     alipay: 支付宝
     status: 认证状态
-  roles: &j
+  roles: &3
     class_name: Role
     super_admin: 超级管理员
     buyer: 客户信息管理
