@@ -13,7 +13,7 @@ ActiveAdmin.register TradeOrder  do
     column Setting.trade_orders.number, :number
     column Setting.trade_orders.price, :price
     column Setting.trade_orders.state, :state do |f|
-      f.trade_order_state(f.state)
+      f.trade_order_state
     end
     column Setting.trade_orders.wayno, :wayno
     column Setting.trade_orders.name, :name

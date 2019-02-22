@@ -20,17 +20,17 @@
           余额
         %h4
           = current_user.account.coin
-      -#
-        .col.text-center
-          %h3
-            佣金
-          %h4
-        
       .col.text-center
         %h3
-          茶晶
+          佣金
         %h4
-          = current_user.citrine.count
+          = current_user.account.commission
+      .col.text-center
+        = link_to info_citrines_path do
+          %h3
+            茶晶
+          %h4
+            = current_user.citrine.count
       .col.text-center
         = link_to level_users_path do
           %h3.text-dark

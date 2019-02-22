@@ -102,6 +102,7 @@ class Order < ActiveRecord::Base
   #但不能在同步处理中再次调用，可能会出问题
   def add_plan
     self.user.account.add_coin(self.coin)
+    Consume.create(:category => Setting.consumes.recharge, :coin_cost => self.money, :status => Setting.consumes.status_success, :user_id => current_user.id)
   end
 
   def remove_plan

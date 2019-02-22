@@ -44,6 +44,16 @@ class Account < ActiveRecord::Base
     self.update_attribute :freeze_coin, (self.freeze_coin - value)
   end
 
+  def add_commision(value)
+    self.update_attribute :commision, (self.commision + value)
+    self.update_attribute :coin, (self.coin + value)
+  end
+
+  def sub_commision(value)
+    self.update_attribute :commision, (self.commision - value)
+    self.update_attribute :coin, (self.coin - value)
+  end
+
   def add_password(value)
     self.update_attribute :password, Digest::MD5.hexdigest(value) unless value.blank?
   end

@@ -22,7 +22,7 @@ defaults:
     identity: 身份证
     alipay: 支付宝
     status: 认证状态
-  roles: &3
+  roles: &j
     class_name: Role
     super_admin: 超级管理员
     buyer: 客户信息管理
@@ -32,6 +32,8 @@ defaults:
     super_admin: 管理系统所有资源
   citrines: &5
     exchange_max: 300
+    count: 可用茶晶
+    total: 茶晶总数
   awards: &6
     ten_citrine: 10
     one_citrine: 1
@@ -91,9 +93,12 @@ defaults:
     coin_now: 余额
     status: 状态
     category_none: none
+    category_recharge: 充值
     category_purchase_leaf: 求购茶叶
     category_exchange_tree: 兑换茶树
     category_buy_ware: 购买茶叶商品
+    category_buy_ware_citrine: 购买商品奖励茶晶
+    category_buy_commision: 佣金奖励 
     status_none: none
     status_create: create
     status_success: success
@@ -111,6 +116,7 @@ defaults:
     disable: disable
   systems: &16
     poundage: 0.1
+    commision: 0.1
     host: 120.55.50.204
   trade_orders: &17
     number: 订单编号

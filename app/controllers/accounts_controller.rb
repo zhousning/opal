@@ -4,7 +4,8 @@ class AccountsController < ApplicationController
 
   def info 
     @account = current_user.account 
-    @orders = current_user.orders.where(:state => Setting.orders.paid).order("created_at DESC")
+    @consumes = current_user.consumes
+    #@orders = current_user.orders.where(:state => Setting.orders.paid).order("created_at DESC")
   end
 
   def recharge

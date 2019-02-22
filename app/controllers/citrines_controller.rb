@@ -7,6 +7,7 @@ class CitrinesController < ApplicationController
 
   def info 
     @citrine = current_user.citrine
+    @consumes = @citrine.consumes
   end
 
   def exchange
@@ -15,7 +16,7 @@ class CitrinesController < ApplicationController
     if count >= Setting.citrines.exchange_max
       current_user.tree.add_count(1)
       @citrine.sub_count(Setting.citrines.exchange_max)
-      Consume.create(:category => Setting.consumes.category_exchange_tree, :coin_cost => Setting.citrines.exchange_max, :status => Setting.consumes.status_success, :user_id => current_user.id, :citrine_id => @citrine.id)
+      Consume.create(:category => Setting.consumes.category_exchange_tree, :coin_cost => Setting.citrines.exchange_max, :status => Setting.consumes.status_success, :citrine_id => @citrine.id)
       redirect_to trees_url
     else
       redirect_to citrines_url

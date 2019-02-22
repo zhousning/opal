@@ -4,7 +4,7 @@ ActiveAdmin.register Trade  do
 
   actions :all, :except => [:destroy]
 
-  menu label: "交易中心", :priority => 20 
+  menu label: "交易中心", :priority => 6 
   config.per_page = 20
   config.sort_order = "id_asc"
 

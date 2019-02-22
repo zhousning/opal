@@ -2,7 +2,7 @@ ActiveAdmin.register ExtractCash  do
 
   permit_params  :coin, :status
 
-  menu label: "用户提现", :priority => 20 
+  menu label: "用户提现", :priority => 9 
   config.per_page = 20
   config.sort_order = "id_asc"
 

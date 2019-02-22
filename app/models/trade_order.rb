@@ -65,6 +65,7 @@ class TradeOrder < ActiveRecord::Base
   def complete
     if departed?
       update_attribute :state, 'completed'
+      complete_plan
     end
   end
 
@@ -73,6 +74,19 @@ class TradeOrder < ActiveRecord::Base
     if pending? or paid? or departed?
       remove_plan if paid? || departed?  #业务逻辑，取消订单
       update_attribute :state, 'canceled'
+    end
+  end
+
+  def complete_plan
+    user = self.user
+    ware = self.ware
+    citrine = user.citrine
+    citrine.add_count(ware.citrine_count)
+    Consume.create(:category => Setting.consumes.category_buy_ware_citrine, :coin_cost => ware.citrine_count, :status => Setting.consumes.status_success, :citrine_id => citrine.id)
+    if parent = user.parent
+      cms = ware.price*Setting.systems.commission
+      parent.account.add_commision(cms)
+      Consume.create(:category => Setting.consumes.category_buy_commision, :coin_cost => cms, :status => Setting.consumes.status_success, :user_id => parent.id)
     end
   end
 

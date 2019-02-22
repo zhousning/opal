@@ -2,7 +2,7 @@ ActiveAdmin.register Order do
 
   permit_params :category, :money, :coin, :subject
 
-  menu label: "充值管理", :priority => 4 
+  menu label: "充值管理", :priority => 8 
   config.per_page = 20
   config.sort_order = "id_asc"
 

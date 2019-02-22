@@ -27,9 +27,13 @@
             %h4
               时间
         %tbody
-          - @citrine.consumes.each do |c|
+          - @consumes.each do |c|
             %tr.mt-3
               %td.text-center.font-1-5rem
+                -if c.category == Setting.consumes.category_buy_ware_citrine 
+                  +
+                - elsif c.category == Setting.consumes.category_exchange_tree 
+                  -
                 = c.coin_cost
               %td.text-center.font-1-5rem
                 = c.category

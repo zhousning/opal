@@ -51,8 +51,13 @@ class TradeOrdersController < ApplicationController
     end
   end
 
+  def confirm
+    @trade_order = current_user.trade_orders.find(params[:id])
+    @trade_order.complete
+  end
+
   def cancel
-    @trade_order = current_user.trade_order.find(params[:id])
+    @trade_order = current_user.trade_orders.find(params[:id])
     @trade_order.cancel
   end
 

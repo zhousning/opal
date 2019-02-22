@@ -20,7 +20,7 @@ class Consume < ActiveRecord::Base
   belongs_to :user
   belongs_to :demand
   belongs_to :trade_order
-  belongs_to :citrines
+  belongs_to :citrine
 
   before_save :store_unique_number
   def store_unique_number
