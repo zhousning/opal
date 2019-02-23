@@ -93,6 +93,8 @@ gem 'activeadmin_blaze_theme'
 #gem 'alipay', '~> 0.12.0'
 gem 'alipay', :git=>'https://github.com/zhousning/alipay.git'
 
+#gem 'wx_pay'
+
 gem 'lazy_high_charts'
 
 #gem 'kaminari'

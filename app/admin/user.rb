@@ -8,6 +8,7 @@ ActiveAdmin.register User  do
   config.per_page = 20
   config.sort_order = "id_asc"
 
+
   index :title=>"用户管理" do
     selectable_column
     id_column
@@ -36,7 +37,7 @@ ActiveAdmin.register User  do
   filter :name, :label => Setting.users.name
   filter :identity, :label => Setting.users.identity
   filter :alipay, :label => Setting.users.alipay
-  filter :status, :label => Setting.users.status
+  filter :status, :label => Setting.users.status, as: :select, collection: [[Setting.users.opening_title, Setting.users.opening], [Setting.users.pending_title, Setting.users.pending], [Setting.users.passed_title, Setting.users.passed], [Setting.users.rejected_title,Setting.users.rejected]]
   filter :created_at
 
   form do |f|

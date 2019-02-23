@@ -85,7 +85,7 @@ class User < ActiveRecord::Base
 
   def state
     if self.status == Setting.users.opening
-      Setting.users.pending_title
+      Setting.users.opening_title
     elsif self.status == Setting.users.pending
       Setting.users.pending_title
     elsif self.status == Setting.users.rejected

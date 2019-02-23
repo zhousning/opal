@@ -2,11 +2,11 @@ ActiveAdmin.register TradeOrder  do
 
   permit_params  :number, :wayno, :name, :phone, :address
 
-  menu label: "买家订单", :priority => 5 
+  menu label: "商城订单", :priority => 5 
   config.per_page = 20
   config.sort_order = "id_asc"
 
-  index :title=>"买家订单" do
+  index :title=>"商城订单" do
     selectable_column
     id_column
     
@@ -30,9 +30,9 @@ ActiveAdmin.register TradeOrder  do
   end
 
   
+  filter :state, :label => Setting.trade_orders.state, as: :select, collection: [[Setting.trade_orders.opening_title, Setting.trade_orders.opening], [Setting.trade_orders.pending_title, Setting.trade_orders.pending], [Setting.trade_orders.paid_title, Setting.trade_orders.paid], [Setting.trade_orders.departed_title,Setting.trade_orders.departed],[Setting.trade_orders.completed_title,Setting.trade_orders.completed] , [Setting.trade_orders.canceled_title,Setting.trade_orders.canceled]]
   filter :number, :label => Setting.trade_orders.number 
   filter :price, :label => Setting.trade_orders.price 
-  filter :state, :label => Setting.trade_orders.state
   filter :wayno, :label => Setting.trade_orders.wayno
   filter :name, :label => Setting.trade_orders.name 
   filter :phone, :label => Setting.trade_orders.phone 

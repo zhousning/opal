@@ -4,17 +4,17 @@ ActiveAdmin.register Citrine  do
 
   actions :all, :except => [:new, :destroy]
 
-  menu label: "茶晶管理", :priority => 10 
+  menu label: "茶晶管理", :priority => 4 
   config.per_page = 20
   config.sort_order = "id_asc"
 
   
+  filter :user_name, :label => Setting.users.name, as: :string
+  filter :user_phone, :label => Setting.users.phone, as: :string
   filter :count, :label => Setting.citrines.count
   filter :total, :label => Setting.citrines.total
-  filter :user, :label => Setting.users.phone
-  filter :created_at
 
-  index :title=>"todo" do
+  index :title=>"茶晶管理" do
     selectable_column
     id_column
     
@@ -27,9 +27,6 @@ ActiveAdmin.register Citrine  do
     column Setting.citrines.count, :count
     column Setting.citrines.total, :total
 
-    column "创建时间", :created_at, :sortable=>:created_at do |f|
-      f.created_at.strftime('%Y-%m-%d %H:%M:%S')
-    end
     column "更新时间", :updated_at do |f|
       f.updated_at.strftime('%Y-%m-%d %H:%M:%S')
     end
@@ -58,9 +55,6 @@ ActiveAdmin.register Citrine  do
         citrine.total
       end
 
-      row "创建时间" do
-        citrine.created_at.strftime('%Y-%m-%d %H:%M:%S')
-      end
       row "更新时间" do
         citrine.updated_at.strftime('%Y-%m-%d %H:%M:%S')
       end

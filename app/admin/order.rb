@@ -2,7 +2,7 @@ ActiveAdmin.register Order do
 
   permit_params :category, :money, :coin, :subject
 
-  menu label: "充值管理", :priority => 8 
+  menu label: "充值管理", :priority => 9 
   config.per_page = 20
   config.sort_order = "id_asc"
 
@@ -28,9 +28,6 @@ ActiveAdmin.register Order do
     end
     column "创建时间", :sortable=>:created_at do |f|
       f.created_at.strftime('%Y-%m-%d %H:%M:%S')
-    end
-    column "更新时间", :sortable=>:updated_at do |f|
-      f.updated_at.strftime('%Y-%m-%d %H:%M:%S')
     end
     actions
   end

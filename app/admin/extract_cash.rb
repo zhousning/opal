@@ -2,13 +2,13 @@ ActiveAdmin.register ExtractCash  do
 
   permit_params  :coin, :status
 
-  menu label: "用户提现", :priority => 9 
+  menu label: "用户提现", :priority => 6 
   config.per_page = 20
   config.sort_order = "id_asc"
 
   
+  filter :status, :label => Setting.extract_cashes.status, as: :select, collection: [[Setting.extract_cashes.pending_title, Setting.extract_cashes.pending], [Setting.extract_cashes.agree_title, Setting.extract_cashes.agree], [Setting.extract_cashes.disagree_title,Setting.extract_cashes.disagree]]
   filter :coin, :label => Setting.extract_cashes.coin
-  filter :status, :label => Setting.extract_cashes.status
   filter :created_at
 
   index :title=>"用户提现" do
