@@ -157,6 +157,18 @@ defaults:
     diamond: 昨日钻石茶主平均分红
     current_total: 分红池当月总额
     own_tea: 持茶/片所得
+  pick_records: &20
+    number: 数量
+  trades: &21
+    min: 交易最低价
+    max: 交易最高价
+    total_purchase: 今日总求购
+    price: 今日茶叶价
+    volume: 今日成交量
+    start: 交易开始时间
+    end: 交易结束时间
+    start_default: '09:00'
+    end_default: '16:00'
 development:
   admins: *1
   users: *2
@@ -177,18 +189,8 @@ development:
   trade_orders: *17
   extract_cashes: *18
   share_pools: *19
-  pick_records:
-    number: 数量
-  trades:
-    min: 交易最低价
-    max: 交易最高价
-    total_purchase: 今日总求购
-    price: 今日茶叶价
-    volume: 今日成交量
-    start: 交易开始时间
-    end: 交易结束时间
-    start_default: '09:00'
-    end_default: '16:00'
+  pick_records: *20
+  trades: *21
 test:
   admins: *1
   users: *2
@@ -209,6 +211,8 @@ test:
   trade_orders: *17
   extract_cashes: *18
   share_pools: *19
+  pick_records: *20
+  trades: *21
 production:
   admins: *1
   users: *2
@@ -229,3 +233,5 @@ production:
   trade_orders: *17
   extract_cashes: *18
   share_pools: *19
+  pick_records: *20
+  trades: *21
