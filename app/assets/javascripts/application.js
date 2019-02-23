@@ -12,10 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery-readyselector 
 //= require bootstrap-sprockets
 //= require cocoon
-//= require clipboard
 //= require kindeditor
 //= require_tree .
 //

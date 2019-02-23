@@ -1,4 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  layout "application_mobile"
 # before_action :configure_account_update_params, only: [:update]
 
   def new

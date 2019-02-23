@@ -1,4 +1,5 @@
 class Users::SessionsController < Devise::SessionsController
+  layout "application_mobile"
 # before_action :configure_sign_in_params, only: [:create]
 
  # def after_sign_in_path_for(resource)

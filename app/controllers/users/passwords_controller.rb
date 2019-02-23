@@ -1,4 +1,6 @@
 class Users::PasswordsController < Devise::PasswordsController
+  layout "application_mobile"
+
   def forget 
     @user = User.new 
   end

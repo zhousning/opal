@@ -1,7 +1,9 @@
 $(".trees.index").ready(function() {
-  var leafs = gon.leafs;
-  for (var i=0; i < leafs; i++){ 
-    start();
+  if ($(".trees.index").length > 0) {
+    var leafs = gon.leafs;
+    for (var i=0; i < leafs; i++){ 
+      start();
+    }
   }
 });
 

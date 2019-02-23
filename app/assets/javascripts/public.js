@@ -1,4 +1,5 @@
-$(".index").ready(function() {
+$(".notices.index, .wares.index").ready(function() {
+  if ($(".notices.index").length > 0 || $(".wares.index").length > 0) {
     var activeSystemClass = $('.list-group-item.active');
 
     //something is entered in search form
@@ -43,14 +44,5 @@ $(".index").ready(function() {
             tableBody.append('<tr class="search-sf"><td class="text-muted" colspan="6">没有找到</td></tr>');
         }
     });
-});
-
-$(".users, .roles, .buyers").ready(function(e) {
-  var pathMatch = location.pathname.match(/\/(\w+)?[\/]?(\w*)/); 
-  var str = ".js-" + pathMatch[1];
-  if (pathMatch[2] == "control") {
-    str += "-" + pathMatch[2];
   }
-  $(str).addClass("active");
-})
-
+});
