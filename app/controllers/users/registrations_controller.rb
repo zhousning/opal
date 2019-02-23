@@ -11,26 +11,43 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    code = params[:confirm_code]
-    if code == cookies[:reg_code]
-      super do |resource|
-        if resource.persisted?
-          invite_link = new_user_registration_url(:inviter=>resource.number)
-          qr_code_img = RQRCode::QRCode.new(invite_link).to_img.resize(300, 300)
-          resource.update_attribute :qr_code, qr_code_img.to_string
-        end
-        if resource.persisted? and resource.inviter != ""
-          user_inviter = User.find_by_number(resource.inviter)
-          if user_inviter
-            resource.update_attribute(:parent_id, user_inviter.id)
-            user_inviter.citrine.add_count(Setting.awards.one_citrine)
-          end
+    super do |resource|
+      if resource.persisted?
+        invite_link = new_user_registration_url(:inviter=>resource.number)
+        qr_code_img = RQRCode::QRCode.new(invite_link).to_img.resize(300, 300)
+        resource.update_attribute :qr_code, qr_code_img.to_string
+      end
+      if resource.persisted? and resource.inviter != ""
+        user_inviter = User.find_by_number(resource.inviter)
+        if user_inviter
+          resource.update_attribute(:parent_id, user_inviter.id)
+          user_inviter.citrine.add_count(Setting.awards.one_citrine)
         end
       end
-    else
-      redirect_to new_user_registration_url
     end
   end
+
+  #def create
+  #  code = params[:confirm_code]
+  #  if code == cookies[:reg_code]
+  #    super do |resource|
+  #      if resource.persisted?
+  #        invite_link = new_user_registration_url(:inviter=>resource.number)
+  #        qr_code_img = RQRCode::QRCode.new(invite_link).to_img.resize(300, 300)
+  #        resource.update_attribute :qr_code, qr_code_img.to_string
+  #      end
+  #      if resource.persisted? and resource.inviter != ""
+  #        user_inviter = User.find_by_number(resource.inviter)
+  #        if user_inviter
+  #          resource.update_attribute(:parent_id, user_inviter.id)
+  #          user_inviter.citrine.add_count(Setting.awards.one_citrine)
+  #        end
+  #      end
+  #    end
+  #  else
+  #    redirect_to new_user_registration_url
+  #  end
+  #end
 
   def after_sign_up_path_for(resource)
     root_url
