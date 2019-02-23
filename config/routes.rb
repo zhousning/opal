@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
   devise_scope :user do
-    # get 'login_validate', to: 'users/sessions#login_validate'
+    get 'forget', to: 'users/passwords#forget'
+    patch 'update_password', to: 'users/passwords#update_password'
   end
 
   require 'sidekiq/web'

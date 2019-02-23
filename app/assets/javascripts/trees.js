@@ -1,4 +1,4 @@
-$(".trees").ready(function() {
+$(".trees.index").ready(function() {
   var leafs = gon.leafs;
   for (var i=0; i < leafs; i++){ 
     start();

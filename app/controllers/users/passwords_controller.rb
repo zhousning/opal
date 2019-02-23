@@ -1,4 +1,28 @@
 class Users::PasswordsController < Devise::PasswordsController
+  def forget 
+    @user = User.new 
+  end
+
+  def update_password
+    code = params[:confirm_code]
+    @user = User.find_by_phone(user_params[:phone]) 
+    if @user && code == cookies[:reg_code]
+      if @user.update(user_params)
+        bypass_sign_in(@user)
+        redirect_to root_path
+      else
+        render :forget
+      end
+    else
+      redirect_to forget_path
+    end
+  end
+
+  private
+
+    def user_params
+      params.require(:user).permit(:phone, :password, :password_confirmation)
+    end
   # GET /resource/password/new
   # def new
   #   super

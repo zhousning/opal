@@ -1,4 +1,4 @@
-$(".registrations").ready(function() {
+$(".registrations, .passwords").ready(function() {
   $("#send-confirm-code").click(function(){
     var phone = $("#user_phone").val();
     if(!(/^1[34578]\d{9}$/.test(phone))){ 
