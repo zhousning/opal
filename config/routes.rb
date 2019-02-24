@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     get :level, :on => :collection
     get :center, :on => :collection
     get :alipay_return, :on => :collection
-    get :alipay_notify, :on => :collection
+    post :alipay_notify, :on => :collection
     get :mobile_authc_new, :on => :member
     post :mobile_authc_create, :on => :member
     get :mobile_authc_status, :on => :member

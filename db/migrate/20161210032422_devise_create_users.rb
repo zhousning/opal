@@ -9,6 +9,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :alipay,              null: false, default: ""
       t.integer :status,              null: false, default: 0 
       t.string :number,              null: false, default: "" 
+      t.string :authc_number
       t.string :qr_code_uid
       t.string :inviter,              null: false, default: "" 
       t.string :encrypted_password, null: false, default: ""

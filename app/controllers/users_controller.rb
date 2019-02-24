@@ -23,6 +23,7 @@ class UsersController < ApplicationController
       @user = current_user 
       if @user.update(user_authc_params)
         @user.account.add_password(account_password)
+        @user.produce_authc
         redirect_to authc_pay
       else
         redirect_to mobile_authc_new_user_url
@@ -32,7 +33,7 @@ class UsersController < ApplicationController
 
   def authc_pay
     Alipay::Service.create_direct_pay_by_user_wap_url(
-      :out_trade_no      => current_user.number,
+      :out_trade_no      => current_user.authc_number,
       :subject           => "茶源实名认证",
       :total_fee         => Setting.systems.authc_pay,
       :return_url        => Rails.application.routes.url_helpers.alipay_return_users_url(:host => Setting.systems.host),
@@ -44,9 +45,9 @@ class UsersController < ApplicationController
     puts "alipay return >>>>>>>>>>>>>>"
     callback_params = params.except(*request.path_parameters.keys)
     if callback_params.any? && Alipay::Sign.verify?(callback_params)
-      redirect_to  mobile_authc_status_user_url
+      redirect_to  mobile_authc_status_user_url(current_user)
     else
-      redirect_to mobile_authc_new_user_url
+      redirect_to mobile_authc_new_user_url(current_user)
     end
   end
 

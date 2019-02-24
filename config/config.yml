@@ -118,7 +118,8 @@ defaults:
     poundage: 0.1
     commision: 0.1
     authc_pay: 0.01
-    host: 120.55.50.204
+    #host: 120.55.50.204
+    host: '192.168.8.131:3000'
   trade_orders: &17
     number: 订单编号
     price: 价格

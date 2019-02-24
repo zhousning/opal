@@ -95,6 +95,9 @@ class User < ActiveRecord::Base
     end
   end
 
+  def produce_authc
+    update_attribute :authc_number, Time.now.to_i.to_s + "%04d" % [rand(10000)]
+  end
 
   def user_status(value)
   end

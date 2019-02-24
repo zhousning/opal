@@ -6,6 +6,16 @@ class ApplicationController < ActionController::Base
 
   before_filter :user_access_log
 
+
+  def alipay_client
+    client = Alipay::Client.new(
+      url: ENV['ALIPAY_API'],
+      app_id: ENV['APP_ID'],
+      app_private_key: ENV['APP_PRIVATE_KEY'],
+      alipay_public_key: ENV['ALIPAY_PUBLIC_KEY']
+    )
+  end
+
   def user_access_log
     session_id = session[:session_id] || ""
     user_id = (current_user && current_user.id) || ""
@@ -26,8 +36,7 @@ class ApplicationController < ActionController::Base
 
     def current_ability
       @current_ability ||= Ability.new(current_user)
-    end
-       
+    end 
     def load_permissions
       current_user.roles.each do |role|
         @current_permissions = role.permissions.collect{|i| [i.subject_class, i.action]}
