@@ -12,6 +12,8 @@ zh-CN:
       title: "首页"
     help:
       title: "帮助中心"
+    custom_service:
+      title: 茶源客服
 
   users:
     control:
@@ -99,9 +101,6 @@ zh-CN:
   extract_cashes:
     new:
       title: 提现
-  home:
-    custom_service:
-      title: 茶源客服
 
   notices:
     index:

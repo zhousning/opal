@@ -34,13 +34,14 @@ class UsersController < ApplicationController
     Alipay::Service.create_direct_pay_by_user_wap_url(
       :out_trade_no      => current_user.number,
       :subject           => "茶源实名认证",
-      :total_fee         => 1,
+      :total_fee         => Setting.systems.authc_pay,
       :return_url        => Rails.application.routes.url_helpers.alipay_return_users_url(:host => Setting.systems.host),
       :notify_url        => Rails.application.routes.url_helpers.alipay_notify_users_url(:host => Setting.systems.host)
     )
   end
 
   def alipay_return
+    puts "alipay return >>>>>>>>>>>>>>"
     callback_params = params.except(*request.path_parameters.keys)
     if callback_params.any? && Alipay::Sign.verify?(callback_params)
       redirect_to  mobile_authc_status_user_url
@@ -50,6 +51,7 @@ class UsersController < ApplicationController
   end
 
   def alipay_notify
+    puts "alipay notify >>>>>>>>>>>>>>"
     notify_params = params.except(*request.path_parameters.keys)
     if Alipay::Sign.verify?(notify_params) and Alipay::Notify.verify?(notify_params)
       user = User.find_by_number(params[:out_trade_no])

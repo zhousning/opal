@@ -2,7 +2,7 @@
 
 %h3.text-center.my-5
   帮助中心
-#accordion
+#accordion.py-5.mb-5
   .card
     #headingOne.card-header.bg-white
       %a.w-100.btn.btn-link.show{"aria-controls" => "collapseOne", "aria-expanded" => "true", "data-target" => "#collapseOne", "data-toggle" => "collapse"}
@@ -184,10 +184,10 @@
     #collapseThirty.collapse{"aria-labelledby" => "headingOne", "data-parent" => "#accordion"}
       .card-body
         %h5.text-secondary
-          茶主等级是按照用户总获茶晶来计算的，获取茶晶就可提升等级
-  .card
+          茶主等级是按照用户总获茶晶来计算的，获取茶晶就可提升等级，总获茶晶数达到500，自动升级为白银；达到2000自动升级为黄金；达到10000自动升级为铂金；达到50000自动升级为钻石
+  .card.mb-5
     #headingFourteen.card-header.bg-white
-      %a.w-100.btn.btn-link{"aria-controls" => "collapseOne", "aria-expanded" => "false", "data-target" => "#collapseFourteen", "data-toggle" => "collapse"}
+      %a.w-100.btn.btn-link{"aria-controls" => "collapseFourteen", "aria-expanded" => "false", "data-target" => "#collapseFourteen", "data-toggle" => "collapse"}
         .row
           .col-10
             %h4.text-left
@@ -195,7 +195,7 @@
           .col-2.text-right
             %h4
               >
-    #collapseThree.collapse{"aria-labelledby" => "headingOne", "data-parent" => "#accordion"}
+    #collapseFourteen.collapse{"aria-labelledby" => "headingFourteen", "data-parent" => "#accordion"}
       .card-body
         %h5.text-secondary
           等级越高，每日获得分红越多；等级越高，后期活动所设定的优惠越大；

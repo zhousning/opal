@@ -17,26 +17,26 @@
           %table.table
             %thead
               %tr
-                %th 时间
                 %th 姓名 
+                %th 手机号 
             %tbody
               - @childrens.each do |d|
                 %tr
                   %td
-                    = d.created_at.strftime("%Y-%m-%d")
-                  %td
                     = d.name
+                  %td
+                    = d.phone
         #pop2.tab-pane.fade{"aria-labelledby" => "pop2-tab", :role => "tabpanel"}
           .pt-3
           %table.table
             %thead
               %tr
-                %th 时间
                 %th 姓名 
+                %th 手机号 
             %tbody
               - @members.each do |d|
                 %tr
                   %td
-                    = d.created_at.strftime("%Y-%m-%d")
-                  %td
                     = d.name
+                  %td
+                    = d.phone

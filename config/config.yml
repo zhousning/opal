@@ -117,6 +117,7 @@ defaults:
   systems: &16
     poundage: 0.1
     commision: 0.1
+    authc_pay: 0.01
     host: 120.55.50.204
   trade_orders: &17
     number: 订单编号

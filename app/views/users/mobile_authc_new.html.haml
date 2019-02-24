@@ -14,7 +14,7 @@
         .form-group.row.mb-5
           %label.col-2.col-form-label.col-form-label-lg{:for => "identity"} 身份证 
           .col-10
-            = f.number_field :identity, :class => "form-control form-control-lg", :placeholder => "身份证"
+            = f.text_field :identity, :class => "form-control form-control-lg", :placeholder => "身份证"
         .form-group.row.mb-5
           %label.col-2.col-form-label.col-form-label-lg{:for => "alipay"} 支付宝 
           .col-10
