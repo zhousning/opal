@@ -3,7 +3,8 @@
 class OrdersController < ApplicationController
   layout "application_mobile"
   before_filter :authenticate_user!, :except=>[:alipay_notify]
-  protect_from_forgery :only=>[:alipay_notify]
+  #protect_from_forgery :only=>[:alipay_notify]
+  skip_before_filter :verify_authenticity_token, :only => [:alipay_notify]
 
   def new
     @order = Order.new

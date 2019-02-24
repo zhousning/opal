@@ -65,8 +65,9 @@ defaults:
     content: 内容
   orders: &11
     category_none: none
-    category_recharge: recharge
+    category_recharge: 账户充值 
     paid: paid
+    completed: completed
     state_none: 0
     state_trade_created: 1
     state_trade_success: 2

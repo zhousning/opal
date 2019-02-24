@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
   layout "application_mobile"
   before_filter :authenticate_user!, :except=>[:alipay_notify]
-  protect_from_forgery :only=>[:alipay_notify]
+  #protect_from_forgery :only=>[:alipay_notify]
+  skip_before_filter :verify_authenticity_token, :only => [:alipay_notify]
+
 
   def center
     @user = current_user
@@ -55,7 +57,7 @@ class UsersController < ApplicationController
     puts "alipay notify >>>>>>>>>>>>>>"
     notify_params = params.except(*request.path_parameters.keys)
     if Alipay::Sign.verify?(notify_params) and Alipay::Notify.verify?(notify_params)
-      user = User.find_by_number(params[:out_trade_no])
+      user = User.find_by_authc_number(params[:out_trade_no])
       case params[:trade_status]
       when 'TRADE_SUCCESS'
         pass(user)
