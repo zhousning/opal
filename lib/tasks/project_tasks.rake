@@ -9,5 +9,6 @@ namespace :project do
     Rake::Task["db:seed"].invoke
     Rake::Task["db:add_permissions"].invoke
     Rake::Task["assets:precompile"].invoke
+    Rake::Task["kindeditor:assets"].invoke
   end
 end

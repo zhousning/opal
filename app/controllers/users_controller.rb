@@ -93,8 +93,10 @@ class UsersController < ApplicationController
       father = user.parent
       if father
         father.citrine.add_count(Setting.awards.ten_citrine)
+        Consume.create(:category => Setting.consumes.category_friend_authc, :coin_cost => Setting.awards.ten_citrine, :status => Setting.consumes.status_success, :citrine_id => father.citrine.id)
         if grandpa = father.parent
           grandpa.citrine.add_count(Setting.awards.one_citrine) 
+          Consume.create(:category => Setting.consumes.category_friend_authc, :coin_cost => Setting.awards.one_citrine, :status => Setting.consumes.status_success, :citrine_id => grandpa.citrine.id)
         end
       end
     end

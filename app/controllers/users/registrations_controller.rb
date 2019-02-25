@@ -21,7 +21,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
         user_inviter = User.find_by_number(resource.inviter)
         if user_inviter
           resource.update_attribute(:parent_id, user_inviter.id)
-          user_inviter.citrine.add_count(Setting.awards.one_citrine)
+          inviter_citrine = user_inviter.citrine
+          inviter_citrine.add_count(Setting.awards.one_citrine)
+          Consume.create(:category => Setting.consumes.category_friend_reg, :coin_cost => Setting.awards.one_citrine, :status => Setting.consumes.status_success, :citrine_id => inviter_citrine.id)
         end
       end
     end

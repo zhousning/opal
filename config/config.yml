@@ -100,6 +100,8 @@ defaults:
     category_buy_ware: 购买茶叶商品
     category_buy_ware_citrine: 购买商品奖励茶晶
     category_buy_commision: 佣金奖励 
+    category_friend_reg: 好友注册赠送 
+    category_friend_authc: 下级实名赠送
     status_none: none
     status_create: create
     status_success: success
