@@ -22,6 +22,7 @@ def init
   
     user_hash[p_phone] = @parent
   
+    puts p_phone
     if !user[1].nil?
       user[1].each do |c|
         c_phone = c.to_s
