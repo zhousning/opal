@@ -37,7 +37,6 @@ ActiveAdmin.register Citrine  do
     f.inputs "详情" do
       
       f.input :count, :label => Setting.citrines.count 
-      f.input :total, :label => Setting.citrines.total 
     end
     f.actions
   end
@@ -57,6 +56,25 @@ ActiveAdmin.register Citrine  do
 
       row "更新时间" do
         citrine.updated_at.strftime('%Y-%m-%d %H:%M:%S')
+      end
+    end
+  end
+
+  controller do
+    def update
+      @citrine = Citrine.find(params[:id])
+      count = permitted_params[:citrine][:count].to_f
+      current_count = @citrine.count
+      total = count > current_count ? @citrine.total + (count - current_count) : @citrine.total 
+
+      if @citrine.update(:count => count, :total => total)
+        if count > current_count
+          puts ">>>>>>>>."
+          Consume.create(:category => Setting.consumes.category_system_citrine, :coin_cost => (count - current_count), :status => Setting.consumes.status_success, :citrine_id => @citrine.id)
+        end
+        redirect_to admin_citrine_path(@citrine)
+      else
+        render :edit
       end
     end
   end

@@ -12,7 +12,7 @@
         = @citrine.total
 %h3.bg-light.my-5.text-center.py-4
   资金明细
-.container-fluid
+.container-fluid.pb-5.mb-5
   .row
     .col-12
       %table.table
@@ -31,7 +31,7 @@
             %tr.mt-3
               %td.text-center.font-1-5rem
                 茶晶
-                -if c.category == Setting.consumes.category_buy_ware_citrine 
+                -if c.category == Setting.consumes.category_buy_ware_citrine ||  c.category == Setting.consumes.category_system_citrine
                   +
                 - elsif c.category == Setting.consumes.category_exchange_tree 
                   -

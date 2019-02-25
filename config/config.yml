@@ -102,6 +102,7 @@ defaults:
     category_buy_commision: 佣金奖励 
     category_friend_reg: 好友注册赠送 
     category_friend_authc: 下级实名赠送
+    category_system_citrine: 系统赠送
     status_none: none
     status_create: create
     status_success: success

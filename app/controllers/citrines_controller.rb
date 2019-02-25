@@ -7,7 +7,7 @@ class CitrinesController < ApplicationController
 
   def info 
     @citrine = current_user.citrine
-    @consumes = @citrine.consumes
+    @consumes = @citrine.consumes.order("created_at DESC")
   end
 
   def exchange
