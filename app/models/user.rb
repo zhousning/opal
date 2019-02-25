@@ -75,6 +75,13 @@ class User < ActiveRecord::Base
     end
   end
 
+  after_create :set_qrcode
+  def set_qrcode
+    invite_link = Rails.application.routes.url_helpers.new_user_registration_url(:host => Setting.systems.host, :inviter=>self.number)
+    qr_code_img = RQRCode::QRCode.new(invite_link).to_img.resize(300, 300)
+    update_attribute :qr_code, qr_code_img.to_string
+  end
+
   STATUS = %w(opening, pending, rejected, passed)
   STATUS_CODE = %w(0, 1, 2, 3)
   #validates_inclusion_of :status, :in => STATUS_CODE
