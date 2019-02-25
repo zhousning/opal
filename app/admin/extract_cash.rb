@@ -6,6 +6,7 @@ ActiveAdmin.register ExtractCash  do
   config.per_page = 20
   config.sort_order = "id_asc"
 
+  actions :all, :except => [:new, :edit, :destroy]
   
   filter :status, :label => Setting.extract_cashes.status, as: :select, collection: [[Setting.extract_cashes.pending_title, Setting.extract_cashes.pending], [Setting.extract_cashes.agree_title, Setting.extract_cashes.agree], [Setting.extract_cashes.disagree_title,Setting.extract_cashes.disagree]]
   filter :coin, :label => Setting.extract_cashes.coin
@@ -16,13 +17,12 @@ ActiveAdmin.register ExtractCash  do
     id_column
     
     column Setting.extract_cashes.coin, :coin
-    column Setting.extract_cashes.status, :status
-
-    column "创建时间", :created_at, :sortable=>:created_at do |f|
-      f.created_at.strftime('%Y-%m-%d %H:%M:%S')
+    column Setting.extract_cashes.status, :status do |f|
+      f.state
     end
-    column "更新时间", :updated_at do |f|
-      f.updated_at.strftime('%Y-%m-%d %H:%M:%S')
+
+    column "创建时间", :created_at do |f|
+      f.created_at.strftime('%Y-%m-%d %H:%M:%S')
     end
     actions
   end
@@ -30,7 +30,7 @@ ActiveAdmin.register ExtractCash  do
   form do |f|
     f.inputs "详情" do
       
-      f.input :coin, :label => Setting.extract_cashes.coin 
+      f.input :coin, :label => Setting.extract_cashes.coin, :min => 0.01 
       f.input :status, :label => Setting.extract_cashes.status 
     end
     f.actions
@@ -74,6 +74,7 @@ ActiveAdmin.register ExtractCash  do
   member_action :pass do
     extract_cash = ExtractCash.find(params[:id])
     extract_cash.agree
+    extract_cash.user.account.sub_freeze_coin(extract_cash.coin)
     redirect_to admin_extract_cash_path(params[:id])
   end
 

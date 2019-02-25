@@ -5,6 +5,7 @@
 #  id          :integer          not null, primary key
 #  coin        :float            default(0.0), not null
 #  freeze_coin :float            default(0.0), not null
+#  commission  :float            default(0.0), not null
 #  status      :string           default("disable"), not null
 #  password    :string           default(""), not null
 #  number      :string

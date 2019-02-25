@@ -121,7 +121,7 @@ defaults:
   systems: &16
     poundage: 0.1
     commision: 0.1
-    authc_pay: 0.01
+    authc_pay: 1
     #host: 120.55.50.204
     #host: '192.168.8.131:3000'
     host: 'www.bafangjie.cn' 

@@ -10,6 +10,8 @@
 #  alipay                 :string           default(""), not null
 #  status                 :integer          default(0), not null
 #  number                 :string           default(""), not null
+#  authc_number           :string
+#  qr_code_uid            :string
 #  inviter                :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  parent_id              :integer

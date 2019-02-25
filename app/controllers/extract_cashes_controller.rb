@@ -9,9 +9,12 @@ class ExtractCashesController < ApplicationController
 
   def create
     @extract_cash = ExtractCash.new(extract_cash_params)
-    if @extract_cash.coin > 0 && current_user.account.coin >= @extract_cash.coin
+    account = current_user.account
+    if @extract_cash.coin > 0 && account.coin >= @extract_cash.coin
       @extract_cash.user = current_user
       if @extract_cash.save
+        account.sub_coin(@extract_cash.coin)
+        account.add_freeze_coin(@extract_cash.coin)
         redirect_to new_extract_cash_url
       else
         render :new

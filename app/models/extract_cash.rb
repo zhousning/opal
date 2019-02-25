@@ -15,6 +15,16 @@ class ExtractCash < ActiveRecord::Base
 
   validates :coin,        :numericality => {:greater_than => 0}
 
+  def state
+    if self.status == Setting.extract_cashes.pending
+      Setting.extract_cashes.pending_title
+    elsif self.status == Setting.extract_cashes.agree
+      Setting.extract_cashes.agree_title
+    elsif self.status == Setting.extract_cashes.disagree
+      Setting.extract_cashes.disagree_title
+    end
+  end
+
   def agree
     update_attribute :status, Setting.extract_cashes.agree 
   end

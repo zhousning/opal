@@ -1,6 +1,6 @@
 ActiveAdmin.register SharePool  do
 
-  permit_params  :today_enter, :total, :user_total, :pay, :ware_total, :gross_sale
+  permit_params  :today_enter, :total, :user_total, :pay, :ware_total, :gross_sale, :diamond, :current_total, :own_tea
 
   actions :all, :except => [:destroy]
 
