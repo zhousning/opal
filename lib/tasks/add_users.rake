@@ -9,10 +9,11 @@ namespace 'db' do
 end
 
 def init
-  users = YAML.load_file("lib/tasks/users.yaml")
+  users = YAML.load_file("lib/tasks/user.yaml")
   user_hash = Hash.new
   
   users.each do |user|
+    #@parent = User.find_by_phone('17771489340')
     p_phone = user[0].to_s
     unless user_hash[p_phone]
       @parent = User.create(:phone => p_phone, :password => "123456", :password_confirmation => "123456")
@@ -20,9 +21,9 @@ def init
       @parent = user_hash[p_phone]
     end
   
-    user_hash[p_phone] = @parent
+    #user_hash[p_phone] = @parent
   
-    puts p_phone
+    #puts p_phone
     if !user[1].nil?
       user[1].each do |c|
         c_phone = c.to_s

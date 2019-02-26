@@ -124,7 +124,7 @@ defaults:
     authc_pay: 1
     #host: 120.55.50.204
     #host: '192.168.8.131:3000'
-    host: 'www.bafangjie.cn' 
+    host: 'www.cygangsta.com' 
   trade_orders: &17
     number: 订单编号
     price: 价格
