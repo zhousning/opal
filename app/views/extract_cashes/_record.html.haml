@@ -24,12 +24,7 @@
                 %td
                   = extract_cash.coin
                 %td
-                  - if extract_cash.status == Setting.extract_cashes.pending
-                    = Setting.extract_cashes.pending_title
-                  - elsif extract_cash.status == Setting.extract_cashes.agree
-                    = Setting.extract_cashes.agree_title
-                  - else
-                    = Setting.extract_cashes.disagree_title
+                  = extract_cash.state
       - else
         %h3.text-center
           暂无提现记录
