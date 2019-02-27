@@ -1,6 +1,6 @@
 ActiveAdmin.register Citrine  do
 
-  permit_params  :count, :total
+  permit_params  :count, :total, :level
 
   actions :all, :except => [:new, :destroy]
 
@@ -67,9 +67,21 @@ ActiveAdmin.register Citrine  do
       current_count = @citrine.count
       total = count > current_count ? @citrine.total + (count - current_count) : @citrine.total 
 
-      if @citrine.update(:count => count, :total => total)
+      level = ''
+      if 0 <= total && total < 500
+        level = Setting.levels.bronze
+      elsif 500 <= total && total < 2000  
+        level = Setting.levels.silver
+      elsif 2000 <= total && total < 10000  
+        level = Setting.levels.gold
+      elsif 10000 <= total && total < 50000  
+        level = Setting.levels.platinum
+      elsif 50000 <= total
+        level = Setting.levels.diamond
+      end
+
+      if @citrine.update(:count => count, :total => total, :level => level)
         if count > current_count
-          puts ">>>>>>>>."
           Consume.create(:category => Setting.consumes.category_system_citrine, :coin_cost => (count - current_count), :status => Setting.consumes.status_success, :citrine_id => @citrine.id)
         end
         redirect_to admin_citrine_path(@citrine)
