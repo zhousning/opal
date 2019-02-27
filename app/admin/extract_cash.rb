@@ -46,7 +46,7 @@ ActiveAdmin.register ExtractCash  do
         extract_cash.coin
       end
       row Setting.extract_cashes.status do
-        extract_cash.status
+        extract_cash.state
       end
       row Setting.users.name do
         extract_cash.user.name
@@ -64,9 +64,11 @@ ActiveAdmin.register ExtractCash  do
       row "更新时间" do
         extract_cash.updated_at.strftime('%Y-%m-%d %H:%M:%S')
       end
-      row "审核" do
-        link_to(Setting.extract_cashes.agree_title, pass_admin_extract_cash_path(extract_cash.id)) + "  " +
-        link_to(Setting.extract_cashes.disagree_title, reject_admin_extract_cash_path(extract_cash.id))
+      if extract_cash.status == Setting.extract_cashes.pending
+        row "审核" do
+          link_to(Setting.extract_cashes.agree_title, pass_admin_extract_cash_path(extract_cash.id)) + "  " +
+          link_to(Setting.extract_cashes.disagree_title, reject_admin_extract_cash_path(extract_cash.id))
+        end
       end
     end
   end
@@ -81,6 +83,9 @@ ActiveAdmin.register ExtractCash  do
   member_action :reject do
     extract_cash = ExtractCash.find(params[:id])
     extract_cash.disagree
+    account = extract_cash.user.account
+    account.sub_freeze_coin(extract_cash.coin)
+    account.add_coin(extract_cash.coin)
     redirect_to admin_extract_cash_path(params[:id])
   end
 end

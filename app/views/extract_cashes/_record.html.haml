@@ -26,8 +26,10 @@
                 %td
                   - if extract_cash.status == Setting.extract_cashes.pending
                     = Setting.extract_cashes.pending_title
-                  - else
+                  - elsif extract_cash.status == Setting.extract_cashes.agree
                     = Setting.extract_cashes.agree_title
+                  - else
+                    = Setting.extract_cashes.disagree_title
       - else
         %h3.text-center
           暂无提现记录
