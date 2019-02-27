@@ -46,16 +46,24 @@ class Account < ActiveRecord::Base
   end
 
   def add_commision(value)
-    self.update_attribute :commision, (self.commision + value)
+    self.update_attribute :commission, (self.commission + value)
     self.update_attribute :coin, (self.coin + value)
   end
 
   def sub_commision(value)
-    self.update_attribute :commision, (self.commision - value)
+    self.update_attribute :commission, (self.commission - value)
     self.update_attribute :coin, (self.coin - value)
   end
 
   def add_password(value)
     self.update_attribute :password, Digest::MD5.hexdigest(value) unless value.blank?
+  end
+
+  def enable
+    update_attribute :status, Setting.accounts.enable 
+  end
+
+  def disable
+    update_attribute :status, Setting.accounts.disable 
   end
 end

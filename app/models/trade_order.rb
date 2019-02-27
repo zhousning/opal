@@ -84,7 +84,7 @@ class TradeOrder < ActiveRecord::Base
     citrine.add_count(ware.citrine_count)
     Consume.create(:category => Setting.consumes.category_buy_ware_citrine, :coin_cost => ware.citrine_count, :status => Setting.consumes.status_success, :citrine_id => citrine.id)
     if parent = user.parent
-      cms = ware.price*Setting.systems.commission
+      cms = ware.price*Setting.systems.commision
       parent.account.add_commision(cms)
       Consume.create(:category => Setting.consumes.category_buy_commision, :coin_cost => cms, :status => Setting.consumes.status_success, :user_id => parent.id)
     end

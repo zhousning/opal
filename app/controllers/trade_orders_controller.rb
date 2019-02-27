@@ -54,6 +54,7 @@ class TradeOrdersController < ApplicationController
   def confirm
     @trade_order = current_user.trade_orders.find(params[:id])
     @trade_order.complete
+    redirect_to completed_trade_orders_url
   end
 
   def cancel

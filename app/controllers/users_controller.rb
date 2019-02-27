@@ -90,6 +90,7 @@ class UsersController < ApplicationController
       user.pass
       user.tree.add_count(1) if user.tree.count == 0 
       user.leaf.enable
+      user.account.enable
       father = user.parent
       if father
         father.citrine.add_count(Setting.awards.ten_citrine)
