@@ -15,15 +15,15 @@ module UsersHelper
     
   def level_title(level)
     if 0 <= level && level < 500
-      '青铜茶主'
+      Setting.levels.bronze
     elsif 500 <= level && level < 2000  
-      '白银茶主'
+      Setting.levels.silver
     elsif 2000 <= level && level < 10000  
-      '黄金茶主'
+      Setting.levels.gold
     elsif 10000 <= level && level < 50000  
-      '铂金茶主'
+      Setting.levels.platinum
     elsif 50000 <= level
-      '钻石茶主'
+      Setting.levels.diamond
     end
   end
 end

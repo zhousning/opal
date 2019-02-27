@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
   
   def level
-    @citrine_count = current_user.citrine.total
+    @citrine = current_user.citrine
   end
 
   def mobile_authc_new

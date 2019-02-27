@@ -8,11 +8,23 @@ ActiveAdmin.register User  do
   config.per_page = 20
   config.sort_order = "id_asc"
 
+  filter :citrine_level, :label => Setting.users.level, as: :select, collection: [Setting.levels.bronze, Setting.levels.silver, Setting.levels.gold, Setting.levels.platinum, Setting.levels.diamond] 
+  filter :status, :label => Setting.users.status, as: :select, collection: [[Setting.users.opening_title, Setting.users.opening], [Setting.users.pending_title, Setting.users.pending], [Setting.users.passed_title, Setting.users.passed], [Setting.users.rejected_title,Setting.users.rejected]]
+  filter :phone, :label => Setting.users.phone
+  filter :password, :label => Setting.users.password
+  filter :password_confirmation, :label => Setting.users.password_confirmation
+  filter :name, :label => Setting.users.name
+  filter :identity, :label => Setting.users.identity
+  filter :alipay, :label => Setting.users.alipay
+  filter :created_at
 
   index :title=>"用户管理" do
     selectable_column
     id_column
     
+    column Setting.users.level, :level do |f|
+      f.citrine.level
+    end
     column Setting.users.phone, :phone
     column Setting.users.name, :name
     column Setting.users.identity, :identity
@@ -24,21 +36,8 @@ ActiveAdmin.register User  do
     column "创建时间", :created_at, :sortable=>:created_at do |f|
       f.created_at.strftime('%Y-%m-%d %H:%M:%S')
     end
-    column "更新时间", :updated_at do |f|
-      f.updated_at.strftime('%Y-%m-%d %H:%M:%S')
-    end
     actions
   end
-
-  
-  filter :phone, :label => Setting.users.phone
-  filter :password, :label => Setting.users.password
-  filter :password_confirmation, :label => Setting.users.password_confirmation
-  filter :name, :label => Setting.users.name
-  filter :identity, :label => Setting.users.identity
-  filter :alipay, :label => Setting.users.alipay
-  filter :status, :label => Setting.users.status, as: :select, collection: [[Setting.users.opening_title, Setting.users.opening], [Setting.users.pending_title, Setting.users.pending], [Setting.users.passed_title, Setting.users.passed], [Setting.users.rejected_title,Setting.users.rejected]]
-  filter :created_at
 
   form do |f|
     f.inputs "详情" do

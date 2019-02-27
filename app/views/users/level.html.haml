@@ -5,10 +5,10 @@
   .card-img-overlay.py-5
     .row
       .col-12.text-center
-        = image_tag level_image(@citrine_count), :class => "img-thubnail"
+        = image_tag level_image(@citrine.total), :class => "img-thubnail"
         %h2.card-text.center.text-white.mt-5
           当前等级
-          = level_title(@citrine_count)
+          = @citrine.level 
 
 .card
   .card-header.bg-white.py-3

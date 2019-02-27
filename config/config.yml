@@ -22,6 +22,7 @@ defaults:
     identity: 身份证
     alipay: 支付宝
     status: 认证状态
+    level: 等级
   roles: &3
     class_name: Role
     super_admin: 超级管理员
@@ -176,6 +177,12 @@ defaults:
     end: 交易结束时间
     start_default: '09:00'
     end_default: '16:00'
+  levels: &22
+    bronze: '青铜茶主'
+    silver: '白银茶主'
+    gold:   '黄金茶主'
+    platinum: '铂金茶主'
+    diamond: '钻石茶主'
 development:
   admins: *1
   users: *2
@@ -198,6 +205,7 @@ development:
   share_pools: *19
   pick_records: *20
   trades: *21
+  levels: *22
 test:
   admins: *1
   users: *2
@@ -220,6 +228,7 @@ test:
   share_pools: *19
   pick_records: *20
   trades: *21
+  levels: *22
 production:
   admins: *1
   users: *2
@@ -242,3 +251,4 @@ production:
   share_pools: *19
   pick_records: *20
   trades: *21
+  levels: *22
