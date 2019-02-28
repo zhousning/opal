@@ -8,7 +8,7 @@
           - if @notice
             = link_to @notice.title, mobile_index_notices_path, :class => "text-white" 
   .row
-    .col-8.flex-column.pl-5
+    .col-9.flex-column.pl-5
       - unless user_signed_in?
         .col-4
           %h2
@@ -40,7 +40,7 @@
               %span.badge.badge-pill.badge-light
                 茶晶
                 = sprintf("%0.2f" , current_user.citrine.count)
-    .col-4.flex-column
+    .col-3.flex-column
       - if user_signed_in?
         .col-12.d-flex.justify-content-center
           = link_to protocol_home_index_path do

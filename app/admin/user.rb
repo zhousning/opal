@@ -26,6 +26,9 @@ ActiveAdmin.register User  do
       f.citrine.level
     end
     column Setting.users.phone, :phone
+    column Setting.teams.children, :children do |f|
+      f.children.size
+    end
     column Setting.users.name, :name
     column Setting.users.identity, :identity
     column Setting.users.alipay, :alipay

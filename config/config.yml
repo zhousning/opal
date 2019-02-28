@@ -183,6 +183,8 @@ defaults:
     gold:   '黄金茶主'
     platinum: '铂金茶主'
     diamond: '钻石茶主'
+  teams: &23
+    children: 我的直推
 development:
   admins: *1
   users: *2
@@ -206,6 +208,7 @@ development:
   pick_records: *20
   trades: *21
   levels: *22
+  teams: *23
 test:
   admins: *1
   users: *2
@@ -229,6 +232,7 @@ test:
   pick_records: *20
   trades: *21
   levels: *22
+  teams: *23
 production:
   admins: *1
   users: *2
@@ -252,3 +256,4 @@ production:
   pick_records: *20
   trades: *21
   levels: *22
+  teams: *23

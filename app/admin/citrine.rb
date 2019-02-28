@@ -37,6 +37,7 @@ ActiveAdmin.register Citrine  do
     f.inputs "详情" do
       
       f.input :count, :label => Setting.citrines.count 
+      f.input :total, :label => Setting.citrines.total 
     end
     f.actions
   end
@@ -65,7 +66,8 @@ ActiveAdmin.register Citrine  do
       @citrine = Citrine.find(params[:id])
       count = permitted_params[:citrine][:count].to_f
       current_count = @citrine.count
-      total = count > current_count ? @citrine.total + (count - current_count) : @citrine.total 
+      #total = count > current_count ? @citrine.total + (count - current_count) : @citrine.total 
+      total = @citrine.total
 
       level = ''
       if 0 <= total && total < 500
