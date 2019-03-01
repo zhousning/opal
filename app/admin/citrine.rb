@@ -67,7 +67,7 @@ ActiveAdmin.register Citrine  do
       count = permitted_params[:citrine][:count].to_f
       current_count = @citrine.count
       #total = count > current_count ? @citrine.total + (count - current_count) : @citrine.total 
-      total = @citrine.total
+      total = permitted_params[:citrine][:total].to_f
 
       level = ''
       if 0 <= total && total < 500
