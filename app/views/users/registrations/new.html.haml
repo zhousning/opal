@@ -44,12 +44,12 @@
             = image_tag 'session-code.png', :class => "img-thubnail session-label-img"
           .col-6
             = text_field_tag 'confirm_code', nil, :class => "form-control border-0 form-control-lg font-2rem h-75"
-          %label#send-confirm-code.col-4.col-form-label.col-form-label-lg.text-left.py-0{:for => "send-confirm"}
-            = image_tag 'confirm-code.png', :class => "img-thubnail w-100"
+          .col-4
+            %button#send-confirm-code.btn.btn-block.btn-lg{:type => "button"}
+              验证码
             -#
-              .col-4
-                %button#send-confirm-code.btn.btn-block.btn-lg.btn-primary{:type => "button"}
-                  验证码
+              %label#send-confirm-code.col-4.col-form-label.col-form-label-lg.text-left.py-0{:for => "send-confirm"}
+                = image_tag 'confirm-code.png', :class => "img-thubnail w-100"
           .col-12.mt-3
             %hr.tea-hr
         .form-group.row.mt-5.pt-5

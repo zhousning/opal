@@ -13,7 +13,7 @@ class LeafsController < ApplicationController
     unpick = leaf.unpick*tree_count
 
     if unpick != 0
-      count = format("%.2f", (0.2/6)*unpick).to_f  
+      count = format("%.2f", (0.36/6)*unpick).to_f  
       leaf.add_pick(unpick)
       leaf.add_count(count)
       PickRecord.create!(:number => count, :user_id => current_user.id)
