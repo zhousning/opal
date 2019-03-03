@@ -4,16 +4,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def new
     super do|resource|
-      if params[:inviter]
-        resource.inviter = params[:inviter]
+      if my_inviter = params[:inviter] || cookies['inviter']
+        resource.inviter = my_inviter
+        cookies['inviter'] = { :value => my_inviter }
       end
     end
   end
 
   #def create
   #  super do |resource|
-  #    if resource.persisted? and resource.inviter != ""
-  #      user_inviter = User.find_by_number(resource.inviter)
+  #    if resource.persisted? and cookies['inviter']
+  #      user_inviter = User.find_by_number( cookies['inviter'])
   #      if user_inviter
   #        resource.update_attribute(:parent_id, user_inviter.id)
   #        inviter_citrine = user_inviter.citrine
@@ -26,13 +27,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create
     code = params[:confirm_code]
-    if code == cookies[:reg_code]
+    if !code.blank? && !cookies[:reg_code].blank? && code == cookies[:reg_code]
+      cookies.delete :reg_code
       super do |resource|
-        if resource.persisted? and resource.inviter != ""
-          user_inviter = User.find_by_number(resource.inviter)
+        if resource.persisted? and cookies['inviter']
+          user_inviter = User.find_by_number(cookies['inviter'])
           if user_inviter
             resource.update_attribute(:parent_id, user_inviter.id)
-            user_inviter.citrine.add_count(Setting.awards.one_citrine)
+            inviter_citrine = user_inviter.citrine
+            inviter_citrine.add_count(Setting.awards.one_citrine)
+            Consume.create(:category => Setting.consumes.category_friend_reg, :coin_cost => Setting.awards.one_citrine, :status => Setting.consumes.status_success, :citrine_id => inviter_citrine.id)
+            cookies.delete :inviter
           end
         end
       end
