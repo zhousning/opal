@@ -7,7 +7,7 @@ class TradesController < ApplicationController
     @sells = Sell.where(:status => Setting.sells.enable).order("created_at DESC") 
     @chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.xAxis(categories: ["1", "2", "3", "4", "5", "6", "7"], style: { :color => "black"})
-      f.series(data: [70, 85, 120, 140, 150, 170, 200], color: 'green')
+      f.series(data: [0.5, 1, 1.5, 2, 2.5, 3, 3.5], color: 'green')
       f.chart({defaultSeriesType: "line"})
     end
     @trade = Trade.last

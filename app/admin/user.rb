@@ -29,6 +29,9 @@ ActiveAdmin.register User  do
     column Setting.teams.children, :children do |f|
       f.children.size
     end
+    column Setting.users.inviter, :parent do |f|
+      f.parent.phone if f.parent
+    end
     column Setting.users.name, :name
     column Setting.users.identity, :identity
     column Setting.users.alipay, :alipay

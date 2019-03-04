@@ -23,6 +23,7 @@ defaults:
     alipay: 支付宝
     status: 认证状态
     level: 等级
+    inviter: 邀请者
   roles: &3
     class_name: Role
     super_admin: 超级管理员
