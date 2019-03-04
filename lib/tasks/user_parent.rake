@@ -19,7 +19,7 @@ def update_parent
       user[1].each do |c|
         c_phone = c.to_s
         @child = User.find_by_phone(c_phone)
-        @child.update(:inviter => @parent.number, :parent => @parent) if @child
+        @child.update(:inviter => @parent.number, :parent => @parent) if @child && !@child.parent
       end
     end
   end
