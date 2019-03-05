@@ -4,7 +4,7 @@ ActiveAdmin.register SharePool  do
 
   actions :all, :except => [:destroy]
 
-  menu label: "分红池", :priority => 8 
+  menu label: "分红池", :priority => 9 
   config.per_page = 20
   config.sort_order = "id_asc"
 

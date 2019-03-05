@@ -2,7 +2,7 @@ ActiveAdmin.register Trade  do
 
   permit_params  :min, :max, :total_purchase, :price, :volume, :start, :end
 
-  actions :all, :except => [:destroy]
+  actions :all, :except => [:new, :destroy]
 
   menu label: "交易中心", :priority => 7 
   config.per_page = 20
@@ -12,7 +12,6 @@ ActiveAdmin.register Trade  do
   filter :min, :label => Setting.trades.min
   filter :max, :label => Setting.trades.max
   filter :total_purchase, :label => Setting.trades.total_purchase
-  filter :price, :label => Setting.trades.price
   filter :volume, :label => Setting.trades.volume
 
   index :title=>"交易设置" do
@@ -22,7 +21,6 @@ ActiveAdmin.register Trade  do
     column Setting.trades.min, :min
     column Setting.trades.max, :max
     column Setting.trades.total_purchase, :total_purchase
-    column Setting.trades.price, :price
     column Setting.trades.volume, :volume
     column Setting.trades.start, :start do |f|
       f.start.strftime('%H:%M')
@@ -61,9 +59,6 @@ ActiveAdmin.register Trade  do
       end
       row Setting.trades.total_purchase do
         trade.total_purchase
-      end
-      row Setting.trades.price do
-        trade.price
       end
       row Setting.trades.volume do
         trade.volume

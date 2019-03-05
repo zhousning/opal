@@ -186,6 +186,8 @@ defaults:
     diamond: '钻石茶主'
   teams: &23
     children: 我的直推
+  tea_prices: &24
+    price: 今日茶叶价
 development:
   admins: *1
   users: *2
@@ -210,6 +212,7 @@ development:
   trades: *21
   levels: *22
   teams: *23
+  tea_prices: *24
 test:
   admins: *1
   users: *2
@@ -234,6 +237,7 @@ test:
   trades: *21
   levels: *22
   teams: *23
+  tea_prices: *24
 production:
   admins: *1
   users: *2
@@ -258,3 +262,4 @@ production:
   trades: *21
   levels: *22
   teams: *23
+  tea_prices: *24

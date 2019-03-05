@@ -5,11 +5,19 @@ class TradesController < ApplicationController
   def index
     @demands = Demand.where(:status => Setting.demands.enable).order("created_at DESC") 
     @sells = Sell.where(:status => Setting.sells.enable).order("created_at DESC") 
+    @tea_prices = TeaPrice.last(7)
+    categories = []
+    data = []
+    @tea_prices.each do |t|
+      categories << t.created_at.strftime("%m-%d")
+      data << t.price
+    end
     @chart = LazyHighCharts::HighChart.new('graph') do |f|
-      f.xAxis(categories: ["1", "2", "3", "4", "5", "6", "7"], style: { :color => "black"})
-      f.series(data: [0.5, nil, nil, nil, nil, nil, nil], color: 'green')
+      f.xAxis(categories: categories, style: { :color => "black"})
+      f.series(data: data, color: 'green')
       f.chart({defaultSeriesType: "line"})
     end
+    @tea_price = @tea_prices.last
     @trade = Trade.last
     now = Time.now
     @start = Time.new(now.year, now.month, now.day, @trade.start.hour, @trade.start.min)
