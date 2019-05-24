@@ -88,7 +88,7 @@ gem 'activeadmin_blaze_theme'
 #gem 'omniauth'
 #gem 'omniauth-oauth2'
 
-#gem 'newrelic_rpm'
+gem 'newrelic_rpm'
 
 #gem 'alipay', '~> 0.12.0'
 gem 'alipay', :git=>'https://github.com/zhousning/alipay.git'

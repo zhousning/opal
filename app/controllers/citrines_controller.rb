@@ -11,6 +11,7 @@ class CitrinesController < ApplicationController
   end
 
   def exchange
+    sleep 3 
     @citrine = current_user.citrine
     count = @citrine.count
     if count >= Setting.citrines.exchange_max

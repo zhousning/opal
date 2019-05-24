@@ -2,9 +2,9 @@
 defaults:
   admins: &1
     class_name: all
-    email: mytea@world.com
-    phone: '15859859888'
-    password: myteaworld
+    email: bafang@bafang.cn 
+    phone: '17753737198'
+    password: bafangjieworld 
   users: &2
     class_name: User
     opening: 0
@@ -123,10 +123,11 @@ defaults:
   systems: &16
     poundage: 0.1
     commision: 0.1
-    authc_pay: 1
+    authc_pay: 0.01 
+    authc_pay_subject: "八方实名认证"
     #host: 120.55.50.204
-    #host: '192.168.8.131:3000'
-    host: 'www.cygangsta.com' 
+    host: '192.168.8.131:3000'
+    #host: 'www.bafangjie.cn' 
   trade_orders: &17
     number: 订单编号
     price: 价格

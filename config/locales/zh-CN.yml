@@ -1,11 +1,11 @@
 zh-CN:
   layouts:
     application:
-      site_title: "茶源世界"
+      site_title: "八方采茶"
     application_control:
-      site_title: "茶源世界"
+      site_title: "八方采茶"
     application_mobile:
-      site_title: "茶源世界"
+      site_title: "八方采茶"
 
   home:
     index:
@@ -13,7 +13,7 @@ zh-CN:
     help:
       title: "帮助中心"
     custom_service:
-      title: 茶源客服
+      title: 八方客服
 
   users:
     control:
@@ -171,7 +171,7 @@ zh-CN:
   trees:
     index:
       title:
-        茶源世界
+        八方采茶
   pick_records:
     index:
       title:

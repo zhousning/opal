@@ -40,7 +40,7 @@ class SystemsController < ApplicationController
 
     def send_work(value, phone)
       url = 'http://api.jisuapi.com/sms/send'
-      content = '尊敬的会员，您的验证码:' + value + '。您正在注册，10分钟内有效。【茶源世界】'
+      content = '尊敬的会员，您的验证码:' + value + '。您正在注册，10分钟内有效'
       data = {
         mobile: phone, 
         content: content,

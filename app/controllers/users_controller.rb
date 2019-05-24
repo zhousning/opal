@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   def authc_pay
     Alipay::Service.create_direct_pay_by_user_wap_url(
       :out_trade_no      => current_user.authc_number,
-      :subject           => "茶源实名认证",
+      :subject           => Setting.systems.authc_pay_subject,
       :total_fee         => Setting.systems.authc_pay,
       :return_url        => Rails.application.routes.url_helpers.alipay_return_users_url(:host => Setting.systems.host),
       :notify_url        => Rails.application.routes.url_helpers.alipay_notify_users_url(:host => Setting.systems.host)

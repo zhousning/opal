@@ -20,12 +20,12 @@ user.roles << role
 
 Account.create(:coin => 43241, :status => Setting.accounts.enable, :user_id => user.id)
 
-User.create!(:phone => "15763703188", :password => "15763703188", :password_confirmation => "15763703188")
+User.create!(:phone => "15763703199", :password => "15763703199", :password_confirmation => "15763703199")
 
 AdminUser.create!(:phone => Setting.admins.phone, :email => Setting.admins.email, :password => Setting.admins.password, :password_confirmation => Setting.admins.password)
 
 SharePool.create!(today_enter: 17890, total: 3242341, user_total:21234, pay: 453232, ware_total:3332, gross_sale: 1232, diamond: 9580, current_total: 3423, own_tea: 1.84)
 
-Notice.create!(:title => "茶源世界", :content => "欢迎来到茶源世界")
+Notice.create!(:title => "八方采茶", :content => "欢迎来到八方采茶")
 
 Trade.create!

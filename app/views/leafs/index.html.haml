@@ -1,18 +1,18 @@
 - provide(:title, t('.title'))
 
 .card.w-100
-  = image_tag 'center-header.png', :class => "card-img"
+  = image_tag 'leaf-index.jpg', :class => "card-img"
   .card-img-overlay.py-5
     .row
       .col
         = link_to pick_records_path do
-          %h2.card-text.center.text-white.text-right
+          %h2.card-text.center.text-right.text-dark
             采茶记录 >
     .row
       .col-12.text-center.py-5
-        %h2.card-text.center.text-white
+        %h2.card-text.center
           我的茶叶
-        %h1.card-text.center.text-white
+        %h1.card-text.center
           = sprintf("%0.2f" , @count)
 
 .container-fluid.px-5.mt-5.mb-5.pb-5
@@ -22,8 +22,8 @@
         茶树简介
     .card-body.py-4
       %h3
-        茶叶是茶源世界依托区块链技术，参与和建设嘉茗公司茶产业的资产，可用于置换、消费、兑换等等。
+        茶叶是八方采茶依托区块链技术，参与和建设茶产业的资产，可用于置换、消费、兑换等等。
       %h3
-        茶叶的数量是有限的，根据嘉茗生态茶园280亩来计算，对应到app茶叶生产数量为1000万叶。
+        茶叶的数量是有限的，根据生态茶园360亩来计算，对应到app茶叶生产数量为1500万叶。
       %h3
-        茶叶产出是根据全网算力而计算的，全网算力会在平台总茶叶数达到100万、300万、600万、900万的时候减产，随着时间的推移茶叶的获取数量会越来越大，所以越早参与生态茶园的用户收益将越高！
+        茶叶产出是根据全网算力而计算的，全网算力会在平台总茶叶数达到150万、350万、650万、950万的时候减产，随着时间的推移茶叶的获取数量会越来越大，所以越早参与生态茶园的用户收益将越高！

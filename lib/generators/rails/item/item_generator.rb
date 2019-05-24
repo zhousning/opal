@@ -8,20 +8,20 @@ class Rails::ItemGenerator < Rails::Generators::Base
   class_option :tag, :aliases => '-t', :type => :array, :default => []
   class_option :image, :aliases => '-i', :type => :boolean, :default => false 
 
-  #def generate_model
-  #  attributes = columns.join(" ")
-  #  generate "model", "#{model} #{attributes} --force"
-  #end
+  def generate_model
+    attributes = columns.join(" ")
+    generate "model", "#{model} #{attributes} --force"
+  end
 
-  #def generate_setting
-  #  model_name = model.pluralize.underscore
-  #  hash = Hash.new
-  #  columns.each_with_index do |column, index|
-  #    key = column.slice(/([^:]+)/)
-  #    hash[key] = options[:label][index]
-  #  end
-  #  Setting.save(model_name, hash)
-  #end
+  def generate_setting
+    model_name = model.pluralize.underscore
+    hash = Hash.new
+    columns.each_with_index do |column, index|
+      key = column.slice(/([^:]+)/)
+      hash[key] = options[:label][index]
+    end
+    Setting.save(model_name, hash)
+  end
 
   def generate_controller
     @mu = model.underscore

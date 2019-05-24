@@ -1,7 +1,7 @@
 .card.py-3.px-3
   - if current_user.status == Setting.users.passed
     = link_to info_accounts_path do 
-      = image_tag 'center-account.png', :class => 'card-img-top'
+      = image_tag 'center-account.jpg', :class => 'card-img-top'
       .card-img-overlay.py-5
         .row
           .col-12.text-center
@@ -9,10 +9,10 @@
               = current_user.account.number
   - elsif current_user.status == Setting.users.opening
     = link_to mobile_authc_new_user_path(current_user) do 
-      = image_tag 'center-account.png', :class => 'card-img-top'
+      = image_tag 'center-account.jpg', :class => 'card-img-top'
   - else
     = link_to mobile_authc_status_user_path(current_user) do 
-      = image_tag 'center-account.png', :class => 'card-img-top'
+      = image_tag 'center-account.jpg', :class => 'card-img-top'
   .card-body
     .row
       .col.text-center

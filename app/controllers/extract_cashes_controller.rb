@@ -10,7 +10,7 @@ class ExtractCashesController < ApplicationController
   def create
     @extract_cash = ExtractCash.new(extract_cash_params)
     account = current_user.account
-    if @extract_cash.coin > 0 && account.coin >= @extract_cash.coin
+    if @extract_cash.coin > 0 && account.coin > @extract_cash.coin
       @extract_cash.user = current_user
       if @extract_cash.save
         account.sub_coin(@extract_cash.coin)

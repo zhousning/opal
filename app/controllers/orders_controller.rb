@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
       @order.category = Setting.orders.category_recharge
       @order.coin = @order.money;
 
-      @order.subject = "茶源账户充值"
+      @order.subject = "八方账户充值"
       @order.user = current_user
 
       if @order.save
