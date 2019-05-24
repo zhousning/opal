@@ -68,7 +68,8 @@ class TradesController < ApplicationController
     code = params[:buy_confirm_code]
     pwd = params[:password]
 
-    if code == cookies[:buy_code] && account.password == convert_to_md5(pwd)
+    #if code == cookies[:buy_code] && account.password == convert_to_md5(pwd)
+    if account.password == convert_to_md5(pwd)
       total = @sell.price*@sell.count
 
       account.sub_coin(total)

@@ -23,12 +23,13 @@
           = label_tag nil, '安全密码', :class => "col-3 col-form-label-lg"
           .col-9
             = password_field_tag 'password', nil, :class => "form-control form-control-lg"
-        .form-group.row
-          .col-8
-            = text_field_tag 'buy_confirm_code', nil, :class => "form-control form-control-lg"
-          .col-4
-            %button#buy-send-confirm-code.btn.btn-block.btn-lg.btn-info{:type => "button"}
-              验证码
+        -#
+          .form-group.row
+            .col-8
+              = text_field_tag 'buy_confirm_code', nil, :class => "form-control form-control-lg"
+            .col-4
+              %button#buy-send-confirm-code.btn.btn-block.btn-lg.btn-info{:type => "button"}
+                验证码
         .form-group.row
           .col-12
             %hr

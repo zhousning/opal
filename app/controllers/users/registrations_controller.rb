@@ -11,40 +11,40 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  #def create
-  #  super do |resource|
-  #    if resource.persisted? and cookies['inviter']
-  #      user_inviter = User.find_by_number( cookies['inviter'])
-  #      if user_inviter
-  #        resource.update_attribute(:parent_id, user_inviter.id)
-  #        inviter_citrine = user_inviter.citrine
-  #        inviter_citrine.add_count(Setting.awards.one_citrine)
-  #        Consume.create(:category => Setting.consumes.category_friend_reg, :coin_cost => Setting.awards.one_citrine, :status => Setting.consumes.status_success, :citrine_id => inviter_citrine.id)
-  #      end
-  #    end
-  #  end
-  #end
-
   def create
-    code = params[:confirm_code]
-    if !code.blank? && !cookies[:reg_code].blank? && code == cookies[:reg_code]
-      cookies.delete :reg_code
-      super do |resource|
-        if resource.persisted? and cookies['inviter']
-          user_inviter = User.find_by_number(cookies['inviter'])
-          if user_inviter
-            resource.update_attribute(:parent_id, user_inviter.id)
-            inviter_citrine = user_inviter.citrine
-            inviter_citrine.add_count(Setting.awards.one_citrine)
-            Consume.create(:category => Setting.consumes.category_friend_reg, :coin_cost => Setting.awards.one_citrine, :status => Setting.consumes.status_success, :citrine_id => inviter_citrine.id)
-            cookies.delete :inviter
-          end
+    super do |resource|
+      if resource.persisted? and cookies['inviter']
+        user_inviter = User.find_by_number( cookies['inviter'])
+        if user_inviter
+          resource.update_attribute(:parent_id, user_inviter.id)
+          inviter_citrine = user_inviter.citrine
+          inviter_citrine.add_count(Setting.awards.one_citrine)
+          Consume.create(:category => Setting.consumes.category_friend_reg, :coin_cost => Setting.awards.one_citrine, :status => Setting.consumes.status_success, :citrine_id => inviter_citrine.id)
         end
       end
-    else
-      redirect_to new_user_registration_url
     end
   end
+
+  #def create
+  #  code = params[:confirm_code]
+  #  if !code.blank? && !cookies[:reg_code].blank? && code == cookies[:reg_code]
+  #    cookies.delete :reg_code
+  #    super do |resource|
+  #      if resource.persisted? and cookies['inviter']
+  #        user_inviter = User.find_by_number(cookies['inviter'])
+  #        if user_inviter
+  #          resource.update_attribute(:parent_id, user_inviter.id)
+  #          inviter_citrine = user_inviter.citrine
+  #          inviter_citrine.add_count(Setting.awards.one_citrine)
+  #          Consume.create(:category => Setting.consumes.category_friend_reg, :coin_cost => Setting.awards.one_citrine, :status => Setting.consumes.status_success, :citrine_id => inviter_citrine.id)
+  #          cookies.delete :inviter
+  #        end
+  #      end
+  #    end
+  #  else
+  #    redirect_to new_user_registration_url
+  #  end
+  #end
 
   def after_sign_up_path_for(resource)
     root_url

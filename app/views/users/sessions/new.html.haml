@@ -25,7 +25,11 @@
             %hr.tea-hr
         .form-group.row.mb-5.px-5
           .col-12.text-right
-            = link_to "忘记密码?", forget_path, :class => "font-1-5rem text-secondary"
+            = link_to "注 册", new_user_registration_path, :class => "font-1-5rem text-secondary"
+        -#
+          .form-group.row.mb-5.px-5
+            .col-12.text-right
+              = link_to "忘记密码?", forget_path, :class => "font-1-5rem text-secondary"
         - if devise_mapping.rememberable?
           .form-check
             %label.form-check-label

@@ -39,14 +39,15 @@
             = f.password_field :password_confirmation, autocomplete: "off", :class => "form-control border-0 form-control-lg font-2rem h-100", :placeholder => "确认密码"
           .col-12.mt-3
             %hr.tea-hr
-        .form-group.row.mb-4.px-5
-          %label.col-2.col-form-label.col-form-label-lg.text-left{:for => "confirm"}
-            = image_tag 'session-code.png', :class => "img-thubnail session-label-img"
-          .col-6
-            = text_field_tag 'confirm_code', nil, :class => "form-control border-0 form-control-lg font-2rem h-75"
-          .col-4
-            %button#send-confirm-code.btn.btn-block.btn-lg{:type => "button"}
-              验证码
+        -#
+          .form-group.row.mb-4.px-5
+            %label.col-2.col-form-label.col-form-label-lg.text-left{:for => "confirm"}
+              = image_tag 'session-code.png', :class => "img-thubnail session-label-img"
+            .col-6
+              = text_field_tag 'confirm_code', nil, :class => "form-control border-0 form-control-lg font-2rem h-75"
+            .col-4
+              %button#send-confirm-code.btn.btn-block.btn-lg{:type => "button"}
+                验证码
             -#
               %label#send-confirm-code.col-4.col-form-label.col-form-label-lg.text-left.py-0{:for => "send-confirm"}
                 = image_tag 'confirm-code.png', :class => "img-thubnail w-100"

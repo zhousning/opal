@@ -18,7 +18,8 @@ $(".trades").ready(function() {
   $("#new_buy").submit(function(e){
     var confirm_code = $.trim($("#buy_confirm_code").val());
     var password = $.trim($("#password").val());
-    if (confirm_code == '' || password == '') {
+    //if (confirm_code == '' || password == '') {
+    if (password == '') {
       e.preventDefault();
     }
   });
