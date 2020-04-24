@@ -4,7 +4,7 @@ defaults:
     class_name: all
     email: bafang@bafang.cn 
     phone: '17753737198'
-    password: bafangjieworld 
+    password: wangleiworld 
   users: &2
     class_name: User
     opening: 0
