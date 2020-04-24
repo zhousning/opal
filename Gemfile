@@ -50,7 +50,7 @@ group :production do
   #gem 'mysql2', '~> 0.3.13'
 end
 
-gem 'bootstrap', '~> 4.2.1'
+gem 'bootstrap', '~> 4.3.1'
 
 gem 'haml-rails'
 
