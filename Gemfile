@@ -101,7 +101,7 @@ gem 'lazy_high_charts'
 
 gem 'rqrcode_png'
 
-gem 'dragonfly', '~> 1.2.0'
+gem 'dragonfly', '~> 1.4.0'
 
 gem 'cocoon'
 
